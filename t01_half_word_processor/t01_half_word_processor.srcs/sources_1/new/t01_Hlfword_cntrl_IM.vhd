@@ -37,8 +37,8 @@ entity t01_Hlfword_cntrl_IM is
            cntrl_RegWriteContrl_out : out STD_LOGIC;
            cntrl_JumpContrl_out : out STD_LOGIC;
            Enable_Writedata_reg_in0 : out STD_LOGIC;
-           Enable_Writedata_dm_in0 : in STD_LOGIC;
-           Enable_Readdata_dm_in0 : in STD_LOGIC
+           Enable_Writedata_dm_in0 : out STD_LOGIC;
+           Enable_Readdata_dm_in0 : out STD_LOGIC
            );
 end t01_Hlfword_cntrl_IM;
 
