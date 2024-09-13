@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
-
+ 
 entity t01_Hlfword_cntrl_IM is
     Port ( cntrl_op_code : in std_logic_vector(3 downto 0);
            cntrl_RegAdressContrl_out : out STD_LOGIC;

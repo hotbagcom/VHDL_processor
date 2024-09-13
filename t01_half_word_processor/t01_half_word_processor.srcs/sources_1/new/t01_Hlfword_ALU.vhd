@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
---use UNISIM.VComponents.all;
+--use UNISIM.VComponents.all; 
 
 entity t01_Hlfword_ALU is
     Port ( clk : in  STD_LOGIC;
