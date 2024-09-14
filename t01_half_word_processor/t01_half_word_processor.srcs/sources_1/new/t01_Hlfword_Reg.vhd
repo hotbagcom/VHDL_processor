@@ -32,14 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_Reg is
-    Port ( clk : in STD_LOGIC;
-           Source_in0 : in std_logic_vector(3 downto 0);
-           Source_in1 : in std_logic_vector(3 downto 0);
-           Destination_in0 : in std_logic_vector(3 downto 0);
-           Writedata_in0 : in std_logic_vector(15 downto 0);
-           Enable_Writedata_reg_in0 : in STD_LOGIC;
-           Reg_out0 : out std_logic_vector(15 downto 0);
-           Reg_out1 : out std_logic_vector(15 downto 0)
+    Port ( clk : in STD_LOGIC := '0';
+           Enable_Writedata_reg_in0 : in STD_LOGIC := '0';
+           Source_in0 : in std_logic_vector(3 downto 0) := (others => '0');
+           Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');
+           Destination_in0 : in std_logic_vector(3 downto 0) := (others => '0');
+           Writedata_in0 : in std_logic_vector(15 downto 0) := (others => '0');
+           Reg_out0 : out std_logic_vector(15 downto 0) := (others => '0');
+           Reg_out1 : out std_logic_vector(15 downto 0) := (others => '0') 
            );
 end t01_Hlfword_Reg;
 

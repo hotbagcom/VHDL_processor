@@ -32,10 +32,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_MUX_jump is
-    Port ( cntrl_JumpContrl_out : in STD_LOGIC;
-           branch_out0 : in std_logic_vector(15 downto 0);
-           alu_dataout0_in0 : in std_logic_vector(15 downto 0);
-           nextadress_jump_out0 : out std_logic_vector(15 downto 0)
+    Port ( 
+           branch_out0 : in std_logic_vector(15 downto 0) := (others => '0');
+           immidiate_in0 : in std_logic_vector(11 downto 0) := (others => '0');
+           cntrl_JumpContrl_out : in STD_LOGIC := '0';
+           nextadress_jump_out0 : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_MUX_jump;
 

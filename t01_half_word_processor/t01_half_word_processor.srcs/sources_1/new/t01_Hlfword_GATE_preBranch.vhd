@@ -32,10 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_GATE_preBranch is
-    Port ( cntrlalu_gate_brnch : in STD_LOGIC;
-           branch_flagtriger_in : out STD_LOGIC;
-           Flag_zero_out0 : in STD_LOGIC;
-           Flag_overflv_out0 : in STD_LOGIC
+    Port ( cntrlalu_gate_brnch : in STD_LOGIC :='0';
+           Flag_zero_out0 : in STD_LOGIC :='0';
+           Flag_overflv_out0 : in STD_LOGIC :='0';
+           branch_flagtriger_in : out STD_LOGIC :='0'
            );
 end t01_Hlfword_GATE_preBranch;
 

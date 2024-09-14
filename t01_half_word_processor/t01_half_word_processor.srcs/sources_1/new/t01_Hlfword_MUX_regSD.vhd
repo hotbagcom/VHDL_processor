@@ -33,10 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_MUX_regSD is
     Port ( 
-           cntrl_RegAdressContrl_out : in STD_LOGIC;
-           reg_s1_in : in std_logic_vector(3 downto 0);
-           reg_dest_in : in std_logic_vector(3 downto 0);
-           reg_dest_out : out std_logic_vector(3 downto 0)
+           cntrl_RegAdressContrl_out : in STD_LOGIC := '0';
+           reg_s1_in : in std_logic_vector(3 downto 0) := (others => '0');
+           reg_dest_in : in std_logic_vector(3 downto 0) := (others => '0');
+           reg_dest_out : out std_logic_vector(3 downto 0) := (others => '0')
            );
 end t01_Hlfword_MUX_regSD;
 

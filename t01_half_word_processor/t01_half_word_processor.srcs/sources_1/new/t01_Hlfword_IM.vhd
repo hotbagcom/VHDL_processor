@@ -32,12 +32,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_IM is
-    Port ( clk : in STD_LOGIC;
-           current_adress_IM_in : in STD_LOGIC;
-           op_code_IM_out3 : out std_logic_vector(3 downto 0);
-           reg_s0_addr2_IM_out2 : out std_logic_vector(3 downto 0);
-           reg_s1_dest_addr1_IM_out1 : out std_logic_vector(3 downto 0);
-           reg_dest_imm_addr0_IM_out0 : out std_logic_vector(11 downto 0)
+    Port ( 
+           clk : in STD_LOGIC := '0';
+           current_adress_IM_in : in std_logic_vector(15 downto 0) := (others => '0');
+           op_code_IM_out3 : out std_logic_vector(3 downto 0) := (others => '0');
+           reg_s0_addr2_IM_out2 : out std_logic_vector(3 downto 0) := (others => '0');
+           reg_s1_dest_addr1_IM_out1 : out std_logic_vector(3 downto 0) := (others => '0');
+           reg_dest_imm_addr0_IM_out0 : out std_logic_vector(11 downto 0) := (others => '0')
            );
 end t01_Hlfword_IM;
 

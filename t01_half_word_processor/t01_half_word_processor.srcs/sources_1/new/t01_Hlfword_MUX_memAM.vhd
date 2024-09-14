@@ -32,10 +32,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_MUX_memAM is
-    Port ( ALU_data_out0 : in std_logic_vector(15 downto 0);--main alu
-           DM_read_in0 : in std_logic_vector(15 downto 0);
-           cntrl_RegWriteContrl_out : in STD_LOGIC;
-           REG_writedata_out0 : out std_logic_vector(15 downto 0)
+    Port ( 
+           cntrl_RegWriteContrl_out : in STD_LOGIC := '0';
+           DM_read_in0 : in std_logic_vector(15 downto 0) := (others => '0');
+           ALU_data_out0 : in std_logic_vector(15 downto 0) := (others => '0');--main alu
+           REG_writedata_out0 : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_MUX_memAM;
 

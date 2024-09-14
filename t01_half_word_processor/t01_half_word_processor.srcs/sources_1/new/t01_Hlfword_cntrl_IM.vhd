@@ -32,13 +32,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
  
 entity t01_Hlfword_cntrl_IM is
-    Port ( cntrl_op_code : in std_logic_vector(3 downto 0);
-           cntrl_RegAdressContrl_out : out STD_LOGIC;
-           cntrl_RegWriteContrl_out : out STD_LOGIC;
-           cntrl_JumpContrl_out : out STD_LOGIC;
-           Enable_Writedata_reg_in0 : out STD_LOGIC;
-           Enable_Writedata_dm_in0 : out STD_LOGIC;
-           Enable_Readdata_dm_in0 : out STD_LOGIC
+    Port ( cntrl_op_code : in std_logic_vector(3 downto 0) := (others => '0') ;
+           cntrl_RegAdressContrl_out : out STD_LOGIC := '0';
+           cntrl_RegWriteContrl_out : out STD_LOGIC := '0';
+           cntrl_JumpContrl_out : out STD_LOGIC := '0';
+           Enable_Writedata_reg_in0 : out STD_LOGIC := '0';
+           Enable_Writedata_dm_in0 : out STD_LOGIC := '0';
+           Enable_Readdata_dm_in0 : out STD_LOGIC := '0'
            );
 end t01_Hlfword_cntrl_IM;
 

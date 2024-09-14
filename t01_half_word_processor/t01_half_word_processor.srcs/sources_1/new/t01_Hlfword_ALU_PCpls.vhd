@@ -32,9 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_ALU_PCpls is
-    Port ( current_adress : in std_logic_vector(15 downto 0);
-           byteadd : in std_logic_vector(2 downto 0); -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
-           pls4byte_adress : out std_logic_vector(15 downto 0)
+    Port ( 
+           byteadd : in std_logic_vector(2 downto 0) := "100"; -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
+           current_adress : in std_logic_vector(15 downto 0) := (others => '0');
+           pls4byte_adress : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_ALU_PCpls;
 

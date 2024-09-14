@@ -32,9 +32,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_PC is
-    Port ( clk : in STD_LOGIC;
-           next_adress : in std_logic_vector(15 downto 0);
-           current_adress : out std_logic_vector(15 downto 0)
+    Port ( clk : in STD_LOGIC := '0';
+           next_adress : in std_logic_vector(15 downto 0) := (others => '0');
+           current_adress : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_PC;
 

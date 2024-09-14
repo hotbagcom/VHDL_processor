@@ -32,13 +32,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all; 
 
 entity t01_Hlfword_ALU is
-    Port ( clk : in  STD_LOGIC;
-           Data_aluMain_in0 : in std_logic_vector(15 downto 0);
-           Data_aluMain_in1 : in std_logic_vector(15 downto 0);
-           Alu_cntl_in : in std_logic_vector(3 downto 0);
-           Data_aluMain_out0 : out std_logic_vector(15 downto 0);
-           Flag_zero_out0 : out STD_LOGIC;
-           Flag_overflv_out0 : out STD_LOGIC
+    Port ( clk : in  STD_LOGIC := '0';
+           Alu_cntl_in : in std_logic_vector(3 downto 0) := ( others => '0' );
+           Data_aluMain_in0 : in std_logic_vector(15 downto 0) := ( others => '0' );
+           Data_aluMain_in1 : in std_logic_vector(15 downto 0) := ( others => '0' );
+           Flag_zero_out0 : out STD_LOGIC := '0';
+           Flag_overflv_out0 : out STD_LOGIC := '0';
+           Data_aluMain_out0 : out std_logic_vector(15 downto 0) := ( others => '0' )
            );
 end t01_Hlfword_ALU;
 

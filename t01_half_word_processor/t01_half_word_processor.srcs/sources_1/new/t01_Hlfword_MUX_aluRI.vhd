@@ -32,10 +32,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_MUX_aluRI is
-    Port ( cntrl_AluSourceContrl_out : in STD_LOGIC;
-           reg_o1 : in std_logic_vector(15 downto 0);
-           imm : in std_logic_vector(3 downto 0);
-           Data_aluMain_in1 : out std_logic_vector(15 downto 0)
+    Port ( 
+           cntrl_AluSourceContrl_out : in STD_LOGIC := '0' ;
+           reg_o1 : in std_logic_vector(15 downto 0) := (others => '0');
+           imm : in std_logic_vector(3 downto 0) := (others => '0');
+           Data_aluMain_in1 : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_MUX_aluRI;
 

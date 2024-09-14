@@ -32,10 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
  
 entity t01_Hlfword_cntl_alu is
-    Port ( cntrl_op_code : in std_logic_vector(3 downto 0);
-           cntrl_AluSourceContrl_out : out STD_LOGIC;
-           cntrl_ALUoperation_in : out std_logic_vector(3 downto 0);-- add sub j{add two register} beq bge srli slli xor not or and :11 op
-           cntrlalu_gate_brnch : out STD_LOGIC
+    Port ( cntrl_op_code : in std_logic_vector(3 downto 0) := (others => '0') ;
+           cntrlalu_gate_brnch : out STD_LOGIC := '0';
+           cntrl_ALUoperation_in : out std_logic_vector(3 downto 0) := (others => '0') ;-- add sub j{add two register} beq bge srli slli xor not or and :11 op
+           cntrl_AluSourceContrl_out : out STD_LOGIC := '0'
            );
 end t01_Hlfword_cntl_alu;
 

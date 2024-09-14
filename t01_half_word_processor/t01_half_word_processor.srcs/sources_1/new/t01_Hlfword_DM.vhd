@@ -33,11 +33,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_DM is
     Port ( clk : in STD_LOGIC;
-           Adress_dm_in0 : in std_logic_vector(15 downto 0);
-           Writedata_dm_in0 : in std_logic_vector(15 downto 0);
-           Enable_Writedata_dm_in0 : in STD_LOGIC;
-           Enable_Readdata_dm_in0 : in STD_LOGIC;
-           Readdata_dm_out0 : out std_logic_vector(15 downto 0));
+           Enable_Writedata_dm_in0 : in STD_LOGIC := '0';
+           Enable_Readdata_dm_in0 : in STD_LOGIC := '0';
+           Adress_dm_in0 : in std_logic_vector(15 downto 0)  := (others => '0');
+           Writedata_dm_in0 : in std_logic_vector(15 downto 0)  := (others => '0');
+           Readdata_dm_out0 : out std_logic_vector(15 downto 0)  := (others => '0')
+           );
 end t01_Hlfword_DM;
 
 architecture bhvrl_DM of t01_Hlfword_DM is

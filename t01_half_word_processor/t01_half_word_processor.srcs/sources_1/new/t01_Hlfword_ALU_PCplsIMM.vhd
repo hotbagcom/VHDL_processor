@@ -32,9 +32,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_ALU_PCplsIMM is
-    Port ( pls4byte_adress : in std_logic_vector(15 downto 0);
-           immediate_byte : in std_logic_vector(3 downto 0);
-           nextPLSimmediate_adress_out : out std_logic_vector(15 downto 0)
+    Port ( pls4byte_adress : in std_logic_vector(15 downto 0) := (others => '0');
+           immediate_byte : in std_logic_vector(3 downto 0) := (others => '0');
+           nextPLSimmediate_adress_out : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_ALU_PCplsIMM;
 
