@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_PC is
     Port ( clk : in STD_LOGIC := '0';
+           rst_ah : in  STD_LOGIC := '0';
            next_adress : in std_logic_vector(15 downto 0) := (others => '0');
            current_adress : out std_logic_vector(15 downto 0) := (others => '0')
            );

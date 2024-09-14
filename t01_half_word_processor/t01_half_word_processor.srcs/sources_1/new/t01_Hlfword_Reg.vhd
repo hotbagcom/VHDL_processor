@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_Reg is
     Port ( clk : in STD_LOGIC := '0';
+           rst_ah : in  STD_LOGIC := '0';
            Enable_Writedata_reg_in0 : in STD_LOGIC := '0';
            Source_in0 : in std_logic_vector(3 downto 0) := (others => '0');
            Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');

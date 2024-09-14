@@ -34,6 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity t01_Hlfword_IM is
     Port ( 
            clk : in STD_LOGIC := '0';
+           rst_ah : in  STD_LOGIC := '0';
            current_adress_IM_in : in std_logic_vector(15 downto 0) := (others => '0');
            op_code_IM_out3 : out std_logic_vector(3 downto 0) := (others => '0');
            reg_s0_addr2_IM_out2 : out std_logic_vector(3 downto 0) := (others => '0');

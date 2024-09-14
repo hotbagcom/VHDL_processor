@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_ALU is
     Port ( clk : in  STD_LOGIC := '0';
+           rst_ah : in  STD_LOGIC := '0';
            Alu_cntl_in : in std_logic_vector(3 downto 0) := ( others => '0' );
            Data_aluMain_in0 : in std_logic_vector(15 downto 0) := ( others => '0' );
            Data_aluMain_in1 : in std_logic_vector(15 downto 0) := ( others => '0' );

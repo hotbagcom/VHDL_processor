@@ -32,7 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_DM is
-    Port ( clk : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC := '0';
+           rst_ah : in  STD_LOGIC := '0';
            Enable_Writedata_dm_in0 : in STD_LOGIC := '0';
            Enable_Readdata_dm_in0 : in STD_LOGIC := '0';
            Adress_dm_in0 : in std_logic_vector(15 downto 0)  := (others => '0');
