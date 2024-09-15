@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -40,8 +40,12 @@ entity t01_Hlfword_ALU_PCpls is
 end t01_Hlfword_ALU_PCpls;
 
 architecture bhvrl_ALU_PCpls of t01_Hlfword_ALU_PCpls is
-
+    
 begin
-
+process (current_adress) begin 
+    if (current_adress'event) then 
+        pls4byte_adress <= std_logic_vector( unsigned(current_adress) + unsigned(byteadd) );
+    end if ;
+end process ;
 
 end bhvrl_ALU_PCpls;
