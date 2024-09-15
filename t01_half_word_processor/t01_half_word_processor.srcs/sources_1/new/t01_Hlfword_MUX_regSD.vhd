@@ -44,5 +44,6 @@ architecture bhvrl_MUX_regSD of t01_Hlfword_MUX_regSD is
 
 begin
 
+reg_dest_out <= ( (not(others=>cntrl_RegAdressContrl_out)) and reg_s1_in ) or ( (others=>cntrl_RegAdressContrl_out) and reg_dest_in ) ; 
 
 end bhvrl_MUX_regSD;

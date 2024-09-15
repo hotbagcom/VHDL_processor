@@ -44,5 +44,6 @@ architecture bhvrl_MUX_aluRI of t01_Hlfword_MUX_aluRI is
 
 begin
 
+Data_aluMain_in1 <= ( (not(others=>cntrl_AluSourceContrl_out)) and reg_o1 ) or ( (others=>cntrl_AluSourceContrl_out) and imm ) ; 
 
 end bhvrl_MUX_aluRI;

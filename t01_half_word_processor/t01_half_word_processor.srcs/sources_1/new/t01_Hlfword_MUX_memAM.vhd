@@ -44,5 +44,6 @@ architecture bhvrl_MUX_memAM of t01_Hlfword_MUX_memAM is
 
 begin
 
+REG_writedata_out0 <= ( (not(others=>cntrl_RegWriteContrl_out)) and DM_read_in0 ) or ( (others=>cntrl_RegWriteContrl_out) and ALU_data_out0 ) ; 
 
 end bhvrl_MUX_memAM;
