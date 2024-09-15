@@ -43,5 +43,6 @@ architecture bhvrl_GATE_preBranch of t01_Hlfword_GATE_preBranch is
 
 begin
 
+branch_flagtriger_in <= Flag_zero_out0 and cntrlalu_gate_brnch ;
 
 end bhvrl_GATE_preBranch;
