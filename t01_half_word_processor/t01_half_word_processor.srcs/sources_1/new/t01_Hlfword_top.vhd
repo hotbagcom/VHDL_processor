@@ -49,7 +49,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- or    |  R  |  1  |  0  |  1011  |  0  |  1  |  0  |  0  |  0  |  0  |  
 -------- |-----|
 -- Lw    |  R  |  1  |  x  |  1100  |  1  |  0  |  0  |  1  |  0  |  0  |  --only r0 important
--- Sw    |  R  |  1  |  x  |  1101  |  1  |  0  |  0  |  1  |  0  |  0  |  --only r0 important
+-- Sw    |  R  |  1  |  x  |  1101  |  1  |  0  |  1  |  0  |  0  |  0  |  --only r0 important
 -- J     |  J  |  x  |  x  |  1110  |  x  |  0  |  0  |  0  |  0  |  1  | 
 -- ? JL ( jump and link )
 
