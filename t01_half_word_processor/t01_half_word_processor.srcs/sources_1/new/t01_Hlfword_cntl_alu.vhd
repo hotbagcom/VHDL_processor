@@ -43,5 +43,73 @@ architecture bhvrl_cntl_alu of t01_Hlfword_cntl_alu is
 
 begin
 
+cntrl_ALUoperation_in <= cntrl_op_code;
 
+process (cntrl_op_code) begin
+
+    case (cntrl_op_code) is
+        ------------------------------------------------------- add - addi - sub - subi
+        when ("0000") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("0001") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '1';
+            
+        when ("0010") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("0011") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '1';
+        ------------------------------------------------------- beq - bge - srli - slli 
+        when ("0100") => 
+            cntrlalu_gate_brnch         <= '1';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("0101") => 
+            cntrlalu_gate_brnch         <= '1';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("0110") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '1';
+            
+        when ("0111") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '1';
+        ------------------------------------------------------- xor  - not - and - or 
+        when ("1000") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("1001") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("1010") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("1011") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
+    ------------------------------------------------------- lw - sw - j - ? 
+        when ("0100") => 
+            cntrlalu_gate_brnch         <= '0';
+ --           cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("0101") => 
+            cntrlalu_gate_brnch         <= '0';
+ --           cntrl_AluSourceContrl_out   <= '0';
+            
+        when ("0110") => 
+            cntrlalu_gate_brnch         <= '0';
+ --           cntrl_AluSourceContrl_out   <= '0';
+        
+    end case ;
+
+end process ;
 end bhvrl_cntl_alu;
