@@ -42,6 +42,16 @@ end t01_Hlfword_PC;
 architecture bhvrl_PC of t01_Hlfword_PC is
 
 begin
+process (clk )begin
 
+if rising_edge(clk) then 
+    if (rst_ah ='1') then 
+    current_adress <= (others => '0');
+    elsif (next_adress < "1111" ) then
+    current_adress <= next_adress;
+    end if;
+end if;
+ 
+end process ;
 
 end bhvrl_PC;
