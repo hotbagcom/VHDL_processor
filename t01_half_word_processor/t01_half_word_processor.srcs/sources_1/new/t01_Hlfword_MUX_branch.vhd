@@ -33,10 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_MUX_branch is
     Port (  
-           pls4byte_adress : in std_logic_vector(15 downto 0) := (others => '0') ;
-           current_pls_imm_adress : in std_logic_vector(15 downto 0) := (others => '0') ;
-           branch_flagtriger_in : in STD_LOGIC := '0' ;
-           branch_out0 : out std_logic_vector(15 downto 0) := (others => '0')
+           pls4byte_adress : in std_logic_vector(15 downto 0) ;--:= (others => '0') ;
+           current_pls_imm_adress : in std_logic_vector(15 downto 0);-- := (others => '0') ;
+           branch_flagtriger_in : in STD_LOGIC ;--:= '0' ;
+           branch_out0 : out std_logic_vector(15 downto 0) --:= (others => '0')
            );
 end t01_Hlfword_MUX_branch;
 
@@ -44,6 +44,13 @@ architecture bhvrl_MUX_branch of t01_Hlfword_MUX_branch is
 
 begin
 
-branch_out0 <= ( (not(others=>branch_flagtriger_in)) and pls4byte_adress ) or ( (others=>branch_flagtriger_in) and current_pls_imm_adress ) ; 
+--branch_out0 <= ( (not(others=>branch_flagtriger_in)) and pls4byte_adress ) or ( (others=>branch_flagtriger_in) and current_pls_imm_adress ) ; 
+process (branch_flagtriger_in) begin 
+    if (branch_flagtriger_in = '1') then
+    branch_out0 <=   current_pls_imm_adress ;
+    else 
+    branch_out0 <= pls4byte_adress ;
+    end if ;
+end process ;
 
 end bhvrl_MUX_branch;

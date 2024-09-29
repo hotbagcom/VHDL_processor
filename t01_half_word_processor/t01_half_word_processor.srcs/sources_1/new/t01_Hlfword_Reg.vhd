@@ -36,7 +36,7 @@ entity t01_Hlfword_Reg is
            Ram_width : integer := 4;
            Ram_depth :integer := 16
     );
-    Port ( clk : in STD_LOGIC := '0';
+    Port ( clk : in STD_LOGIC ;
            rst_ah : in  STD_LOGIC := '0';
            Enable_Writedata_reg_in0 : in STD_LOGIC := '0';
            Source_in0 : in std_logic_vector(3 downto 0) := (others => '0');
@@ -50,20 +50,24 @@ end t01_Hlfword_Reg;
 
 architecture bhvrl_Reg of t01_Hlfword_Reg is
 --TO DO  diferrence btw stdlogicvector and bitvector
-type ram_type is array(0 to Ram_depth-1) of std_logic_vector(Ram_width-1 downto 0);
+type ram_type is array(0 to Ram_width-1) of std_logic_vector(Ram_depth-1 downto 0);
 signal RAM_Reg : ram_type := (others=>(others=>'0'));
 
 
 begin
+
 process (clk) begin 
-    if(rst_ah ='1') then
-    RAM_Reg  <= (others=>(others=>'0'));
-    elsif rising_edge(clk )then 
-    Reg_out0 <=  RAM_Reg( to_integer(unsigned(Source_in0)) );
-    Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) );
-        if ( Enable_Writedata_reg_in0 = '1') then
-        RAM_Reg(to_integer(unsigned(Destination_in0))) <= Writedata_in0 ;
+    if rising_edge(clk )then 
+        if (rst_ah ='1') then
+        RAM_Reg  <= (others=>(others=>'0'));
+        else 
+        Reg_out0 <=  RAM_Reg( to_integer(unsigned(Source_in0)) );
+        Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) );
+            if ( Enable_Writedata_reg_in0 = '1') then
+            RAM_Reg(to_integer(unsigned(Destination_in0))) <= Writedata_in0 ;
+            end if;
         end if;
     end if;
 end process ;
+
 end bhvrl_Reg;

@@ -33,10 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_MUX_aluRI is
     Port ( 
-           cntrl_AluSourceContrl_out : in STD_LOGIC := '0' ;
-           reg_o1 : in std_logic_vector(15 downto 0) := (others => '0');
-           imm : in std_logic_vector(3 downto 0) := (others => '0');
-           Data_aluMain_in1 : out std_logic_vector(15 downto 0) := (others => '0')
+           cntrl_AluSourceContrl_out : in STD_LOGIC ;--:= '0' ;
+           reg_o1 : in std_logic_vector(15 downto 0) ;--:= (others => '0');
+           imm : in std_logic_vector(3 downto 0) ;--:= (others => '0');
+           Data_aluMain_in1 : out std_logic_vector(15 downto 0) --:= (others => '0')
            );
 end t01_Hlfword_MUX_aluRI;
 
@@ -44,6 +44,14 @@ architecture bhvrl_MUX_aluRI of t01_Hlfword_MUX_aluRI is
 
 begin
 
-Data_aluMain_in1 <= ( (not(others=>cntrl_AluSourceContrl_out)) and reg_o1 ) or ( (others=>cntrl_AluSourceContrl_out) and imm ) ; 
+--Data_aluMain_in1 <= ( (not(others=>cntrl_AluSourceContrl_out)) and reg_o1 ) or ( (others=>cntrl_AluSourceContrl_out) and imm ) ; 
+
+process (cntrl_AluSourceContrl_out) begin 
+    if (cntrl_AluSourceContrl_out = '1') then
+    Data_aluMain_in1 <= (X"000") &  imm;
+    else 
+    Data_aluMain_in1 <= reg_o1 ;
+    end if ;
+end process ;
 
 end bhvrl_MUX_aluRI;

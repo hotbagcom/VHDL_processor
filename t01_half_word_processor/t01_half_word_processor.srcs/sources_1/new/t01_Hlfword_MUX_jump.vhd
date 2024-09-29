@@ -44,6 +44,13 @@ architecture bhvrl_MUX_jump of t01_Hlfword_MUX_jump is
 
 begin
 
-nextadress_jump_out0 <= ( (not(others=>cntrl_JumpContrl_out)) and branch_out0 ) or ( (others=>cntrl_JumpContrl_out) and immidiate_in0 ) ; 
+--nextadress_jump_out0 <= ( (not(others=>cntrl_JumpContrl_out)) and branch_out0 ) or ( (others=>cntrl_JumpContrl_out) and immidiate_in0 ) ; 
+process (cntrl_JumpContrl_out) begin 
+    if (cntrl_JumpContrl_out = '1') then
+    nextadress_jump_out0 <= (X"0") &  immidiate_in0;
+    else 
+    nextadress_jump_out0 <= branch_out0 ;
+    end if ;
+end process ;
 
 end bhvrl_MUX_jump;

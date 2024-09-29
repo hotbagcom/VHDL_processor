@@ -36,7 +36,7 @@ entity t01_Hlfword_DM is
            Ram_depth : integer := 128;
            Ram_width : integer := 16
     );
-    Port ( clk : in STD_LOGIC := '0';
+    Port ( clk : in STD_LOGIC ;
            rst_ah : in  STD_LOGIC := '0';
            Enable_Writedata_dm_in0 : in STD_LOGIC := '0';
            Enable_Readdata_dm_in0 : in STD_LOGIC := '0';
@@ -57,16 +57,17 @@ begin
 
 
 process (clk) begin
-    if (rst_ah ='1') then
-    RAM_DM <= (others=>(others=>'0'));
-    elsif rising_edge(clk)then
-        if (Enable_Writedata_dm_in0 = '1')then
-        RAM_DM(to_integer(unsigned(Adress_dm_in0))) <= to_bitvector(Writedata_dm_in0);
-        elsif (Enable_Readdata_dm_in0 = '1')then
-        Readdata_dm_out0 <= to_stdlogicvector(RAM_DM(to_integer(unsigned(Adress_dm_in0))));
-        end  if ;    
+    if rising_edge(clk)then
+        if (rst_ah ='1') then
+        RAM_DM <= (others=>(others=>'0'));
+        else
+            if (Enable_Writedata_dm_in0 = '1')then
+                RAM_DM(to_integer(unsigned(Adress_dm_in0))) <= to_bitvector(Writedata_dm_in0);
+            elsif (Enable_Readdata_dm_in0 = '1')then
+                Readdata_dm_out0 <= to_stdlogicvector(RAM_DM(to_integer(unsigned(Adress_dm_in0))));
+            end  if ;    
+        end if ;
     end if ;
-
 end process ;
 
 

@@ -146,7 +146,7 @@ process (cntrl_op_code) begin
             Enable_Writedata_dm_in0  <= '0';
             Enable_Readdata_dm_in0   <= '0';
     ------------------------------------------------------- lw - sw - j - ? 
-        when ("0100") => 
+        when ("1100") => 
             cntrl_RegAdressContrl_out<= '1';
             cntrl_RegWriteContrl_out <= '1';
             cntrl_JumpContrl_out     <= '0';
@@ -154,7 +154,7 @@ process (cntrl_op_code) begin
             Enable_Writedata_dm_in0  <= '0';
             Enable_Readdata_dm_in0   <= '1';
             
-        when ("0101") => 
+        when ("1101") => 
             cntrl_RegAdressContrl_out<= '1';
             cntrl_RegWriteContrl_out <= '1';
             cntrl_JumpContrl_out     <= '0';
@@ -162,15 +162,22 @@ process (cntrl_op_code) begin
             Enable_Writedata_dm_in0  <= '1';
             Enable_Readdata_dm_in0   <= '0';
             
-        when ("0110") => 
+        when ("1110") => 
  --           cntrl_RegAdressContrl_out<= '1';
  --           cntrl_RegWriteContrl_out <= '1';
             cntrl_JumpContrl_out     <= '1';
             Enable_Writedata_reg_in0 <= '0';
             Enable_Writedata_dm_in0  <= '0';
             Enable_Readdata_dm_in0   <= '0';
-            
---        when ("0111") => 
+        when others => 
+            cntrl_RegAdressContrl_out<= '0';
+            cntrl_RegWriteContrl_out <= '0';
+            cntrl_JumpContrl_out     <= '0';
+            Enable_Writedata_reg_in0 <= '0';
+            Enable_Writedata_dm_in0  <= '0';
+            Enable_Readdata_dm_in0   <= '0';
+
+--        when ("1111") => 
 --            cntrl_RegAdressContrl_out<= '';
 --            cntrl_RegWriteContrl_out <= '';
 --            cntrl_JumpContrl_out     <= '';

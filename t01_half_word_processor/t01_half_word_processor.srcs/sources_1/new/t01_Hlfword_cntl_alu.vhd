@@ -97,18 +97,21 @@ process (cntrl_op_code) begin
             cntrlalu_gate_brnch         <= '0';
             cntrl_AluSourceContrl_out   <= '0';
     ------------------------------------------------------- lw - sw - j - ? 
-        when ("0100") => 
+        when ("1100") => 
             cntrlalu_gate_brnch         <= '0';
- --           cntrl_AluSourceContrl_out   <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
             
-        when ("0101") => 
+        when ("1101") => 
             cntrlalu_gate_brnch         <= '0';
- --           cntrl_AluSourceContrl_out   <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
             
-        when ("0110") => 
+        when ("1110") => 
             cntrlalu_gate_brnch         <= '0';
- --           cntrl_AluSourceContrl_out   <= '0';
-        
+            cntrl_AluSourceContrl_out   <= '0';
+ -- un assigned
+        when others => --("1111") => 
+            cntrlalu_gate_brnch         <= '0';
+            cntrl_AluSourceContrl_out   <= '0';
     end case ;
 
 end process ;

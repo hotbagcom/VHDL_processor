@@ -43,9 +43,7 @@ architecture bhvrl_ALU_PCpls of t01_Hlfword_ALU_PCpls is
     
 begin
 process (current_adress) begin 
-    if (current_adress'event) then 
-        pls4byte_adress <= std_logic_vector( unsigned(current_adress) + unsigned(byteadd) );
-    end if ;
+        pls4byte_adress <= std_logic_vector( unsigned(current_adress) + resize(unsigned(byteadd),16) );
 end process ;
 
 end bhvrl_ALU_PCpls;

@@ -33,10 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_MUX_regSD is
     Port ( 
-           cntrl_RegAdressContrl_out : in STD_LOGIC := '0';
-           reg_s1_in : in std_logic_vector(3 downto 0) := (others => '0');
-           reg_dest_in : in std_logic_vector(3 downto 0) := (others => '0');
-           reg_dest_out : out std_logic_vector(3 downto 0) := (others => '0')
+           cntrl_RegAdressContrl_out : in STD_LOGIC ;--:= '0';
+           reg_s1_in : in std_logic_vector(3 downto 0) ;--:= (others => '0');
+           reg_dest_in : in std_logic_vector(3 downto 0) ;--:= (others => '0');
+           reg_dest_out : out std_logic_vector(3 downto 0) --:= (others => '0')
            );
 end t01_Hlfword_MUX_regSD;
 
@@ -44,6 +44,13 @@ architecture bhvrl_MUX_regSD of t01_Hlfword_MUX_regSD is
 
 begin
 
-reg_dest_out <= ( (not(others=>cntrl_RegAdressContrl_out)) and reg_s1_in ) or ( (others=>cntrl_RegAdressContrl_out) and reg_dest_in ) ; 
+--reg_dest_out <= ( (others=> (not cntrl_RegAdressContrl_out)) and reg_s1_in ) or ( (others=>cntrl_RegAdressContrl_out) and reg_dest_in ) ; 
+process (cntrl_RegAdressContrl_out) begin 
+    if (cntrl_RegAdressContrl_out = '1') then
+    reg_dest_out <= reg_dest_in;
+    else 
+    reg_dest_out <= reg_s1_in ;
+    end if ;
+end process ;
 
 end bhvrl_MUX_regSD;

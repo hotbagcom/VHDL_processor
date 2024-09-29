@@ -32,9 +32,9 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity t01_Hlfword_ALU_PCplsIMM is
-    Port ( pls4byte_adress : in std_logic_vector(15 downto 0) := (others => '0');
-           immediate_byte : in std_logic_vector(3 downto 0) := (others => '0');
-           nextPLSimmediate_adress_out : out std_logic_vector(15 downto 0) := (others => '0')
+    Port ( pls4byte_adress : in std_logic_vector(15 downto 0) ;--:= (others => '0');
+           immediate_byte : in std_logic_vector(3 downto 0) ;--:= (others => '0');
+           nextPLSimmediate_adress_out : out std_logic_vector(15 downto 0) --:= (others => '0')
            );
 end t01_Hlfword_ALU_PCplsIMM;
 
@@ -43,9 +43,8 @@ architecture bhvrl_ALU_PCplsIMM of t01_Hlfword_ALU_PCplsIMM is
 begin
 
 process (pls4byte_adress) begin 
-    if (pls4byte_adress'event) then 
         nextPLSimmediate_adress_out <= std_logic_vector( unsigned(pls4byte_adress) + unsigned(immediate_byte) );
-    end if ;
+    
 end process ;
 
 end bhvrl_ALU_PCplsIMM;
