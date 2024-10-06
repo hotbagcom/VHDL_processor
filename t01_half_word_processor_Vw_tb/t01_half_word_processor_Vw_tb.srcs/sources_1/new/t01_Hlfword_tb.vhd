@@ -37,22 +37,25 @@ end t01_Hlfword_tb;
 
 architecture Behavioral of t01_Hlfword_tb is
 ----- Component -----
-component t01_Hlfword_top 
+component t01_Hlfword_top is
     Port ( 
-    clk_m : in std_logic := '0' ;
-    rst_ah_m : in  STD_LOGIC := '0'
+    clk_m : in std_logic := '1' ;
+    rst_ah_m : in  STD_LOGIC := '1'
     );
 end component ;
 
 ----- Signal -----
-signal clk_tb : std_logic := '0';
+signal clk_tb : std_logic := '1';
 signal rst_tb : std_logic := '1';
-signal i : integer :=0 ;
+----- Variable -----
+shared variable i : integer :=0 ;
 ----- Constant -----
 constant clk_hlf_periode  : time := 10 ns;
 
 
 begin
+
+
 TB : t01_Hlfword_top 
     port map ( 
     clk_m => clk_tb ,
@@ -60,21 +63,30 @@ TB : t01_Hlfword_top
     );
 
 
-DUT  :  process 
-begin 
-    for i in 0 to 30 loop    
-        clk_tb <= not clk_tb;
-        wait for clk_hlf_periode;    
-    end loop;
-rst_tb <='0';
-wait for clk_hlf_periode;
+DUT  :  process begin 
+
 rst_tb <='1';
 wait for clk_hlf_periode;
-    for i in 0 to 30 loop
+clk_tb <= not clk_tb;
+wait for clk_hlf_periode;
+clk_tb <= not clk_tb;
+wait for clk_hlf_periode;
+clk_tb <= not clk_tb;
+wait for clk_hlf_periode;
+clk_tb <= not clk_tb;
+wait for clk_hlf_periode;
+rst_tb <='0';
+    for i in 0 to 36 loop
         clk_tb <= not clk_tb;
         wait for clk_hlf_periode;
     end loop;
-
+clk_tb <= not clk_tb;
+wait for clk_hlf_periode;
+clk_tb <= not clk_tb;
+wait for clk_hlf_periode;
+rst_tb <='1';
+wait for clk_hlf_periode;
+wait for clk_hlf_periode;
 end process;
 
 
