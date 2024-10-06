@@ -65,7 +65,7 @@ architecture Behavioral of t01_Hlfword_top is
 ----- COMPONENT -----
 component t01_Hlfword_ALU_PCpls is
     Port ( 
-           byteadd : in std_logic_vector(2 downto 0) := "100"; -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
+    --       byteadd : in std_logic_vector(2 downto 0) := "100"; -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
            current_adress : in std_logic_vector(15 downto 0) := (others => '0');
            pls4byte_adress : out std_logic_vector(15 downto 0) := (others => '0')
            );
@@ -100,7 +100,7 @@ component t01_Hlfword_IM is
 end component t01_Hlfword_IM;
 component t01_Hlfword_Reg is
     Generic(
-           Ram_width : integer := 4;
+           Ram_width : integer := 16;
            Ram_depth :integer := 16
     );
     Port ( clk : in STD_LOGIC ;
@@ -249,7 +249,7 @@ signal S_cntrl_op_code : std_logic_vector(3 downto 0) := (others => '0');
 signal S_cntrl_RegAdressContrl_out  : STD_LOGIC :='0';
 signal S_cntrl_RegWriteContrl_out : STD_LOGIC :='0';
 signal S_cntrl_JumpContrl_out : STD_LOGIC :='0';
-signal S_Enable_Writedata_reg_in0 : STD_LOGIC :='0';
+signal S_Enable_Writedata_reg_in0 : STD_LOGIC :='1';
 signal S_Enable_Writedata_dm_in0 : STD_LOGIC :='0';
 signal S_Enable_Readdata_dm_in0 : STD_LOGIC :='0';
 signal S_cntrlalu_gate_brnch : STD_LOGIC :='0';
@@ -267,7 +267,7 @@ ALU_PCpls : t01_Hlfword_ALU_PCpls
     port map( 
 --byteadd <= "100" , -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
     current_adress => S_current_adress ,-- in std_logic_vector(15 downto 0) := (others => '0');
-    pls4byte_adress => S_pls4byte_adress -- 
+    pls4byte_adress => S_next_adress--S_pls4byte_adress -- 
     );
 ALU_PCplsIMM : t01_Hlfword_ALU_PCplsIMM 
     port map( 
@@ -308,7 +308,7 @@ ALU : t01_Hlfword_ALU
     port map(
     clk => clk_m ,
     rst_ah => rst_ah_m ,
-    Alu_cntl_in => S_cntrl_ALUoperation_in,
+    Alu_cntl_in => S_cntrl_op_code ,        --S_cntrl_ALUoperation_in,
     Data_aluMain_in0 => S_Reg_out0 ,
     Data_aluMain_in1 => S_Data_aluMain_in1,
     Flag_zero_out0 => S_Flag_zero_out0,
@@ -358,7 +358,7 @@ MUX_jump : t01_Hlfword_MUX_jump
     branch_out0 => S_branch_out0 ,
     immidiate_jmp_in0 => S_immidiate_jmp_in0 ,
     cntrl_JumpContrl_out => S_cntrl_JumpContrl_out ,
-    nextadress_jump_out0 => S_next_adress
+    nextadress_jump_out0 => S_pls4byte_adress 
     );
 --Cntrl 
 cntrl_IM : t01_Hlfword_cntrl_IM 
