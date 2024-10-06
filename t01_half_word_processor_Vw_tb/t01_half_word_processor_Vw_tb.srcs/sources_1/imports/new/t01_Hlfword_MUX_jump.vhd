@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity t01_Hlfword_MUX_jump is
     Port ( 
+           rst_ah : in  STD_LOGIC := '0';
            branch_out0 : in std_logic_vector(15 downto 0) := (others => '0');
            immidiate_jmp_in0 : in std_logic_vector(11 downto 0) := (others => '0');
            cntrl_JumpContrl_out : in STD_LOGIC := '0';
@@ -45,10 +46,14 @@ architecture bhvrl_MUX_jump of t01_Hlfword_MUX_jump is
 begin
 
 --nextadress_jump_out0 <= ( (not(others=>cntrl_JumpContrl_out)) and branch_out0 ) or ( (others=>cntrl_JumpContrl_out) and immidiate_in0 ) ; 
-process (cntrl_JumpContrl_out) begin 
+process (cntrl_JumpContrl_out,immidiate_jmp_in0,branch_out0) begin 
+    
+--    if (rst_ah = '1') then 
+--    nextadress_jump_out0 <= (others =>'0') ;
+--    els
     if (cntrl_JumpContrl_out = '1') then
     nextadress_jump_out0 <= (X"0") &  immidiate_jmp_in0;
-    else 
+    elsif cntrl_JumpContrl_out = '0' then
     nextadress_jump_out0 <= branch_out0 ;
     end if ;
 end process ;

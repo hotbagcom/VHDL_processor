@@ -46,7 +46,7 @@ begin
 
 --Data_aluMain_in1 <= ( (not(others=>cntrl_AluSourceContrl_out)) and reg_o1 ) or ( (others=>cntrl_AluSourceContrl_out) and imm ) ; 
 
-process (cntrl_AluSourceContrl_out) begin 
+process (cntrl_AluSourceContrl_out,imm,reg_o1) begin 
     if (cntrl_AluSourceContrl_out = '1') then
     Data_aluMain_in1 <= (X"000") &  imm;
     else 

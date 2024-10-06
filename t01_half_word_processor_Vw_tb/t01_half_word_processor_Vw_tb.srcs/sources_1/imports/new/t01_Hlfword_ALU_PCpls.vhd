@@ -33,14 +33,14 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity t01_Hlfword_ALU_PCpls is
     Port ( 
-           byteadd : in std_logic_vector(2 downto 0) := "001"; -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
+    --       byteadd : in std_logic_vector(2 downto 0) := "001"; -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
            current_adress : in std_logic_vector(15 downto 0) := (others => '0');
            pls4byte_adress : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end t01_Hlfword_ALU_PCpls;
 
 architecture bhvrl_ALU_PCpls of t01_Hlfword_ALU_PCpls is
-    
+  signal   byteadd : std_logic_vector(2 downto 0) := "001";
 begin
 process (current_adress) begin 
         pls4byte_adress <= std_logic_vector( unsigned(current_adress) + resize(unsigned(byteadd),16) );

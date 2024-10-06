@@ -51,24 +51,24 @@ architecture bhvrl_IM of t01_Hlfword_IM is
 
 type Ram_type is array (0 to Ram_depth-1) of bit_vector (Ram_width-1 downto 0);
 signal RAM_IM : Ram_type :=(
+X"0000" ,
+X"0000" ,
+X"0000" ,
+X"0000" ,
+X"0000" ,
 X"101F" , 
-X"7124" ,
+X"7122" ,
 X"121F" ,
 X"8013" ,
 X"9004" ,
-X"D300" ,
+X"D030" ,
 X"10A1" ,
-X"D1A0" ,
+X"DA10" ,
 X"C001" ,
 X"10A1" ,
 X"CA02" ,
 X"2123" ,
 X"6342" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
 X"0000" ,
 X"0000" ,
 X"0000" ,
@@ -89,14 +89,14 @@ attribute rom_style of RAM_IM :signal is "block" ;
 
 begin
 
-process (clk) begin 
-    if rising_edge(clk)then
+process (current_adress_IM_in) begin 
+--if current_adress_IM_in'event then--rising_edge(clk)then
     --report "$RAM_IM(to_integer( unsigned(current_adress_IM_in(4 downto 0)) ))";
     op_code_IM_out3 <= to_stdlogicvector( RAM_IM(to_integer(unsigned(current_adress_IM_in(4 downto 0))))(15 downto 12) );
     reg_s0_addr2_IM_out2 <= to_stdlogicvector( RAM_IM(to_integer(unsigned(current_adress_IM_in(4 downto 0))))(11 downto 8) ); 
     reg_s1_dest_addr1_IM_out1 <= to_stdlogicvector( RAM_IM(to_integer(unsigned(current_adress_IM_in(4 downto 0))))(7 downto 4) );
     reg_dest_imm_addr0_IM_out0 <= to_stdlogicvector( RAM_IM(to_integer(unsigned(current_adress_IM_in(4 downto 0))))(3 downto 0) );
-    end if ;
+--end if ;
     
    
 end process ; 

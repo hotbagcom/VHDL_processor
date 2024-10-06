@@ -50,24 +50,24 @@ architecture bhvrl_DM of t01_Hlfword_DM is
     
 
 type Ram_type is array (0 to Ram_depth-1) of bit_vector (Ram_width-1 downto 0);
-signal RAM_DM : Ram_type := (others=>(others=>'0'));
+shared variable RAM_DM : Ram_type := (others=>(others=>'0'));
 
 begin
 
 
 
-process (clk) begin
-    if rising_edge(clk)then
+process (clk,Enable_Readdata_dm_in0,Enable_Writedata_dm_in0,Writedata_dm_in0,Adress_dm_in0) begin
+    --if rising_edge(clk)then
         if (rst_ah ='1') then
-        RAM_DM <= (others=>(others=>'0'));
+        RAM_DM := (others=>(others=>'0'));
         else
             if (Enable_Writedata_dm_in0 = '1')then
-                RAM_DM(to_integer(unsigned(Adress_dm_in0))) <= to_bitvector(Writedata_dm_in0);
+                RAM_DM(to_integer(unsigned(Adress_dm_in0))) := to_bitvector(Writedata_dm_in0);
             elsif (Enable_Readdata_dm_in0 = '1')then
                 Readdata_dm_out0 <= to_stdlogicvector(RAM_DM(to_integer(unsigned(Adress_dm_in0))));
             end  if ;    
         end if ;
-    end if ;
+    --end if ;
 end process ;
 
 

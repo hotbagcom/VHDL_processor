@@ -33,12 +33,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity t01_Hlfword_Reg is
     Generic(
-           Ram_width : integer := 4;
+           Ram_width : integer := 16;
            Ram_depth :integer := 16
     );
     Port ( clk : in STD_LOGIC ;
            rst_ah : in  STD_LOGIC := '0';
-           Enable_Writedata_reg_in0 : in STD_LOGIC := '0';
+           Enable_Writedata_reg_in0 : in STD_LOGIC := '1';
            Source_in0 : in std_logic_vector(3 downto 0) := (others => '0');
            Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');
            Destination_in0 : in std_logic_vector(3 downto 0) := (others => '0');
@@ -49,23 +49,30 @@ entity t01_Hlfword_Reg is
 end t01_Hlfword_Reg;
 
 architecture bhvrl_Reg of t01_Hlfword_Reg is
+signal zeynel :  std_logic := '0';
 --TO DO  diferrence btw stdlogicvector and bitvector
-type ram_type is array(0 to Ram_width-1) of std_logic_vector(Ram_depth-1 downto 0);
-signal RAM_Reg : ram_type := (others=>(others=>'0'));
+type ram_type is array(0 to Ram_depth-1) of std_logic_vector(Ram_width-1 downto 0);
+shared variable RAM_Reg : ram_type := (others=>(others=>'0'));
 
 
 begin
 
+process (Enable_Writedata_reg_in0,Destination_in0,Writedata_Reg_in0) begin
+    --if (clk = '0')and( Enable_Writedata_reg_in0 = '1') then
+        if (clk = '0')and( Enable_Writedata_reg_in0 = '1') then
+        -- to do fix 
+        RAM_Reg(to_integer(unsigned(Destination_in0))) :=  std_logic_vector(Writedata_Reg_in0) ;
+        zeynel <= '1';
+    end if;
+end process;
 process (clk) begin 
-    if rising_edge(clk )then 
+    if falling_edge(clk )then 
         if (rst_ah ='1') then
-        RAM_Reg  <= (others=>(others=>'0'));
+        RAM_Reg  := (others=>(others=>'0'));
         else 
         Reg_out0 <=  RAM_Reg( to_integer(unsigned(Source_in0)) );
         Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) );
-            if ( Enable_Writedata_reg_in0 = '1') then
-            RAM_Reg(to_integer(unsigned(Destination_in0))) <= Writedata_Reg_in0 ;
-            end if;
+            
         end if;
     end if;
 end process ;
