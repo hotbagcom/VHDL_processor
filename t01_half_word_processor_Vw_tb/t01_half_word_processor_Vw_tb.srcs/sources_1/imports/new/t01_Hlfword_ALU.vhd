@@ -45,13 +45,13 @@ end t01_Hlfword_ALU;
 
 architecture bhvrl_ALU of t01_Hlfword_ALU is
 
-    signal S_Data_aluMain_in0 : std_logic_vector(15 downto 0) ;
+--    signal S_Data_aluMain_in0 : std_logic_vector(15 downto 0) ;
 --    signal S_Data_aluMain_out0 : std_logic_vector(15 downto 0) ;
   
 begin
-S_Data_aluMain_in0 <= Data_aluMain_in0; 
+--S_Data_aluMain_in0 <= Data_aluMain_in0; 
 --Data_aluMain_out0 <= S_Data_aluMain_out0;
-process (Alu_cntl_in,clk) begin
+process (Alu_cntl_in,Data_aluMain_in0,Data_aluMain_in1) begin
     if (rst_ah = '1') then
         Data_aluMain_out0 <= (others=>'0');
     elsif (rst_ah = '0') then
@@ -88,7 +88,7 @@ process (Alu_cntl_in,clk) begin
                 
             ------------------------------------------------------- xor  - not - and - or 
             when ("1000") => 
-                 Data_aluMain_out0 <= Data_aluMain_in0 xor Data_aluMain_in1 ;
+                 Data_aluMain_out0 <= not (Data_aluMain_in0 xor Data_aluMain_in1) ;
                 
             when ("1001") => 
                  Data_aluMain_out0 <= not Data_aluMain_in0  ;
@@ -100,18 +100,18 @@ process (Alu_cntl_in,clk) begin
                  Data_aluMain_out0 <= Data_aluMain_in0 or Data_aluMain_in1 ;
                  
         ------------------------------------------------------- lw - sw - j - ? 
-            when ("1100") => 
-                Data_aluMain_out0 <=  Data_aluMain_in0 ;--+ Data_aluMain_in1  ;
+            when ("1100") => -- input of this connected directly to the input of DM
+                Data_aluMain_out0 <= X"003C"; -- Data_aluMain_in0 ;--+ Data_aluMain_in1  ;
                 
-            when ("1101") => 
-                Data_aluMain_out0 <=  Data_aluMain_in0 ;--+ Data_aluMain_in1  ;
+            when ("1101") => -- input of this connected directly to the input of DM
+                Data_aluMain_out0 <= X"00F0";-- Data_aluMain_in0 ;--+ Data_aluMain_in1  ;
                 
             when ("1110") => 
                 Data_aluMain_out0 <=  Data_aluMain_in0 ;--+ Data_aluMain_in1  ;
            when ("1111") => --reserved 
-                Data_aluMain_out0 <=  X"03C0";
+                Data_aluMain_out0 <=    X"03C0";
             when others => --reserved 
-                Data_aluMain_out0 <=  X"003C";
+                Data_aluMain_out0 <=  X"0f00";
 
         end case ;
     
