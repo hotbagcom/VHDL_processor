@@ -45,7 +45,7 @@ architecture bhvrl_MUX_branch of t01_Hlfword_MUX_branch is
 begin
 
 --branch_out0 <= ( (not(others=>branch_flagtriger_in)) and pls4byte_adress ) or ( (others=>branch_flagtriger_in) and current_pls_imm_adress ) ; 
-process (branch_flagtriger_in,current_pls_imm_adress,pls4byte_adress) begin 
+process (branch_flagtriger_in) begin 
     if (branch_flagtriger_in = '1') then
     branch_out0 <=   current_pls_imm_adress ;
     else 
