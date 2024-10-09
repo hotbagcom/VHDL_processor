@@ -37,14 +37,17 @@ entity t01_Hlfword_cntrl_IM is
            cntrl_RegWriteContrl_out : out STD_LOGIC := '0';
            cntrl_JumpContrl_out : out STD_LOGIC := '0';
            Enable_Writedata_reg_in0 : out STD_LOGIC := '0';
+           BnJ_cntrl : out std_logic_vector(1 downto 0) := (others => '0');
            Enable_Writedata_dm_in0 : out STD_LOGIC := '0';
-           Enable_Readdata_dm_in0 : out STD_LOGIC := '0'
+           Enable_Readdata_dm_in0 : out STD_LOGIC := '0'---useles removved in real aplication
            );
 end t01_Hlfword_cntrl_IM;
 
 architecture bhvrl_cntrl_IM of t01_Hlfword_cntrl_IM is
 
 begin
+
+BnJ_cntrl <= cntrl_op_code(2 downto 1);
 
 process (cntrl_op_code) begin
 
@@ -150,7 +153,7 @@ process (cntrl_op_code) begin
             cntrl_RegAdressContrl_out<= '1';
             cntrl_RegWriteContrl_out <= '1';
             cntrl_JumpContrl_out     <= '0';
-            Enable_Writedata_reg_in0 <= '0';
+            Enable_Writedata_reg_in0 <= '1';
             Enable_Writedata_dm_in0  <= '0';
             Enable_Readdata_dm_in0   <= '1';
             
