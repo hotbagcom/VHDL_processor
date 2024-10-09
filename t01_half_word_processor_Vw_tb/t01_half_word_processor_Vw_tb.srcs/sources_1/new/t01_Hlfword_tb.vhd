@@ -66,26 +66,18 @@ TB : t01_Hlfword_top
 DUT  :  process begin 
 
 rst_tb <='1';
-wait for clk_hlf_periode;
-clk_tb <= not clk_tb;
-wait for clk_hlf_periode;
-clk_tb <= not clk_tb;
-wait for clk_hlf_periode;
 clk_tb <= not clk_tb;
 wait for clk_hlf_periode;
 clk_tb <= not clk_tb;
 wait for clk_hlf_periode;
 rst_tb <='0';
-    for i in 0 to 36 loop
+    for i in 0 to 37 loop
         clk_tb <= not clk_tb;
         wait for clk_hlf_periode;
     end loop;
 clk_tb <= not clk_tb;
 wait for clk_hlf_periode;
 clk_tb <= not clk_tb;
-wait for clk_hlf_periode;
-rst_tb <='1';
-wait for clk_hlf_periode;
 wait for clk_hlf_periode;
 end process;
 
