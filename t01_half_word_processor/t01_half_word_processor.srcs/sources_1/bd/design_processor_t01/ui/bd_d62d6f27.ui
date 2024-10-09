@@ -1,12 +1,70 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.25",
-   "Default View_TopLeft":"-414,-126",
+   "Default View_ScaleFactor":"0.672242",
+   "Default View_TopLeft":"2569,107",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-levelinfo -pg 1 0 10
-pagesize -pg 1 -db -bbox -sgen 0 0 10 10
+preplace port DDR -pg 1 -lvl 12 -x 4860 -y -180 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 12 -x 4860 -y 10 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 11 -x 4630 -y 130 -defaultsOSRD
+preplace inst t01_Hlfword_GATE_pre_0 -pg 1 -lvl 7 -x 2820 -y 320 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 580 -y 230 -defaultsOSRD
+preplace inst t01_Hlfword_PC_0 -pg 1 -lvl 3 -x 990 -y 600 -defaultsOSRD
+preplace inst t01_Hlfword_MUX_bran_0 -pg 1 -lvl 8 -x 3280 -y 200 -defaultsOSRD
+preplace inst t01_Hlfword_MUX_jump_0 -pg 1 -lvl 9 -x 3740 -y 250 -defaultsOSRD
+preplace inst t01_Hlfword_MUX_memAM_0 -pg 1 -lvl 11 -x 4630 -y 590 -defaultsOSRD
+preplace inst t01_Hlfword_MUX_regSD_0 -pg 1 -lvl 5 -x 1930 -y 820 -defaultsOSRD
+preplace inst t01_Hlfword_GATE_3_4_0 -pg 1 -lvl 8 -x 3280 -y 610 -defaultsOSRD
+preplace inst t01_Hlfword_MUX_aluRI_0 -pg 1 -lvl 8 -x 3280 -y 450 -defaultsOSRD
+preplace inst t01_Hlfword_ALU_PCpl_0 -pg 1 -lvl 5 -x 1930 -y 80 -defaultsOSRD
+preplace inst t01_Hlfword_ALU_PCpls_0 -pg 1 -lvl 3 -x 990 -y 300 -defaultsOSRD
+preplace inst t01_Hlfword_cntrl_IM_0 -pg 1 -lvl 5 -x 1930 -y 440 -defaultsOSRD
+preplace inst t01_Hlfword_cntl_alu_0 -pg 1 -lvl 6 -x 2430 -y 320 -defaultsOSRD
+preplace inst t01_Hlfword_IM_0 -pg 1 -lvl 4 -x 1430 -y 680 -defaultsOSRD
+preplace inst t01_Hlfword_DM_0 -pg 1 -lvl 10 -x 4210 -y 510 -defaultsOSRD
+preplace inst t01_Hlfword_Reg_0 -pg 1 -lvl 6 -x 2430 -y 790 -defaultsOSRD
+preplace inst t01_Hlfword_ALU_0 -pg 1 -lvl 9 -x 3740 -y 540 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 2 -x 580 -y 510 -defaultsOSRD
+preplace netloc t01_Hlfword_PC_0_current_adress 1 2 2 800 710 1180
+preplace netloc t01_Hlfword_IM_0_reg_s0_addr2_IM_out2 1 4 4 NJ 670 2210 620 N 620 3060
+preplace netloc t01_Hlfword_IM_0_reg_s1_dest_addr1_IM_out1 1 4 4 1660J 690 2180 610 N 610 N
+preplace netloc t01_Hlfword_IM_0_reg_dest_imm_addr0_IM_out0 1 4 4 1670 200 N 200 N 200 3030
+preplace netloc t01_Hlfword_MUX_regSD_0_reg_dest_out 1 5 1 2180 820n
+preplace netloc t01_Hlfword_Reg_0_Reg_out0 1 6 3 N 780 N 780 3510
+preplace netloc t01_Hlfword_MUX_aluRI_0_Data_aluMain_in1 1 8 1 3480 450n
+preplace netloc t01_Hlfword_Reg_0_Reg_out1 1 6 4 N 800 3050 790 3520 680 4000
+preplace netloc t01_Hlfword_ALU_0_Data_aluMain_out0 1 9 2 3980 620 4420
+preplace netloc t01_Hlfword_DM_0_Readdata_dm_out0 1 10 1 4410 510n
+preplace netloc t01_Hlfword_MUX_memAM_0_REG_writedata_out0 1 5 7 2220 670 N 670 2990 700 N 700 N 700 N 700 4830
+preplace netloc t01_Hlfword_ALU_PCpls_0_pls4byte_adress 1 3 5 N 300 1660 180 NJ 180 N 180 N
+preplace netloc t01_Hlfword_ALU_0_Flag_zero_out0 1 6 4 2620 230 3020 330 N 330 3950
+preplace netloc t01_Hlfword_ALU_0_Flag_overflv_out0 1 6 4 2620 400 2990 340 N 340 3940
+preplace netloc t01_Hlfword_GATE_pre_0_branch_flagtriger_in 1 7 1 3000 220n
+preplace netloc t01_Hlfword_ALU_PCpl_0_nextPLSimmediate_adress_out 1 5 3 NJ 80 N 80 3040
+preplace netloc t01_Hlfword_MUX_bran_0_branch_out0 1 8 1 3500 200n
+preplace netloc t01_Hlfword_MUX_jump_0_nextadress_jump_out0 1 2 8 810 700 1170 590 N 590 N 590 N 590 3010 690 N 690 3960
+preplace netloc t01_Hlfword_IM_0_op_code_IM_out3 1 4 2 1680 320 N
+preplace netloc t01_Hlfword_cntl_alu_0_cntrlalu_gate_brnch 1 6 1 N 300
+preplace netloc t01_Hlfword_cntl_alu_0_cntrl_AluSourceContrl_out 1 6 2 2610 430 N
+preplace netloc t01_Hlfword_cntl_alu_0_cntrl_ALUoperation_in 1 6 3 2610 240 3010 320 3490
+preplace netloc t01_Hlfword_cntrl_IM_0_Enable_Readdata_dm_in0 1 5 5 N 490 N 490 3040 360 N 360 3990
+preplace netloc t01_Hlfword_cntrl_IM_0_Enable_Writedata_dm_in0 1 5 5 2160 210 N 210 3040 310 3510 430 3980
+preplace netloc t01_Hlfword_cntrl_IM_0_Enable_Writedata_reg_in0 1 5 1 2170 450n
+preplace netloc t01_Hlfword_cntrl_IM_0_cntrl_JumpContrl_out 1 5 4 2170 220 N 220 2990 280 3490
+preplace netloc t01_Hlfword_cntrl_IM_0_cntrl_RegWriteContrl_out 1 5 6 2180J 420 N 420 3000 350 N 350 N 350 4420
+preplace netloc t01_Hlfword_cntrl_IM_0_cntrl_RegAdressContrl_out 1 4 2 1690 330 2150
+preplace netloc t01_Hlfword_GATE_3_4_0_WIREout_0 1 8 1 3500 250n
+preplace netloc Net 1 2 8 780 680 1200 570 N 570 2200 530 N 530 N 530 3510 440 3970
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 10 210 370 790 690 1190 580 N 580 2190 410 N 410 3010 370 3520 370 4000 140 N
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 210 380 780
+preplace netloc processing_system7_0_DDR 1 2 10 780 -180 NJ -180 NJ -180 NJ -180 NJ -180 NJ -180 NJ -180 NJ -180 NJ -180 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 2 10 790 10 NJ 10 NJ 10 NJ 10 NJ 10 NJ 10 NJ 10 NJ 10 NJ 10 NJ
+levelinfo -pg 1 -10 190 580 990 1430 1930 2430 2820 3280 3740 4210 4630 4860
+pagesize -pg 1 -db -bbox -sgen -10 -720 4970 970
 "
 }
-
+{
+   "da_clkrst_cnt":"6",
+   "da_ps7_cnt":"1"
+}
