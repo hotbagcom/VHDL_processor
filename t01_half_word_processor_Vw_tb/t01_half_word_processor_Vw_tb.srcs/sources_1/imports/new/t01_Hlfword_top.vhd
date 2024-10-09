@@ -48,9 +48,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- and   |  R  |  1  |  0  |  1010  |  0  |  1  |  0  |  0  |  0  |  0  |  
 -- or    |  R  |  1  |  0  |  1011  |  0  |  1  |  0  |  0  |  0  |  0  |  
 -------- |-----|
--- Lw    |  R  |  1  |  x  |  1100  |  1  |  0  |  0  |  1  |  0  |  0  |  --only r0 important
--- Sw    |  R  |  1  |  x  |  1101  |  1  |  0  |  1  |  0  |  0  |  0  |  --only r0 important
--- J     |  J  |  x  |  x  |  1110  |  x  |  0  |  0  |  0  |  0  |  1  | 
+-- Lw    |  R  |  1  |  x  |  1100  |  1  |  0  |  0  |  1  |  0  |  0  |  --only r0 important   
+-- Sw    |  R  |  1  |  x  |  1101  |  1  |  0  |  1  |  0  |  0  |  0  |  --only r0 important   
+-- Jr    |  R  |  x  |  x  |  1110  |  x  |  0  |  0  |  0  |  0  |  1  | 
 -- ? JL ( jump and link )
 
 
@@ -110,6 +110,7 @@ component t01_Hlfword_Reg is
            Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');
            Destination_in0 : in std_logic_vector(3 downto 0) := (others => '0');
            Writedata_Reg_in0 : in std_logic_vector(15 downto 0) := (others => '0');
+           BnJ : in std_logic_vector(1 downto 0) := (others => '0');
            Reg_out0 : out std_logic_vector(15 downto 0) := (others => '0');
            Reg_out1 : out std_logic_vector(15 downto 0) := (others => '0') 
            );
@@ -126,14 +127,15 @@ component t01_Hlfword_ALU is
            );
 end component t01_Hlfword_ALU;
 component t01_Hlfword_DM is
-    Generic (
-           Ram_depth : integer := 128;
-           Ram_width : integer := 16
-    );
+--    Generic (
+--           Ram_depth : integer := 65534;
+--           Ram_width : integer := 16
+--    );
     Port ( clk : in STD_LOGIC ;
            rst_ah : in  STD_LOGIC := '0';
+--           DM_cntl_in : in std_logic_vector(3 downto 0) := ( others => '0' );
            Enable_Writedata_dm_in0 : in STD_LOGIC := '0';
-           Enable_Readdata_dm_in0 : in STD_LOGIC := '0';
+--           Enable_Readdata_dm_in0 : in STD_LOGIC := '0';
            Adress_dm_in0 : in std_logic_vector(15 downto 0)  := (others => '0');
            Writedata_dm_in0 : in std_logic_vector(15 downto 0)  := (others => '0');
            Readdata_dm_out0 : out std_logic_vector(15 downto 0)  := (others => '0')
@@ -174,6 +176,7 @@ component t01_Hlfword_MUX_branch is
 end component t01_Hlfword_MUX_branch;
 component t01_Hlfword_MUX_jump is
     Port ( 
+           rst_ah : in  STD_LOGIC := '0';
            branch_out0 : in std_logic_vector(15 downto 0) := (others => '0');
            immidiate_jmp_in0 : in std_logic_vector(11 downto 0) := (others => '0');
            cntrl_JumpContrl_out : in STD_LOGIC := '0';
@@ -188,6 +191,7 @@ component t01_Hlfword_cntrl_IM is
            cntrl_JumpContrl_out : out STD_LOGIC := '0';
            Enable_Writedata_reg_in0 : out STD_LOGIC := '0';
            Enable_Writedata_dm_in0 : out STD_LOGIC := '0';
+           BnJ_cntrl : out std_logic_vector(1 downto 0) := (others => '0');
            Enable_Readdata_dm_in0 : out STD_LOGIC := '0'
            );
 end component t01_Hlfword_cntrl_IM;
@@ -301,6 +305,7 @@ Reg : t01_Hlfword_Reg
     Source_in1 => S_Reg_in1,
     Destination_in0 => S_dst_in0,
     Writedata_Reg_in0 => S_Writedata_Reg_in0,
+    BnJ => S_BnJ_cntrl,
     Reg_out0 => S_Reg_out0,
     Reg_out1 => S_Reg_out1
     );
@@ -319,9 +324,10 @@ DM : t01_Hlfword_DM
     port map(
     clk => clk_m ,
     rst_ah => rst_ah_m ,
+--    DM_cntl_in =>  S_cntrl_op_code ,
     Enable_Writedata_dm_in0 => S_Enable_Writedata_dm_in0 ,
-    Enable_Readdata_dm_in0 => S_Enable_Readdata_dm_in0 ,
-    Adress_dm_in0 => S_Data_aluMain_out0 ,
+--    Enable_Readdata_dm_in0 => S_Enable_Readdata_dm_in0 ,
+    Adress_dm_in0 => S_Reg_out0 ,
     Writedata_dm_in0 => S_Reg_out1 ,
     Readdata_dm_out0 => S_Readdata_dm_out0 
     );
@@ -355,6 +361,7 @@ MUX_branch : t01_Hlfword_MUX_branch
     );
 MUX_jump : t01_Hlfword_MUX_jump 
     port map(
+    rst_ah => rst_ah_m ,
     branch_out0 => S_branch_out0 ,
     immidiate_jmp_in0 => S_immidiate_jmp_in0 ,
     cntrl_JumpContrl_out => S_cntrl_JumpContrl_out ,
@@ -368,8 +375,9 @@ cntrl_IM : t01_Hlfword_cntrl_IM
     cntrl_RegWriteContrl_out => S_cntrl_RegWriteContrl_out ,
     cntrl_JumpContrl_out => S_cntrl_JumpContrl_out ,
     Enable_Writedata_reg_in0 => S_Enable_Writedata_reg_in0 ,
-    Enable_Writedata_dm_in0 => S_Enable_Writedata_dm_in0 ,
-    Enable_Readdata_dm_in0 => S_Enable_Readdata_dm_in0 
+    BnJ_cntrl => S_BnJ_cntrl,
+    Enable_Writedata_dm_in0 => S_Enable_Writedata_dm_in0 
+--    Enable_Readdata_dm_in0 => S_Enable_Readdata_dm_in0 
     );
 cntl_alu : t01_Hlfword_cntl_alu 
     port map(
