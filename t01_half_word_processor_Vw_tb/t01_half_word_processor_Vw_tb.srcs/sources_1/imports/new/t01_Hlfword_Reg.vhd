@@ -38,7 +38,7 @@ entity t01_Hlfword_Reg is
     );
     Port ( clk : in STD_LOGIC ;
            rst_ah : in  STD_LOGIC := '0';
-           Enable_Writedata_reg_in0 : in STD_LOGIC := '1';
+           Enable_Writedata_reg_in0 : in STD_LOGIC := '0';
            Source_in0 : in std_logic_vector(3 downto 0) := (others => '0');
            Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');
            Destination_in0 : in std_logic_vector(3 downto 0) := (others => '0');
@@ -50,6 +50,8 @@ end t01_Hlfword_Reg;
 
 architecture bhvrl_Reg of t01_Hlfword_Reg is
 signal zeynel :  std_logic := '0';
+
+
 --TO DO  diferrence btw stdlogicvector and bitvector
 type ram_type is array(0 to Ram_depth-1) of std_logic_vector(Ram_width-1 downto 0);
 shared variable RAM_Reg : ram_type := (others=>(others=>'0'));
@@ -57,24 +59,31 @@ shared variable RAM_Reg : ram_type := (others=>(others=>'0'));
 
 begin
 
-process (Enable_Writedata_reg_in0,Destination_in0,Writedata_Reg_in0) begin
-    --if (clk = '0')and( Enable_Writedata_reg_in0 = '1') then
-        if (clk = '0')and( Enable_Writedata_reg_in0 = '1') then
+
+      
+
+
+
+process (clk,Source_in0,Source_in1,Writedata_Reg_in0) begin 
+    if falling_edge(clk) then
         -- to do fix 
-        RAM_Reg(to_integer(unsigned(Destination_in0))) :=  std_logic_vector(Writedata_Reg_in0) ;
-        zeynel <= '1';
-    end if;
-end process;
-process (clk) begin 
-    if falling_edge(clk )then 
+        if (Enable_Writedata_reg_in0 ='1') then
+            zeynel <= not zeynel;
+            RAM_Reg(to_integer(unsigned(Destination_in0))) :=  std_logic_vector(Writedata_Reg_in0) ;
+        end if;
+    elsif (clk = '1') then 
+        
         if (rst_ah ='1') then
         RAM_Reg  := (others=>(others=>'0'));
         else 
         Reg_out0 <=  RAM_Reg( to_integer(unsigned(Source_in0)) );
-        Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) );
-            
+        Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) ); 
         end if;
+                
     end if;
+    
 end process ;
+
+
 
 end bhvrl_Reg;
