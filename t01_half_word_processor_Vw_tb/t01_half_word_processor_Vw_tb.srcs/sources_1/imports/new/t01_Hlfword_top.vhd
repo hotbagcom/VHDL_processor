@@ -110,7 +110,7 @@ component t01_Hlfword_Reg is
            Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');
            Destination_in0 : in std_logic_vector(3 downto 0) := (others => '0');
            Writedata_Reg_in0 : in std_logic_vector(15 downto 0) := (others => '0');
-           BnJ : in std_logic_vector(1 downto 0) := (others => '0');
+           BnJ : in std_logic := '0';
            Reg_out0 : out std_logic_vector(15 downto 0) := (others => '0');
            Reg_out1 : out std_logic_vector(15 downto 0) := (others => '0') 
            );
@@ -183,6 +183,15 @@ component t01_Hlfword_MUX_jump is
            nextadress_jump_out0 : out std_logic_vector(15 downto 0) := (others => '0')
            );
 end component t01_Hlfword_MUX_jump;
+component t01_Hlfword_MUX_jump_source is
+    Port (
+            cntrl_JumpSrceContrl_out : in STD_LOGIC := '0';
+            register_jmp_in0 : in std_logic_vector(15 downto 0) := (others => '0');
+            pls_imm_jmp_in1 : in std_logic_vector(15 downto 0) := (others => '0');
+            Jmp_adress : out std_logic_vector(15 downto 0) := (others => '0')
+             );
+end component t01_Hlfword_MUX_jump_source;
+
 --Cntrl 
 component t01_Hlfword_cntrl_IM is
     Port ( cntrl_op_code : in std_logic_vector(3 downto 0) := (others => '0') ;
@@ -191,7 +200,7 @@ component t01_Hlfword_cntrl_IM is
            cntrl_JumpContrl_out : out STD_LOGIC := '0';
            Enable_Writedata_reg_in0 : out STD_LOGIC := '0';
            Enable_Writedata_dm_in0 : out STD_LOGIC := '0';
-           BnJ_cntrl : out std_logic_vector(1 downto 0) := (others => '0');
+           BnJ_cntrl : out std_logic := '0';
            Enable_Readdata_dm_in0 : out STD_LOGIC := '0'
            );
 end component t01_Hlfword_cntrl_IM;
@@ -263,6 +272,8 @@ signal S_cntrl_AluSourceContrl_out : STD_LOGIC :='0';
 signal S_Flag_zero_out0 : STD_LOGIC :='0';
 signal S_branch_flagtriger_in : STD_LOGIC :='0';
 
+signal S_BnJ_cntrl : STD_LOGIC :='0';
+signal S_branchjmp_in0  : std_logic_vector(15 downto 0) := ( others => '0' ); 
 
 
 begin
@@ -271,7 +282,7 @@ ALU_PCpls : t01_Hlfword_ALU_PCpls
     port map( 
 --byteadd <= "100" , -- till 8 byte  : however standard incrementation is 2 : 0increment 1 ,7 increment 8;
     current_adress => S_current_adress ,-- in std_logic_vector(15 downto 0) := (others => '0');
-    pls4byte_adress => S_next_adress--S_pls4byte_adress -- 
+    pls4byte_adress => S_pls4byte_adress -- 
     );
 ALU_PCplsIMM : t01_Hlfword_ALU_PCplsIMM 
     port map( 
@@ -354,19 +365,26 @@ MUX_memAM : t01_Hlfword_MUX_memAM
     );    
 MUX_branch : t01_Hlfword_MUX_branch 
     port map( 
-    pls4byte_adress => S_pls4byte_adress ,
-    current_pls_imm_adress => S_nextPLSimmediate_adress_out,
     branch_flagtriger_in => S_branch_flagtriger_in,
+    pls4byte_adress => S_pls4byte_adress ,
+    current_pls_imm_adress => S_branchjmp_in0 ,--S_nextPLSimmediate_adress_out,
     branch_out0 => S_branch_out0
     );
 MUX_jump : t01_Hlfword_MUX_jump 
     port map(
     rst_ah => rst_ah_m ,
+    cntrl_JumpContrl_out => S_cntrl_JumpContrl_out ,
     branch_out0 => S_branch_out0 ,
     immidiate_jmp_in0 => S_immidiate_jmp_in0 ,
-    cntrl_JumpContrl_out => S_cntrl_JumpContrl_out ,
-    nextadress_jump_out0 => S_pls4byte_adress 
+    nextadress_jump_out0 => S_next_adress 
     );
+ MUX_jump_source : t01_Hlfword_MUX_jump_source 
+    port map (
+    cntrl_JumpSrceContrl_out => S_BnJ_cntrl ,
+    register_jmp_in0 =>  S_Reg_out0 ,
+    pls_imm_jmp_in1 => S_nextPLSimmediate_adress_out,
+    Jmp_adress => S_branchjmp_in0
+     );
 --Cntrl 
 cntrl_IM : t01_Hlfword_cntrl_IM 
     port map(
