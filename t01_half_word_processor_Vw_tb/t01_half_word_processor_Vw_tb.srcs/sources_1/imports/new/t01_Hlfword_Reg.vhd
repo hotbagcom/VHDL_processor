@@ -43,8 +43,10 @@ entity t01_Hlfword_Reg is
            Source_in1 : in std_logic_vector(3 downto 0) := (others => '0');
            Destination_in0 : in std_logic_vector(3 downto 0) := (others => '0');
            Writedata_Reg_in0 : in std_logic_vector(15 downto 0) := (others => '0');
+           BnJ : in std_logic := '0';
            Reg_out0 : out std_logic_vector(15 downto 0) := (others => '0');
            Reg_out1 : out std_logic_vector(15 downto 0) := (others => '0') 
+           
            );
 end t01_Hlfword_Reg;
 
@@ -60,24 +62,24 @@ shared variable RAM_Reg : ram_type := (others=>(others=>'0'));
 begin
 
 
-      
-
-
-
 process (clk,Source_in0,Source_in1,Writedata_Reg_in0) begin 
     if falling_edge(clk) then
         -- to do fix 
         if (Enable_Writedata_reg_in0 ='1') then
             zeynel <= not zeynel;
             RAM_Reg(to_integer(unsigned(Destination_in0))) :=  std_logic_vector(Writedata_Reg_in0) ;
+        elsif (BnJ = '0') then
+            Reg_out0 <= RAM_Reg( to_integer(unsigned(Destination_in0)) );
         end if;
-    elsif (clk = '1') then 
+    end if;    
+        
+    if (clk = '1') then 
         
         if (rst_ah ='1') then
-        RAM_Reg  := (others=>(others=>'0'));
-        else 
-        Reg_out0 <=  RAM_Reg( to_integer(unsigned(Source_in0)) );
-        Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) ); 
+            RAM_Reg  := (others=>(others=>'0'));
+        elsif (rst_ah ='0') then
+            Reg_out0 <=  RAM_Reg( to_integer(unsigned(Source_in0)) );
+            Reg_out1 <=  RAM_Reg( to_integer(unsigned(Source_in1)) ); 
         end if;
                 
     end if;
