@@ -51,6 +51,26 @@ architecture bhvrl_IM of t01_Hlfword_IM is
 
 type Ram_type is array (0 to Ram_depth-1) of bit_vector (Ram_width-1 downto 0);
 signal RAM_IM : Ram_type :=(
+
+
+
+
+
+
+X"0000" ,
+X"1047" ,
+X"105B" ,
+X"4044" ,
+X"10C1" ,
+X"4004" ,
+X"1CC1" ,
+X"5405" ,
+X"0000" ,
+X"1CD1" ,
+X"0DCE" ,
+X"105D" ,
+X"5CD5" ,
+X"0000" ,
 X"0000" ,
 X"0000" ,
 X"101F" , 
@@ -66,20 +86,6 @@ X"10A1" ,
 X"CA02" ,
 X"2123" ,
 X"6342" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
-X"0000" ,
 X"0000" ,
 X"0000" ,
 X"0000" 
