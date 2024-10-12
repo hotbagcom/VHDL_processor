@@ -36,24 +36,25 @@ entity MUX_jump_source is
     cntrl_JumpSrceContrl_out : in STD_LOGIC := '0';
     register_jmp_in0 : in std_logic_vector(15 downto 0) := (others => '0');
     immidiate_jmp_in0 : in std_logic_vector(11 downto 0) := (others => '0');
-    Jmp_adress : out std_logic_vector(15 downto 0) := (others => '0');
+    Jmp_adress : out std_logic_vector(15 downto 0) := (others => '0')
      );
 end MUX_jump_source;
 
 architecture bhvrl_jump_source of MUX_jump_source is
-process (cntrl_JumpContrl_out) begin 
+
+
+begin
+
+process (cntrl_JumpSrceContrl_out,immidiate_jmp_in0,register_jmp_in0) begin 
     
 --    if (rst_ah = '1') then 
 --    nextadress_jump_out0 <= (others =>'0') ;
 --    els
-    if (cntrl_JumpContrl_out = '1') then
-    nextadress_jump_out0 <= (X"0") &  immidiate_jmp_in0;
-    elsif cntrl_JumpContrl_out = '0' then
-    nextadress_jump_out0 <= branch_out0 ;
+    if (cntrl_JumpSrceContrl_out = '1') then
+    Jmp_adress <= (X"0") &  immidiate_jmp_in0;
+    elsif cntrl_JumpSrceContrl_out = '0' then
+    Jmp_adress <= register_jmp_in0 ;
     end if ;
 end process ;
-
-begin
-
 
 end bhvrl_jump_source;
