@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity t01_Hlfword_DM is
     Generic (
-           Ram_depth : integer := 65534;
+           Ram_depth : integer := 65535;
            Ram_width : integer := 16
     );
     Port ( clk : in STD_LOGIC ;
@@ -74,9 +74,9 @@ begin
 process (rst_ah,Enable_Writedata_dm_in0,Writedata_dm_in0,Adress_dm_in0) begin-- ,Enable_Readdata_dm_in0
 
     if (rst_ah ='1') then
-    RAM_DM := (others=>(others=>'0'));
+        RAM_DM := (others=>(others=>'0'));
     elsif (clk  ='1')  then
-        Readdata_dm_out0 <= to_stdlogicvector(RAM_DM(to_integer(unsigned(Adress_dm_in0))));
+        Readdata_dm_out0 <= to_stdlogicvector(RAM_DM(to_integer(unsigned( Adress_dm_in0 ))));
         if (Enable_Writedata_dm_in0 = '1')then
             RAM_DM(to_integer(unsigned(Adress_dm_in0))) := to_bitvector(Writedata_dm_in0);
         end  if ; 
