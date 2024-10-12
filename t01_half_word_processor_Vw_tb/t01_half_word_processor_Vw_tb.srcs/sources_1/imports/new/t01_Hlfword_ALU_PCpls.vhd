@@ -40,7 +40,7 @@ entity t01_Hlfword_ALU_PCpls is
 end t01_Hlfword_ALU_PCpls;
 
 architecture bhvrl_ALU_PCpls of t01_Hlfword_ALU_PCpls is
-  signal   byteadd : std_logic_vector(2 downto 0) := "001";
+  shared variable   byteadd : std_logic_vector(2 downto 0) := "001";
 begin
 process (current_adress) begin 
         pls4byte_adress <= std_logic_vector( unsigned(current_adress) + resize(unsigned(byteadd),16) );
