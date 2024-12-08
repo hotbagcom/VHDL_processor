@@ -37,12 +37,11 @@ entity t02_Word_IM is
     Port ( 
         Intructuion_ram_in : in std_logic_vector( X_len-1 downto 0);
         opcode  : out std_logic_vector(6 downto 0) := "0000000" ;
-        rd      : out std_logic_vector(4 downto 0) := "00000";
-        f3      : out std_logic_vector(2 downto 0) := "000";
-        rs1     : out std_logic_vector(4 downto 0) := X"0";
-        rs2     : out std_logic_vector(4 downto 0) := X"0";
         f7      : out std_logic_vector(6 downto 0) := "0000000" ;
-        
+        f3      : out std_logic_vector(2 downto 0) := "000";
+        rs0     : out std_logic_vector(4 downto 0) := "00000";
+        rs1     : out std_logic_vector(4 downto 0) := "00000";
+        rd      : out std_logic_vector(4 downto 0) := "00000";
         imm     : out std_logic_vector(12 downto 0) := "0000000000000" 
         
         ); 
@@ -62,7 +61,7 @@ end t02_Word_IM;
 
 
 
-How tu use other insttruction Fence =? , Jal=? , LUI= ?
+--TO DO How to use other insttruction Fence =? , Jal=? , LUI= ? look it in assembly usedge
 
 
 
@@ -82,25 +81,25 @@ process (S_opcode) begin
         opcode  <= S_opcode ;
         rd      <= Intructuion_ram_in( 11 downto 7 ) ;
         f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs1     <= Intructuion_ram_in( 19 downto 15 ) ;
-        rs2     <= Intructuion_ram_in( 24 downto 20 ) ;
+        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
+        rs1     <= Intructuion_ram_in( 24 downto 20 ) ;
         f7      <= Intructuion_ram_in( 31 downto 25 ) ;
-    elsif((S_opcode = I_typeop_0) or (S_opcode = I_typeop_1))then
+    elsif( S_opcode = I_typeop_reg  or S_opcode = I_typeop_dm  )then
         opcode  <= S_opcode ;
         rd      <= Intructuion_ram_in( 11 downto 7 ) ;
         f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs1     <= Intructuion_ram_in( 19 downto 15 ) ;
+        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
         imm     <= Intructuion_ram_in( 31 downto 20 ) ; -- f7 +rs2
     elsif(S_opcode = S_typeop)then
         opcode  <= S_opcode ;
         f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs1     <= Intructuion_ram_in( 19 downto 15 ) ;
-        rs2     <= Intructuion_ram_in( 24 downto 20 ) ;
+        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
+        rs1     <= Intructuion_ram_in( 24 downto 20 ) ;
         imm     <= Intructuion_ram_in( 31 downto 25 ) & Intructuion_ram_in( 11 downto 7 );
     elsif(S_opcode = B_typeop)then
         f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs1     <= Intructuion_ram_in( 19 downto 15 ) ;
-        rs2     <= Intructuion_ram_in( 24 downto 20 ) ;
+        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
+        rs1     <= Intructuion_ram_in( 24 downto 20 ) ;
         imm     <= Intructuion_ram_in( 31 ) & Intructuion_ram_in( 7 ) & Intructuion_ram_in( 30 downto 25 ) & Intructuion_ram_in( 11 downto 8 )  ;--shift 1 bit left
     
     end if;

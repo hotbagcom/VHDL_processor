@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: Arif
+-- Engineer: 
 -- 
--- Create Date: 03.11.2024 22:26:24
+-- Create Date: 08.12.2024 23:09:03
 -- Design Name: 
--- Module Name: t02_Word_mux2 - bhvrl_mux2
+-- Module Name: t02_Word_immGen - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,25 +31,17 @@ use work.package_top.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity t02_Word_mux2 is
+entity t02_Word_immGen is
     Port (
-        sellection : in std_logic := '0';
-        choice_0 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
-        choice_1 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
-        output : out std_logic_vector(RV_lvlinbit-1 downto 0) 
-        );
-end t02_Word_mux2;
+    imm : in std_logic_vector(12 downto 0); 
+    IMM_out : out std_logic_vector(RV_lvlinbit-1  downto 0) 
+    );
+end t02_Word_immGen;
 
-architecture bhvrl_mux2 of t02_Word_mux2 is
-
+architecture bhvrl_immGen of t02_Word_immGen is
+signal zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
 begin
 
-process ( sellection , choice_0 , choice_1 ) begin
-    if sellection = '0' then
-        output <= choice_0 ;
-    else 
-        output <= choice_1 ;
-    end if ;
-end process ;
+IMM_out <= zero(RV_lvlinbit-1 downto 13) & imm ;
 
-end bhvrl_mux2;
+end bhvrl_immGen;
