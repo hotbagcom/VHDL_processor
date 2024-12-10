@@ -26,7 +26,7 @@ use work.package_top.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -34,8 +34,13 @@ use work.package_top.all;
 --use UNISIM.VComponents.all;
 
 entity t02_Word_IM is
+    generic(
+        im_rom_depth : integer := 8 ; -- RV_lvlinbit
+        im_rom_depth_inbit : integer := 3 -- RV_lvlinbitinbit
+    );
     Port ( 
-        Intructuion_ram_in : in std_logic_vector( X_len-1 downto 0);
+        RST : in std_logic := '0' ;  --active high mi active lov mu ? 
+        current_pc : in std_logic_vector( im_rom_depth_inbit-1 downto 0);
         opcode  : out std_logic_vector(6 downto 0) := "0000000" ;
         f7      : out std_logic_vector(6 downto 0) := "0000000" ;
         f3      : out std_logic_vector(2 downto 0) := "000";
@@ -72,35 +77,49 @@ architecture bhvrl_IM of t02_Word_IM is
 
 signal S_opcode  : std_logic_vector(6 downto 0) := (others=>'0');
 
-begin
+type rom is array( 0 to im_rom_depth-1 ) of std_logic_vector( RV_lvlinbit-1 downto 0 ) ;
+signal Instruction_rom: rom := (
+X"00000" ,
+X"00000" ,
+X"00000" ,
+X"00000" , 
+X"00000" ,
+X"00000" , 
+X"00000" ,
+X"00000"
+);
+signal Instruction_im_in : std_logic_vector( im_rom_depth_inbit-1 downto 0);
 
-S_opcode <= Intructuion_ram_in( 6 downto 0 );
+begin
+Instruction_im_in <= Instruction_rom( to_integer(unsigned(current_pc)) );
+
+S_opcode <= Instruction_im_in( 6 downto 0 );
 
 process (S_opcode) begin
     if (S_opcode = R_typeop) then
         opcode  <= S_opcode ;
-        rd      <= Intructuion_ram_in( 11 downto 7 ) ;
-        f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
-        rs1     <= Intructuion_ram_in( 24 downto 20 ) ;
-        f7      <= Intructuion_ram_in( 31 downto 25 ) ;
+        rd      <= Instruction_im_in( 11 downto 7 ) ;
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        f7      <= Instruction_im_in( 31 downto 25 ) ;
     elsif( S_opcode = I_typeop_reg  or S_opcode = I_typeop_dm  )then
         opcode  <= S_opcode ;
-        rd      <= Intructuion_ram_in( 11 downto 7 ) ;
-        f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
-        imm     <= Intructuion_ram_in( 31 downto 20 ) ; -- f7 +rs2
+        rd      <= Instruction_im_in( 11 downto 7 ) ;
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
     elsif(S_opcode = S_typeop)then
         opcode  <= S_opcode ;
-        f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
-        rs1     <= Intructuion_ram_in( 24 downto 20 ) ;
-        imm     <= Intructuion_ram_in( 31 downto 25 ) & Intructuion_ram_in( 11 downto 7 );
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 );
     elsif(S_opcode = B_typeop)then
-        f3      <= Intructuion_ram_in( 14 downto 12 ) ;
-        rs0     <= Intructuion_ram_in( 19 downto 15 ) ;
-        rs1     <= Intructuion_ram_in( 24 downto 20 ) ;
-        imm     <= Intructuion_ram_in( 31 ) & Intructuion_ram_in( 7 ) & Intructuion_ram_in( 30 downto 25 ) & Intructuion_ram_in( 11 downto 8 )  ;--shift 1 bit left
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
     
     end if;
         

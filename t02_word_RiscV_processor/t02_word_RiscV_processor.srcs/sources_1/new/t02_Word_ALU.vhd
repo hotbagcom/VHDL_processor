@@ -92,40 +92,40 @@ process ( opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case;
-    else if (opcode = I_typeop_reg) then --to do regi iile imidiate_reg birleştirilebilir mi ? 
-        case ( f3 ) is
-            when "000" => --addi
-                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
-            when "010" =>--slti
-                if ( signed( alu_data_in0) < signed( alu_data_in1 ) ) then 
-                    alu_data_out <= (X"00000001");
-                else 
-                    alu_data_out <= (X"00000000");
-                end if ;
-            when "011" =>--sltiu
-                if ( unsigned( alu_data_in0) < unsigned( alu_data_in1 ) ) then 
-                    alu_data_out <= (X"00000001");
-                else 
-                    alu_data_out <= (X"00000000");
-                end if ;
-            when "100" =>--xori
-                alu_data_out <=  alu_data_in0 xor alu_data_in1 ;
-            when "110" =>--ori
-                alu_data_out <=  alu_data_in0 or alu_data_in1 ;
-            when "111" =>--andi
-                alu_data_out <=  alu_data_in0 and alu_data_in1 ;
-            when "001" => --slli
-                alu_data_out <= std_logic_vector( signed( alu_data_in0) sll to_integer(signed( alu_data_in1 )) );
-            when "101" =>--srli srai
-                if (f7(5) = '0') then 
-                    alu_data_out <= std_logic_vector( signed( alu_data_in0) srl to_integer(signed( alu_data_in1 )) );
-                    --to do fix sra
-                else
-                    alu_data_out <=   (others => others_case) ;--std_logic_vector( signed( S_alu_data_in0) sra to_integer(signed( alu_data_in1 )) );
-                end if ;
-            when others =>
-                alu_data_out <=  (others => others_case) ;
-        end case;
+        --    else if (opcode = I_typeop_reg) then --to do regi iile imidiate_reg birleştirilebilir mi ? 
+        --        case ( f3 ) is
+        --            when "000" => --addi
+        --                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
+        --            when "010" =>--slti
+        --                if ( signed( alu_data_in0) < signed( alu_data_in1 ) ) then 
+        --                    alu_data_out <= (X"00000001");
+        --                else 
+        --                    alu_data_out <= (X"00000000");
+        --                end if ;
+        --            when "011" =>--sltiu
+        --                if ( unsigned( alu_data_in0) < unsigned( alu_data_in1 ) ) then 
+        --                    alu_data_out <= (X"00000001");
+        --                else 
+        --                    alu_data_out <= (X"00000000");
+        --                end if ;
+        --            when "100" =>--xori
+        --                alu_data_out <=  alu_data_in0 xor alu_data_in1 ;
+        --            when "110" =>--ori
+        --                alu_data_out <=  alu_data_in0 or alu_data_in1 ;
+        --            when "111" =>--andi
+        --                alu_data_out <=  alu_data_in0 and alu_data_in1 ;
+        --            when "001" => --slli
+        --                alu_data_out <= std_logic_vector( signed( alu_data_in0) sll to_integer(signed( alu_data_in1 )) );
+        --            when "101" =>--srli srai
+        --                if (f7(5) = '0') then 
+        --                    alu_data_out <= std_logic_vector( signed( alu_data_in0) srl to_integer(signed( alu_data_in1 )) );
+        --                    --to do fix sra
+        --                else
+        --                    alu_data_out <=   (others => others_case) ;--std_logic_vector( signed( S_alu_data_in0) sra to_integer(signed( alu_data_in1 )) );
+        --                end if ;
+        --            when others =>
+        --                alu_data_out <=  (others => others_case) ;
+        --        end case;
 --    else if (opcode = I_typeop_dm) then 
 --        case ( f3 ) is
 --            when "000" =>--lb

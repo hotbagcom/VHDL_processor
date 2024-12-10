@@ -37,6 +37,7 @@ entity t02_Word_DM is
         dm_depth : integer :=  RV_lvlinbit 
     );
     Port(
+        RST : in std_logic := '0' ;  --active high mi active lov mu ? 
         dm_write_enable: in std_logic := '0';
         dm_read_enable : in std_logic := '0';
         dm_adress :in std_logic_vector(dm_length-1 downto 0) := (others=>'0');

@@ -38,6 +38,7 @@ entity t02_Word_Reg is
         ram_depth : integer :=  RV_lvlinbit 
     );
     Port(
+        RST : in std_logic := '0' ;  --active high mi active lov mu ? 
         reg_write_enable : in std_logic := '0';
         reg_source0_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
         reg_source1_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
