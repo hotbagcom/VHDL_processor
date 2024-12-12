@@ -55,37 +55,37 @@ begin
 --constant I_typeop_1 : std_logic_vector(6 downto 0) := "0010011" ;
 --constant B_typeop : std_logic_vector(6 downto 0) := "1100011" ;
 
---process ( opcode , f7 , f3 ) begin
-    
---    if (opcode = R_typeop) then
---        case ( f3 ) is
---            when "000" => --add sub
---                if (f7(5) = '0') then 
---                    <statement>;
---                else
---                    <statement>;
---                end if ;
---            when "001" => --sll
---                <statement>;
---            when "010" =>--slt
---                <statement>;
---            when "011" =>--sltu
---                <statement>;
---            when "100" =>--xor
---                <statement>;
---            when "101" =>--srl sra
---                if (f7(5) = '0') then 
---                    <statement>;
---                else
---                    <statement>;
---                end if ;
---            when "110" =>--or
---                <statement>;
---            when "111" =>--and
---                <statement>;
---            when others =>
---                <statement>;
---        end case;
+process ( opcode , f7 , f3 ) begin
+
+    if (opcode = R_typeop) then
+        case ( f3 ) is
+            when "000" => --add sub
+                if (f7(5) = '0') then 
+                    <statement>;
+                else
+                    <statement>;
+                end if ;
+            when "001" => --sll
+                <statement>;
+            when "010" =>--slt
+                <statement>;
+            when "011" =>--sltu
+                <statement>;
+            when "100" =>--xor
+                <statement>;
+            when "101" =>--srl sra
+                if (f7(5) = '0') then 
+                    <statement>;
+                else
+                    <statement>;
+                end if ;
+            when "110" =>--or
+                <statement>;
+            when "111" =>--and
+                <statement>;
+            when others =>
+                <statement>;
+        end case;
 --    else if (opcode = I_typeop_reg) then 
 --        case ( f3 ) is
 --            when "000" => --addi
@@ -126,11 +126,11 @@ begin
 --            when others =>
 --                <statement>;
 --        end case ;
---    end if
+    end if
 
 
 
---end process
+end process
 
 
 

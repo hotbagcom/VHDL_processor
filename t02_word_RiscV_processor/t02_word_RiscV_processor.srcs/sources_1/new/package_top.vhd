@@ -44,7 +44,7 @@ constant others_case : std_logic := '1' ;
 
 constant RV_lvl : integer := 65536 ;
 constant RV_lvlinbit : integer := 32;
-constant RV_lvlinbitinbit : integer := 5;
+constant RV_lvlinbitinbit : integer := 8;
 
 end package_top;
 
