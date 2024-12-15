@@ -38,10 +38,10 @@ entity t02_Word_DM is
     );
     Port(
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
-        dm_write_enable: in std_logic := '0';
-        dm_read_enable : in std_logic := '0';
-        dm_adress :in std_logic_vector(dm_depth-1 downto 0) := (others=>'0');
-        dm_data_in :in std_logic_vector(dm_depth-1 downto 0) := (others=>'0');
+        dm_write_enable: in std_logic ;
+        dm_read_enable : in std_logic ;
+        dm_adress :in std_logic_vector(dm_depth-1 downto 0) ;
+        dm_data_in :in std_logic_vector(dm_depth-1 downto 0) ;
         dm_data_out:out std_logic_vector(dm_depth-1 downto 0) := (others=>'0')
     );
 end t02_Word_DM;
@@ -55,12 +55,15 @@ signal RAM_dm : ram_typ := (others=>(others=>'0'));
 begin
 
 process (dm_write_enable , dm_read_enable , dm_adress , dm_data_in) begin 
-    if (dm_write_enable = '1') then 
-         RAM_dm( to_integer(unsigned(dm_adress)) ) <= to_bitvector(dm_data_in);
-    elsif (dm_read_enable = '1') then 
-        dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress )) ) );
-    end if;
-
+    if (RST ='1') then 
+        dm_data_out <= (others=>'0');
+    else
+        if (dm_write_enable = '1') then 
+             RAM_dm( to_integer(unsigned(dm_adress)) ) <= to_bitvector(dm_data_in);
+        elsif (dm_read_enable = '1') then 
+            dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress )) ) );
+        end if;
+    end if ;
 end process ;
 
 

@@ -33,7 +33,7 @@ use work.package_top.all;
 
 entity t02_Word_mux2 is
     Port (
-        sellection : in std_logic := '0';
+        sellection : in std_logic ;
         choice_0 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
         choice_1 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
         output : out std_logic_vector(RV_lvlinbit-1 downto 0) 

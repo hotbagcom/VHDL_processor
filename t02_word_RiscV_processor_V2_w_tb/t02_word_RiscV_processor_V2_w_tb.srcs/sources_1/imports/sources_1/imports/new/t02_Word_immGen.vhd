@@ -40,8 +40,15 @@ end t02_Word_immGen;
 
 architecture bhvrl_immGen of t02_Word_immGen is
 signal zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
+signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
 begin
-
-IMM_out <= zero(RV_lvlinbit-1 downto 12) & imm ;
+--signed
+process ( imm ) begin
+    if (imm(11)='1') then
+        IMM_out <=  one(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+    else
+        IMM_out <=  zero(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+    end if ;
+end process;
 
 end bhvrl_immGen;

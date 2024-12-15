@@ -46,9 +46,8 @@ constant RV_lvl : integer := 65536 ;
 constant RV_lvlinbit : integer := 32;
 constant RV_lvlinbitinbit : integer := 5;
 
-
-constant im_rom_depth : integer := RV_lvl ;
-constant im_rom_depth_inbit : integer :=  RV_lvlinbit ;
+constant im_rom_depth : integer := 8 ;
+constant im_rom_width_inbit : integer :=  RV_lvlinbit ;
         
 constant dm_length : integer :=  RV_lvl ;
 constant dm_depth : integer :=  RV_lvlinbit ;

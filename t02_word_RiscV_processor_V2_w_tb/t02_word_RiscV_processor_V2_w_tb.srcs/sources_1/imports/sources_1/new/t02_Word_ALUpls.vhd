@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity t02_Word_ALUpls is
     Port(
-    prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) := (others=>'0'); 
+    prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) ; 
     next_PC : out std_logic_vector(RV_lvlinbit-1 downto 0) 
     );
 end t02_Word_ALUpls;

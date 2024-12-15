@@ -34,9 +34,9 @@ use work.package_top.all;
 
 entity t02_Word_PC is
     Port(
-        RST : in std_logic := '0' ; 
-        CLK : in std_logic := '0' ; 
-        next_PC : in std_logic_vector(RV_lvlinbit-1 downto 0 ) := (others=>'0'); 
+        RST : in std_logic  ; 
+        CLK : in std_logic  ; 
+        next_PC : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
         current_pc : out std_logic_vector( RV_lvlinbit-1 downto 0 ) := (others=>'0')
         
     );

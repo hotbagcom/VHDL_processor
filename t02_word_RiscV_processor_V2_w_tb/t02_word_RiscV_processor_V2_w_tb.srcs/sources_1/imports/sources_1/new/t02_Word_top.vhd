@@ -58,12 +58,12 @@ end component ;
 
 component t02_Word_IM is
    generic(
-        im_rom_depth : integer := 8 ; -- RV_lvlinbit
-        im_rom_depth_inbit : integer := RV_lvlinbit -- RV_lvlinbitinbit
+        im_rom_depth : integer  := im_rom_depth ; -- RV_lvlinbit
+        im_rom_width_inbit : integer := im_rom_width_inbit -- RV_lvlinbitinbit
     );
     Port ( 
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
-        current_pc : in std_logic_vector( im_rom_depth_inbit-1 downto 0);
+        current_pc : in std_logic_vector( im_rom_width_inbit-1 downto 0);
         opcode  : out std_logic_vector(6 downto 0) := "0000000" ;
         f7      : out std_logic_vector(6 downto 0) := "0000000" ;
         f3      : out std_logic_vector(2 downto 0) := "000";
@@ -270,7 +270,7 @@ cntrl : t02_Word_cntrl
 mux2_preDM : t02_Word_mux2 
     port map(
         sellection => S_cnrtl_alu_data_srce_slkt ,
-        choice_0 => S_reg_source0_out ,
+        choice_0 => S_reg_source1_out ,
         choice_1 => S_imm_32 ,
         output => S_alu_data_in1
         );
