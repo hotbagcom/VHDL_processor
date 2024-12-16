@@ -72,7 +72,7 @@ process ( opcode   ) begin
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
-        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
+        cnrtl_reg_write_srce_slkt<= '1' ;--alu out yazýlýr
         
     end if ;
     
@@ -82,7 +82,7 @@ process ( opcode   ) begin
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
-        cnrtl_reg_write_srce_slkt<= '1' ;--alu out yazýlýr
+        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
     
     end if ;
 

@@ -42,24 +42,24 @@ architecture bhvrl_top of t02_Word_top is
 ----- COMPONENT -----
 component t02_Word_PC is
     Port(
-        RST : in std_logic := '0' ; 
-        CLK : in std_logic := '0' ; 
-        next_PC : in std_logic_vector(RV_lvlinbit-1 downto 0 ) := (others=>'0'); 
+        RST : in std_logic  ; 
+        CLK : in std_logic  ; 
+        next_PC : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
         current_pc : out std_logic_vector( RV_lvlinbit-1 downto 0 ):= (others=>'0')
         
     );
 end component ;
 component t02_Word_ALUpls is
     Port(
-    prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) := (others=>'0'); 
+    prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) ; 
     next_PC : out std_logic_vector(RV_lvlinbit-1 downto 0) 
     );
 end component ;
 
 component t02_Word_IM is
    generic(
-        im_rom_depth : integer  := im_rom_depth ; -- RV_lvlinbit
-        im_rom_width_inbit : integer := im_rom_width_inbit -- RV_lvlinbitinbit
+        im_rom_depth : integer  := RV_im_rom_depth ; -- RV_lvlinbit
+        im_rom_width_inbit : integer := RV_im_rom_width_inbit -- RV_lvlinbitinbit
     );
     Port ( 
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
@@ -79,9 +79,9 @@ component t02_Word_Reg is
         ram_depth : integer :=  RV_lvlinbit 
     );
     Port(
-        CLK : in std_logic := '0' ; 
-        RST : in std_logic := '0' ;  --active high mi active lov mu ? 
-        reg_write_enable : in std_logic := '0';
+        CLK : in std_logic ; 
+        RST : in std_logic ;  --active high mi active lov mu ? 
+        reg_write_enable : in std_logic ;
         reg_source0_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
         reg_source1_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
         reg_dest : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
@@ -102,9 +102,9 @@ component t02_Word_ALU is
     );
     Port(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
-        opcode  : in std_logic_vector(6 downto 0) := "0000000" ;
-        f7      : in std_logic_vector(6 downto 0) := "0000000" ;
-        f3      : in std_logic_vector(2 downto 0) := "000";
+        opcode  : in std_logic_vector(6 downto 0) ;
+        f7      : in std_logic_vector(6 downto 0) ;
+        f3      : in std_logic_vector(2 downto 0) ;
         alu_data_in0 : in  std_logic_vector(31 downto 0);
         alu_data_in1 : in  std_logic_vector(31 downto 0);
         alu_flag : out std_logic_vector(2 downto 0) ; -- MSB overflow zero LSB
@@ -119,18 +119,18 @@ component t02_Word_DM is
     );
     Port(
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
-        dm_write_enable: in std_logic := '0';
-        dm_read_enable : in std_logic := '0';
-        dm_adress :in std_logic_vector(dm_depth-1 downto 0) := (others=>'0');
-        dm_data_in :in std_logic_vector(dm_depth-1 downto 0) := (others=>'0');
+        dm_write_enable: in std_logic ;
+        dm_read_enable : in std_logic ;
+        dm_adress :in std_logic_vector(dm_depth-1 downto 0) ;
+        dm_data_in :in std_logic_vector(dm_depth-1 downto 0) ;
         dm_data_out:out std_logic_vector(dm_depth-1 downto 0) := (others=>'0')
     );
 end component ;
 component t02_Word_cntrl is
     Port (
-        opcode  : in std_logic_vector(6 downto 0) := "0000000" ;
-        f7      : in std_logic_vector(6 downto 0) := "0000000" ;
-        f3      : in std_logic_vector(2 downto 0) := "000";
+        opcode  : in std_logic_vector(6 downto 0) ;
+        f7      : in std_logic_vector(6 downto 0) ;
+        f3      : in std_logic_vector(2 downto 0) ;
         cntrl_dm_write_enable: out std_logic := '0';
         cntrl_dm_read_enable : out std_logic := '0';
         --cntrl_alu_opcode : out std_logic := '0' ;
@@ -141,7 +141,7 @@ component t02_Word_cntrl is
 end component ;
 component t02_Word_mux2 is
     Port (
-        sellection : in std_logic := '0';
+        sellection : in std_logic ;
         choice_0 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
         choice_1 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
         output : out std_logic_vector(RV_lvlinbit-1 downto 0) 
