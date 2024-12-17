@@ -94,9 +94,9 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case;
-    end if;
         
-    if (opcode = I_typeop_reg) then --to do regi iile imidiate_reg birleştirilebilir mi ? 
+        
+    elsif (opcode = I_typeop_reg) then --to do regi iile imidiate_reg birleştirilebilir mi ? 
         case ( f3 ) is
             when "000" => --addi
                 alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
@@ -130,7 +130,24 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case;
---    else if (opcode = I_typeop_dm) then 
+        
+        
+    elsif (opcode = I_typeop_dm) then 
+        case ( f3 ) is
+            when "000" =>--lb
+                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) ); -- reg0 + / imm |reg1 /
+            when "001" =>--lh
+                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
+            when "010" =>--lw
+                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
+            when "100" =>--lbu
+                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
+            when "101" =>--lhu
+                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
+            when others =>
+                alu_data_out <=  (others => others_case) ;
+        end case ;
+--    else if (opcode = B_typeop) then 
 --        case ( f3 ) is
 --            when "000" =>--lb
 --                <statement>;
@@ -145,7 +162,6 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
 --            when others =>
 --                <statement>;
 --        end case ;
-
     end if ;    
     
 end process ;

@@ -38,6 +38,7 @@ entity t02_Word_cntrl is
         f3      : in std_logic_vector(2 downto 0) ;
         cntrl_dm_write_enable: out std_logic := '0';
         cntrl_dm_read_enable : out std_logic := '0';
+        cntrl_dm_bitlen :out std_logic_vector(1 downto 0);
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable : out std_logic := '0';
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
@@ -79,6 +80,8 @@ process ( opcode   ) begin
     if (opcode = I_typeop_dm) then 
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '1' ;
+        cntrl_dm_bitlen  <= f3(1 downto 0); -- 00: 8 byte | 01: half word | 10: word |
+            
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ

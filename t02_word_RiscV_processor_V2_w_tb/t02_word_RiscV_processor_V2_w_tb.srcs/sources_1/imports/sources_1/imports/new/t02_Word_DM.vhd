@@ -40,6 +40,7 @@ entity t02_Word_DM is
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
         dm_write_enable: in std_logic ;
         dm_read_enable : in std_logic ;
+        cntrl_dm_bitlen :in std_logic_vector(1 downto 0);
         dm_adress :in std_logic_vector(dm_depth-1 downto 0) ;
         dm_data_in :in std_logic_vector(dm_depth-1 downto 0) ;
         dm_data_out:out std_logic_vector(dm_depth-1 downto 0) := (others=>'0')
@@ -54,14 +55,18 @@ signal RAM_dm : ram_typ := (others=>(others=>'0'));
 
 begin
 
-process (dm_write_enable , dm_read_enable , dm_adress , dm_data_in) begin 
+process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_data_in) begin 
+
     if (RST ='1') then 
         dm_data_out <= (others=>'0');
     else
-        if (dm_write_enable = '1') then 
-             RAM_dm( to_integer(unsigned(dm_adress)) ) <= to_bitvector(dm_data_in);
-        elsif (dm_read_enable = '1') then 
-            dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress )) ) );
+    --TODO : how to send byte halfword or word  and difference btw signed aand unsigned 
+        if ( (cntrl_dm_bitlen(0) and cntrl_dm_bitlen(1)) = '0') then -- "11" is not defined
+            if (dm_write_enable = '1') then 
+                 RAM_dm( to_integer(unsigned(dm_adress)) ) <= to_bitvector(dm_data_in);
+            elsif (dm_read_enable = '1') then 
+                dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress )) ) );
+            end if;
         end if;
     end if ;
 end process ;

@@ -133,6 +133,7 @@ component t02_Word_cntrl is
         f3      : in std_logic_vector(2 downto 0) ;
         cntrl_dm_write_enable: out std_logic := '0';
         cntrl_dm_read_enable : out std_logic := '0';
+        cntrl_dm_bitlen :out std_logic_vector(1 downto 0):= "10" ;
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable : out std_logic := '0';
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
@@ -165,6 +166,7 @@ signal S_imm_12     : std_logic_vector(11 downto 0);
 
 signal S_cntrl_dm_write_enable: std_logic ;
 signal S_cntrl_dm_read_enable : std_logic ;
+signal S_cntrl_dm_bitlen : std_logic_vector(1 downto 0);
 --signal S_cntrl_alu_opcode : std_logic ;
 signal S_cnrtl_reg_write_enable : std_logic ;
 signal S_cnrtl_alu_data_srce_slkt : std_logic ;
@@ -261,6 +263,7 @@ cntrl : t02_Word_cntrl
         f3      => S_f3 ,
         cntrl_dm_write_enable => S_cntrl_dm_write_enable ,
         cntrl_dm_read_enable => S_cntrl_dm_read_enable ,
+        cntrl_dm_bitlen => S_cntrl_dm_bitlen,
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable => S_cnrtl_reg_write_enable ,
         cnrtl_alu_data_srce_slkt => S_cnrtl_alu_data_srce_slkt ,

@@ -103,11 +103,16 @@ X"3e803193" ,
 X"3e80c213" ,
 X"3e80e293" ,
 X"3e80f293" ,
-X"00411293"   --X"x x x" (r0)0001 0_(f3)100 _(rd)0000 0_001 0011
+X"00411293" ,  --X"x x x" (r0)0001 0_(f3)100 _(rd)0000 0_001 0011
 X"00000000" ,
 X"00000000" ,
 X"00000000" 
 
+-- I_type_dm 
+-- LW : 32 BIT , LH : 16BIT , LB : 8 BIT 
+--FOR DM ADRESS TAKE 31 TO 2 , 1 AND 0 BIT ARE OPERATES FOR 8 BIT  AND 6 BIT SPECIFIC LOCATION . 
+--LOAD copy data in to register from memory .
+--STORE copy value in register to memory
 
 );
 
