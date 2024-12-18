@@ -121,6 +121,7 @@ component t02_Word_DM is
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
         dm_write_enable: in std_logic ;
         dm_read_enable : in std_logic ;
+        cntrl_dm_bitlen :in std_logic_vector(2 downto 0);
         dm_adress :in std_logic_vector(dm_depth-1 downto 0) ;
         dm_data_in :in std_logic_vector(dm_depth-1 downto 0) ;
         dm_data_out:out std_logic_vector(dm_depth-1 downto 0) := (others=>'0')
@@ -133,7 +134,7 @@ component t02_Word_cntrl is
         f3      : in std_logic_vector(2 downto 0) ;
         cntrl_dm_write_enable: out std_logic := '0';
         cntrl_dm_read_enable : out std_logic := '0';
-        cntrl_dm_bitlen :out std_logic_vector(1 downto 0):= "10" ;
+        cntrl_dm_bitlen :out std_logic_vector(2 downto 0):= "010" ;
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable : out std_logic := '0';
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
@@ -166,7 +167,7 @@ signal S_imm_12     : std_logic_vector(11 downto 0);
 
 signal S_cntrl_dm_write_enable: std_logic ;
 signal S_cntrl_dm_read_enable : std_logic ;
-signal S_cntrl_dm_bitlen : std_logic_vector(1 downto 0);
+signal S_cntrl_dm_bitlen : std_logic_vector(2 downto 0);
 --signal S_cntrl_alu_opcode : std_logic ;
 signal S_cnrtl_reg_write_enable : std_logic ;
 signal S_cnrtl_alu_data_srce_slkt : std_logic ;
@@ -251,7 +252,8 @@ DM : t02_Word_DM
         RST => S_RST , --active high mi active lov mu ? 
         dm_write_enable => S_cntrl_dm_write_enable ,
         dm_read_enable => S_cntrl_dm_read_enable ,
-        dm_adress => S_alu_data_out,
+        cntrl_dm_bitlen => S_cntrl_dm_bitlen ,
+        dm_adress => S_alu_data_out ,
         dm_data_in => S_reg_source1_out ,
         dm_data_out => S_dm_data_out
     );

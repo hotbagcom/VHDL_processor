@@ -38,7 +38,7 @@ entity t02_Word_cntrl is
         f3      : in std_logic_vector(2 downto 0) ;
         cntrl_dm_write_enable: out std_logic := '0';
         cntrl_dm_read_enable : out std_logic := '0';
-        cntrl_dm_bitlen :out std_logic_vector(1 downto 0);
+        cntrl_dm_bitlen : out std_logic_vector(2 downto 0);
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable : out std_logic := '0';
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
@@ -56,7 +56,7 @@ begin
 --constant I_typeop_1 : std_logic_vector(6 downto 0) := "0010011" ;
 --constant B_typeop : std_logic_vector(6 downto 0) := "1100011" ;
 
-process ( opcode   ) begin
+process ( opcode , f3 , f7 ) begin
 -- to do case mi if mi 
     if (opcode = R_typeop) then
         cntrl_dm_write_enable    <= '0' ;
@@ -66,8 +66,7 @@ process ( opcode   ) begin
         cnrtl_alu_data_srce_slkt <= '0' ;--reg çýkýþ 
         cnrtl_reg_write_srce_slkt<= '1' ;--alu out yazýlýr
 
-    end if ;
-    if (opcode = I_typeop_reg) then 
+    elsif (opcode = I_typeop_reg) then 
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '0' ;
         --cntrl_alu_opcode         <= '0' ;
@@ -75,18 +74,22 @@ process ( opcode   ) begin
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
         cnrtl_reg_write_srce_slkt<= '1' ;--alu out yazýlýr
         
-    end if ;
-    
-    if (opcode = I_typeop_dm) then 
+    elsif (opcode = I_typeop_dm) then 
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '1' ;
-        cntrl_dm_bitlen  <= f3(1 downto 0); -- 00: 8 byte | 01: half word | 10: word |
+        cntrl_dm_bitlen  <= f3(2 downto 0); -- 0: signed 1:unsigned ||||00: 8 byte | 01: half word | 10: word |
             
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
         cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
-    
+    else 
+        cntrl_dm_write_enable    <= '0' ;
+        cntrl_dm_read_enable     <= '0' ;
+        --cntrl_alu_opcode         <= '0' ;
+        cnrtl_reg_write_enable   <= '0' ;
+        cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
+        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
     end if ;
 
 
