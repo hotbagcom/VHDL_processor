@@ -122,24 +122,39 @@ signal Instruction_rom: rom := (
 --LOAD copy data in to register from memory .
 --STORE copy value in register to memory
 
---lb x1, 0(x1)          
---LBU x2, 0(x2)         
---LH x3, 0(x3)          
---LHU x4, 0(x4)         
---LW x5, 0(x5)   
+--lb x8, 0(x0)          
+--lbu x9, 0(x1)         
+--lh x10, 0(x2)          
+--lhu x11, 6(x3)         
+--lw x12, 20(x4)   
+-- nop
+--lb x24, 1(x8)          
+--lbu x25, 1(x8)         
+--lh x26, 1(x8)          
+--lhu x27, 1(x8)         
+--lw x28, 1(x8) 
+-- nop
+-- nop
 
-X"00000403" , --X"x x x" (r0)0000 0_(f3)000 _(rd)0100 0_000 0011
-X"0000c483" , --X"x x x" (r0)0000 1_(f3)100 _(rd)0100 1_000 0011
-X"00011503" , --X"x x x" (r0)0001 0_(f3)001 _(rd)0101 0_000 0011
-X"0001d583" , --X"x x x" (r0)0001 1_(f3)101 _(rd)0101 1_000 0011
-X"00022603" , --X"x x x" (r0)0010 0_(f3)010 _(rd)0110 0_000 0011
-X"00000000" , 
-X"00120c03" ,
-X"00124c83" ,
-X"00121d03" , 
-X"00125d83" , 
-X"00122e03"         --r0 = 5   |  rd = 28
+--X"00000403" , --X"x x x" (r0)0000 0_(f3)000 _(rd)0100 0_000 0011
+--X"0000c483" , --X"x x x" (r0)0000 1_(f3)100 _(rd)0100 1_000 0011
+--X"00011503" , --X"x x x" (r0)0001 0_(f3)001 _(rd)0101 0_000 0011
+--X"0061d583" , --X"x x 6" (r0)0001 1_(f3)101 _(rd)0101 1_000 0011
+--X"01422603" , --X"x 1 4" (r0)0010 0_(f3)010 _(rd)0110 0_000 0011
+--X"00000000" , 
+--X"00120c03" , --X"x x 1" (r0)0010 0_(f3)000 _(rd)1100 0_000 0011
+--X"00124c83" , --X"x x 1" (r0)0010 0_(f3)100 _(rd)1100 1_000 0011
+--X"00121d03" , --X"x x 1" (r0)0010 0_(f3)001 _(rd)1101 0_000 0011
+--X"00125d83" , --X"x x 1" (r0)0010 0_(f3)101 _(rd)1101 1_000 0011
+--X"00122e03" , --X"x x 1" (r0)0010 0_(f3)010 _(rd)1110 0_000 0011      
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000"  
+
 ---------------------------------------
+-- B_type
 
 
 
@@ -156,7 +171,7 @@ S_opcode <= Instruction_im_in( 6 downto 0 );
 
 
 
-process (RST , Instruction_im_in) begin
+process (RST , current_pc ,Instruction_im_in) begin
     if (RST = '1' ) then
         opcode  <=  (others=>'0') ;
         rd      <=  (others=>'0') ;
@@ -178,18 +193,25 @@ process (RST , Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
+    elsif(S_opcode = B_typeop)then
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
 --    elsif(S_opcode = S_typeop)then
 --        opcode  <= Instruction_im_in( 6 downto 0 ) ;
 --        f3      <= Instruction_im_in( 14 downto 12 ) ;
 --        rs0     <= Instruction_im_in( 19 downto 15 ) ;
 --        rs1     <= Instruction_im_in( 24 downto 20 ) ;
 --        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 );
---    elsif(S_opcode = B_typeop)then
---        f3      <= Instruction_im_in( 14 downto 12 ) ;
---        rs0     <= Instruction_im_in( 19 downto 15 ) ;
---        rs1     <= Instruction_im_in( 24 downto 20 ) ;
---        imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
-    
+    else
+        opcode  <= Instruction_im_in( 6 downto 0 )   ;
+        rd      <= Instruction_im_in( 11 downto 7 )  ;
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        f7      <= Instruction_im_in( 31 downto 25 ) ;        
+        imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
     end if;
         
 end process ;

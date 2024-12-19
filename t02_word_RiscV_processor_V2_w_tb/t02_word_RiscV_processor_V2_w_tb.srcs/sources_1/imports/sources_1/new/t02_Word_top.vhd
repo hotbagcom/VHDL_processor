@@ -252,7 +252,7 @@ DM : t02_Word_DM
         RST => S_RST , --active high mi active lov mu ? 
         dm_write_enable => S_cntrl_dm_write_enable ,
         dm_read_enable => S_cntrl_dm_read_enable ,
-        cntrl_dm_bitlen => S_cntrl_dm_bitlen ,
+        cntrl_dm_bitlen => S_f3 , --S_cntrl_dm_bitlen,  dealy ocured so that f3 directly taken from IM  
         dm_adress => S_alu_data_out ,
         dm_data_in => S_reg_source1_out ,
         dm_data_out => S_dm_data_out
@@ -265,7 +265,7 @@ cntrl : t02_Word_cntrl
         f3      => S_f3 ,
         cntrl_dm_write_enable => S_cntrl_dm_write_enable ,
         cntrl_dm_read_enable => S_cntrl_dm_read_enable ,
-        cntrl_dm_bitlen => S_cntrl_dm_bitlen,
+        cntrl_dm_bitlen => S_cntrl_dm_bitlen, ---curently un connected to DM module 
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable => S_cnrtl_reg_write_enable ,
         cnrtl_alu_data_srce_slkt => S_cnrtl_alu_data_srce_slkt ,

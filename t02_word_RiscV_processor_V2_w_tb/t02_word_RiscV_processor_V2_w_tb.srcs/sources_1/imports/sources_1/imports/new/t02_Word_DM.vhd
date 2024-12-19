@@ -49,7 +49,7 @@ end t02_Word_DM;
 
 architecture bhvrl_DM of t02_Word_DM is
 
-signal S_dm_data_out : std_logic_vector(15 downto 0) ;
+shared variable S_dm_data_out : std_logic_vector(15 downto 0) ;
 signal S_signed : std_logic ; 
 signal zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
 signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
@@ -59,13 +59,13 @@ signal RAM_dm : ram_typ :=
  (
 X"dc00fe01" ,
 x"00ba0023" ,
-X"98a76b45" ,
+X"987ab456" ,
 X"01234567" ,
 X"00010089" ,
 X"000ab0ab" ,
 X"000000cd" ,
 X"000000ef" ,
-X"00000000" ,
+X"00000000" ,--ToDo fix this :> bu satırda register1 değeri 1. registeri vreiyor ve bir sonrakinde register0  vermeye başlıyor
 X"00000000" ,
 X"00000000" ,
 X"00000000" ,
@@ -83,14 +83,14 @@ process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_dat
     if (RST ='1') then 
         dm_data_out <= (others=>'0');
     else
-    --TODO : how to send byte halfword or word  and difference btw signed aand unsigned 
+    --fixed how to send byte halfword or word  and difference btw signed aand unsigned 
         if ( (cntrl_dm_bitlen(0) and cntrl_dm_bitlen(1)) = '0') then -- "11" is not defined
             if (dm_write_enable = '1') then 
                  RAM_dm( to_integer(unsigned(dm_adress)) ) <= to_bitvector(dm_data_in(dm_depth-1 downto 0));
             elsif (dm_read_enable = '1') then 
-            ------BRAM------LW----LH----------LB------- --- ilk iki bit geçersiz sayılacak 32 bit 8 bitlik gibi  düşünülecek
+            ------BRAM------LW----LH----------LB------- ---fixed ilk iki bit geçersiz sayılacak 32 bit 8 bitlik gibi  düşünülecek
             -- 00 00 00 00  0   01 00   013 012 001 000
-            -- 00 00 00 00  1   11 10   113 112 101 100 --- todo signed ve unsigned alınan değerin msb soldaki bitlerle aynı olacak 
+            -- 00 00 00 00  1   11 10   113 112 101 100 ---fixed signed ve unsigned alınan değerin msb soldaki bitlerle aynı olacak 
             -- 00 00 00 00  2   21 20   213 212 201 200
                 if(cntrl_dm_bitlen(1 downto 0) = "10") then --word    
                     dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) );
@@ -124,11 +124,11 @@ process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_dat
                     if (cntrl_dm_bitlen(1 downto 0) = "01") then --halfword
                         case (dm_adress(0)) is
                             when '0' =>
-                            S_dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
+                            S_dm_data_out := to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
                             when '1' =>
-                            S_dm_data_out <= to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
+                            S_dm_data_out := to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
                             when others => 
-                            S_dm_data_out <= (others=>'0');
+                            S_dm_data_out := (others=>'0');
                         end case ;
                         if( S_dm_data_out(15) = '0') then
                             dm_data_out <= zero(31 downto 16 ) & S_dm_data_out;
@@ -138,24 +138,26 @@ process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_dat
                     elsif(cntrl_dm_bitlen(1 downto 0) = "00") then --bit
                         case (dm_adress(1 downto 0)) is                      
                             when "00" =>
-                            S_dm_data_out <= zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(7 downto 0);
+                            S_dm_data_out := zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(7 downto 0);
                             when "01" =>
-                            S_dm_data_out <= zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 8);
+                            S_dm_data_out := zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 8);
                             when "10" =>
-                            S_dm_data_out <= zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(23 downto 16);
+                            S_dm_data_out := zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(23 downto 16);
                             when "11" =>
-                            S_dm_data_out <= zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(31 downto 24);
+                            S_dm_data_out := zero(15 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(31 downto 24);
                             when others => 
-                            S_dm_data_out <= (others=>'0');
+                            S_dm_data_out := (others=>'0');
                         end case ;
                         if( S_dm_data_out(7) = '0') then
                             dm_data_out <= zero(31 downto 8 ) & S_dm_data_out(7 downto 0);
                         elsif( S_dm_data_out(7) = '1') then
                             dm_data_out <= one(31 downto 8 ) & S_dm_data_out(7 downto 0);
                         end if ;
+                        
+                        
                     end if ;--signed
                 end if ;--word
-                -------------------------------------todo some of the things are not syncron f3 cames with delay 
+                -------------------------------------fixed some of the things are not syncron f3 cames with delay 
             end if;
         end if;
     end if ;

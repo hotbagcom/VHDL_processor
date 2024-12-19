@@ -83,9 +83,9 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when "101" =>--srl sra
                 if (f7(5) = '0') then 
                     alu_data_out <= std_logic_vector( signed( alu_data_in0) srl to_integer(signed( alu_data_in1 )) );
-                    --to do fix sra
+                    --ToDo fix sra
                 else
-                    alu_data_out <=  (others => others_case);-- std_logic_vector( signed( S_alu_data_in0) sra to_integer(signed( alu_data_in1 )) );
+                    alu_data_out <= std_logic_vector( signed( alu_data_in0) sra srl to_integer(signed( alu_data_in1 )) );
                 end if ;
             when "110" =>--or
                 alu_data_out <=  alu_data_in0 or alu_data_in1 ;
@@ -148,6 +148,22 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
                 alu_data_out <=  (others => others_case) ;
         end case ;
 --    else if (opcode = B_typeop) then 
+--        case ( f3 ) is
+--            when "000" =>--lb
+--                <statement>;
+--            when "001" =>--lh
+--                <statement>;
+--            when "010" =>--lw
+--                <statement>;
+--            when "100" =>--lbu
+--                <statement>;
+--            when "101" =>--lhu
+--                <statement>;
+--            when others =>
+--                <statement>;
+--        end case ;
+
+--    else if (opcode = S_typeop) then 
 --        case ( f3 ) is
 --            when "000" =>--lb
 --                <statement>;
