@@ -156,14 +156,24 @@ signal Instruction_rom: rom := (
 ---------------------------------------
 -- B_type
 
-       
-X"00000000" , 
-X"00000000" , 
-X"00000000" ,        
-X"00000000" , 
-X"00000000" , 
-X"00000000" ,        
-X"00000000" , 
+--addi x1, x0, 10    
+--add x2, x0, 5    
+--blt_equal:   --(imm11)0_(imm10:5)000 000_(r1)0 0000 (r0)0000 0_(f3)010 _(imm4:1)1110 (imm11)0_000 0011
+--addi x2, x2, 1    
+--addi x3, x0, 3    
+--addi x4, x0 , 7 
+--blt x1, x2, blt_equal
+--addi x1, x1, 1 
+
+
+
+X"00a00093" ,  
+X"00500113" , 
+X"00110113" , 
+X"00300193" ,        
+X"00700213" , 
+X"fe20cfe3" , --(imm12)1_(imm10:5)111 111_(r1)0 0100 (r0)000 1_(f3)100 _(imm4:1)1111 (imm11)1_110 0011        
+X"00108093" , --imm : 1 1 111 111 1111 0
 X"00000000" , 
 X"00000000" ,        
 X"00000000" , 
@@ -173,7 +183,7 @@ X"00000000" ,
 X"00000000" , 
 X"00000000" , 
 X"00000000"  
-
+--1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011
 );
 
 signal Instruction_im_in : std_logic_vector( RV_lvlinbit-1 downto 0);
@@ -208,7 +218,7 @@ process (RST , current_pc ,Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
-    elsif(S_opcode = B_typeop)then -- signed 
+    elsif(S_opcode = B_typeop)then -- signed  --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
@@ -233,7 +243,7 @@ end process ;
 
 
 end bhvrl_IM;
+Instruction_im_in = 1 111 1110 0010 0000 1100 1111 1110 0011;
+    imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ; 
 
-
-
- 
+ 1 1 111 111 1111

@@ -42,12 +42,12 @@ entity t02_Word_ALU is
         opcode  : in std_logic_vector(6 downto 0) ;
         f7      : in std_logic_vector(6 downto 0) ;
         f3      : in std_logic_vector(2 downto 0) ;
-        alu_data_in0 : in  std_logic_vector(31 downto 0) ;
-        alu_data_in1 : in  std_logic_vector(31 downto 0) ;
+        alu_data_in0 : in  std_logic_vector(RV_lvlinbit-1 downto 0) ;
+        alu_data_in1 : in  std_logic_vector(RV_lvlinbit-1 downto 0) ;
         
         alu_flag : out std_logic_vector(2 downto 0) := (others=>'0') ; -- MSB overflow zero LSB
         
-        alu_data_out : out std_logic_vector(4 downto 0) := (others=>'0') 
+        alu_data_out : out std_logic_vector(RV_lvlinbit-1 downto 0) := (others=>'0') 
     );
 end t02_Word_ALU;
 
@@ -157,7 +157,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case ;
-    else if (opcode = B_typeop) then 
+    elsif (opcode = B_typeop) then 
         case ( f3 ) is
             when "000" =>--beq
                 if ( alu_data_in0 = alu_data_in1 )then

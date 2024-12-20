@@ -51,8 +51,12 @@ process ( cntrl_brnch_enable , prev_PC , brnch_imm ) begin
     if (cntrl_brnch_enable = '0') then 
         alubrnch_out <= std_logic_vector( unsigned( prev_PC) + unsigned( add_pc) );
     elsif (cntrl_brnch_enable = '1') then 
-        alubrnch_out <= std_logic_vector( unsigned( prev_PC) + unsigned( brnch_imm));
-    end if ;
+        if (brnch_imm(RV_lvlinbit-1) = '0') then
+            alubrnch_out <= std_logic_vector( unsigned( prev_PC) + unsigned( brnch_imm ) );
+        elsif (brnch_imm(RV_lvlinbit-1) = '1') then
+            alubrnch_out <= std_logic_vector( signed( prev_PC) + signed( brnch_imm ) );
+        end if ;
+end if ;
 
 end process ;
 
