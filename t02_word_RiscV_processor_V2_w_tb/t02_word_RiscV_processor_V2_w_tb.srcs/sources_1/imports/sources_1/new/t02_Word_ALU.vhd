@@ -47,11 +47,14 @@ entity t02_Word_ALU is
         
         alu_flag : out std_logic_vector(2 downto 0) := (others=>'0') ; -- MSB overflow zero LSB
         
-        alu_data_out : out std_logic_vector(31 downto 0) := (others=>'0') 
+        alu_data_out : out std_logic_vector(4 downto 0) := (others=>'0') 
     );
 end t02_Word_ALU;
 
 architecture bhvrl_ALU of t02_Word_ALU is
+
+signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
+shared variable new_limit  :std_logic_vector(31 downto 0) ;
 begin
 
 process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
@@ -85,7 +88,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
                     alu_data_out <= std_logic_vector( signed( alu_data_in0) srl to_integer(signed( alu_data_in1 )) );
                     --ToDo fix sra
                 else
-                    alu_data_out <= std_logic_vector( signed( alu_data_in0) sra srl to_integer(signed( alu_data_in1 )) );
+                    --alu_data_out <= std_logic_vector( signed( alu_data_in0) sra srl to_integer(signed( alu_data_in1 )) );
                 end if ;
             when "110" =>--or
                 alu_data_out <=  alu_data_in0 or alu_data_in1 ;
@@ -119,13 +122,20 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when "111" =>--andi
                 alu_data_out <=  alu_data_in0 and alu_data_in1 ;
             when "001" => --slli
-                alu_data_out <= std_logic_vector( signed( alu_data_in0) sll to_integer(signed( alu_data_in1 )) );
+                alu_data_out <= std_logic_vector( unsigned( alu_data_in0) sll to_integer(unsigned( alu_data_in1 )) );
             when "101" =>--srli srai
                 if (f7(5) = '0') then 
-                    alu_data_out <= std_logic_vector( signed( alu_data_in0) srl to_integer(signed( alu_data_in1 )) );
+                    alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );
                     --to do fix sra
                 else
-                    alu_data_out <=   (others => others_case) ;--std_logic_vector( signed( S_alu_data_in0) sra to_integer(signed( alu_data_in1 )) );
+                    if (alu_data_in0(RV_lvlinbit -1 ) = '0') then
+                        alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );
+                    elsif (alu_data_in0(RV_lvlinbit -1 ) = '1') then
+                    
+                        new_limit:= std_logic_vector( 31 - unsigned( alu_data_in1 ) );
+                        alu_data_out <=  one( 31 downto to_integer(unsigned(new_limit) ) ) &  alu_data_in0( 30 downto to_integer(unsigned(alu_data_in1)) );
+                        
+                    end if ;
                 end if ;
             when others =>
                 alu_data_out <=  (others => others_case) ;
@@ -147,21 +157,45 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case ;
---    else if (opcode = B_typeop) then 
---        case ( f3 ) is
---            when "000" =>--lb
---                <statement>;
---            when "001" =>--lh
---                <statement>;
---            when "010" =>--lw
---                <statement>;
---            when "100" =>--lbu
---                <statement>;
---            when "101" =>--lhu
---                <statement>;
---            when others =>
---                <statement>;
---        end case ;
+    else if (opcode = B_typeop) then 
+        case ( f3 ) is
+            when "000" =>--beq
+                if ( alu_data_in0 = alu_data_in1 )then
+                alu_data_out <= X"00000001"; 
+                end if ;
+            when "001" =>--bne
+                if ( alu_data_in0 /= alu_data_in1 )then
+                alu_data_out <= X"00000001" ;
+                else 
+                alu_data_out <= X"00000000" ;
+                end if ; 
+            when "100" =>--blt
+                if ( signed( alu_data_in0) < signed( alu_data_in1)  )then
+                alu_data_out <= X"00000001" ;
+                else 
+                alu_data_out <= X"00000000" ;
+                end if ; 
+            when "101" =>--bge
+                if ( signed( alu_data_in0) > signed( alu_data_in1)  )then
+                alu_data_out <= X"00000001" ;
+                else 
+                alu_data_out <= X"00000000" ;
+                end if ; 
+            when "110" =>--bltu
+                if ( unsigned( alu_data_in0) < unsigned( alu_data_in1)  )then
+                alu_data_out <= X"00000001" ;
+                else 
+                alu_data_out <= X"00000000" ;
+                end if ; 
+            when "111" =>--bgeu
+                if ( unsigned( alu_data_in0) > unsigned( alu_data_in1)  )then
+                alu_data_out <= X"00000001" ;
+                else 
+                alu_data_out <= X"00000000" ;
+                end if ; 
+            when others =>
+                alu_data_out <=  (others => others_case) ;
+        end case ;
 
 --    else if (opcode = S_typeop) then 
 --        case ( f3 ) is

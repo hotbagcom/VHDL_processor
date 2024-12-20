@@ -100,22 +100,22 @@ process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_dat
                     if (cntrl_dm_bitlen(1 downto 0) = "01") then --halfword
                         case (dm_adress(0)) is
                             when '0' =>
-                            dm_data_out <= zero(31 downto 16 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 16 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
                             when '1' =>
-                            dm_data_out <= zero(31 downto 16 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 16 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
                             when others => 
                             dm_data_out <= (others=>'0');
                         end case ;
                     elsif(cntrl_dm_bitlen(1 downto 0) = "00") then --bit
                         case (dm_adress(1 downto 0)) is                      
                             when "00" =>
-                            dm_data_out <= zero(31 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(7 downto 0);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(7 downto 0);
                             when "01" =>                  
-                            dm_data_out <= zero(31 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 8);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 8);
                             when "10" =>                  
-                            dm_data_out <= zero(31 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(23 downto 16);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(23 downto 16);
                             when "11" =>                  
-                            dm_data_out <= zero(31 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(31 downto 24);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 8 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(31 downto 24);
                             when others => 
                             dm_data_out <= (others=>'0');
                         end case ;
@@ -131,9 +131,9 @@ process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_dat
                             S_dm_data_out := (others=>'0');
                         end case ;
                         if( S_dm_data_out(15) = '0') then
-                            dm_data_out <= zero(31 downto 16 ) & S_dm_data_out;
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 16 ) & S_dm_data_out;
                         elsif( S_dm_data_out(15) = '1') then
-                            dm_data_out <= one(31 downto 16 ) & S_dm_data_out;
+                            dm_data_out <= one(RV_lvlinbit-1 downto 16 ) & S_dm_data_out;
                         end if ;
                     elsif(cntrl_dm_bitlen(1 downto 0) = "00") then --bit
                         case (dm_adress(1 downto 0)) is                      
@@ -149,9 +149,9 @@ process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_dat
                             S_dm_data_out := (others=>'0');
                         end case ;
                         if( S_dm_data_out(7) = '0') then
-                            dm_data_out <= zero(31 downto 8 ) & S_dm_data_out(7 downto 0);
+                            dm_data_out <= zero(RV_lvlinbit-1 downto 8 ) & S_dm_data_out(7 downto 0);
                         elsif( S_dm_data_out(7) = '1') then
-                            dm_data_out <= one(31 downto 8 ) & S_dm_data_out(7 downto 0);
+                            dm_data_out <= one(RV_lvlinbit-1 downto 8 ) & S_dm_data_out(7 downto 0);
                         end if ;
                         
                         

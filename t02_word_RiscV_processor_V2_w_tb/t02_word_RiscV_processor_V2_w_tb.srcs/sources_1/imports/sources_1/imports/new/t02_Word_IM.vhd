@@ -156,8 +156,23 @@ signal Instruction_rom: rom := (
 ---------------------------------------
 -- B_type
 
-
-
+       
+X"00000000" , 
+X"00000000" , 
+X"00000000" ,        
+X"00000000" , 
+X"00000000" , 
+X"00000000" ,        
+X"00000000" , 
+X"00000000" , 
+X"00000000" ,        
+X"00000000" , 
+X"00000000" , 
+X"00000000" , 
+X"00000000" , 
+X"00000000" , 
+X"00000000" , 
+X"00000000"  
 
 );
 
@@ -193,7 +208,7 @@ process (RST , current_pc ,Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
-    elsif(S_opcode = B_typeop)then
+    elsif(S_opcode = B_typeop)then -- signed 
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;

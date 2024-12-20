@@ -33,6 +33,7 @@ use work.package_top.all;
 
 entity t02_Word_immGen is
     Port (
+    opcode  : in std_logic_vector(6 downto 0) ;
     imm : in std_logic_vector(11 downto 0); 
     IMM_out : out std_logic_vector(RV_lvlinbit-1  downto 0) 
     );
@@ -43,12 +44,21 @@ signal zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
 signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
 begin
 --signed
-process ( imm ) begin
-    if (imm(11)='1') then
-        IMM_out <=  one(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
-    else
-        IMM_out <=  zero(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+process ( imm , opcode ) begin
+    if(opcode = I_typeop_reg or opcode = I_typeop_dm) then
+        if (imm(11)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+        else
+            IMM_out <=  zero(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+        end if ;
+    elsif (opcode = B_typeop) then 
+        if (imm(11)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm(10 downto 0) & '0' ; 
+        else
+            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm(10 downto 0) & '0' ; 
+        end if ;
     end if ;
+    
 end process;
 
 end bhvrl_immGen;

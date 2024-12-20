@@ -36,13 +36,14 @@ entity t02_Word_cntrl is
         opcode  : in std_logic_vector(6 downto 0) ;
         f7      : in std_logic_vector(6 downto 0) ;
         f3      : in std_logic_vector(2 downto 0) ;
-        cntrl_dm_write_enable: out std_logic := '0';
+        cntrl_dm_write_enable : out std_logic := '0';
         cntrl_dm_read_enable : out std_logic := '0';
         cntrl_dm_bitlen : out std_logic_vector(2 downto 0) := "000";
+        cntrl_brnch_enable  : out std_logic := '0';
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable : out std_logic := '0';
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
-        cnrtl_reg_write_srce_slkt : out std_logic := '0'
+        cnrtl_reg_write_srce_slkt : out std_logic := '0' 
         );
 end t02_Word_cntrl;
 
@@ -61,6 +62,8 @@ process ( opcode , f3 , f7 ) begin
     if (opcode = R_typeop) then
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '0' ;
+        --cntrl_dm_bitlen  <= f3 ;-- 0: signed 1:unsigned ||||00: 8 byte | 01: half word | 10: word |
+        cntrl_brnch_enable <= '0' ;
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '0' ;--reg çýkýþ 
@@ -69,6 +72,8 @@ process ( opcode , f3 , f7 ) begin
     elsif (opcode = I_typeop_reg) then 
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '0' ;
+        --cntrl_dm_bitlen  <= f3 ;-- 0: signed 1:unsigned ||||00: 8 byte | 01: half word | 10: word |
+        cntrl_brnch_enable <= '0' ;
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
@@ -78,7 +83,17 @@ process ( opcode , f3 , f7 ) begin
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '1' ;
         cntrl_dm_bitlen  <= f3 ;-- 0: signed 1:unsigned ||||00: 8 byte | 01: half word | 10: word |
-            
+        cntrl_brnch_enable <= '0' ;
+        --cntrl_alu_opcode         <= '0' ;
+        cnrtl_reg_write_enable   <= '1' ;
+        cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
+        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
+        
+    elsif (opcode = B_typeop) then 
+        cntrl_dm_write_enable    <= '0' ;
+        cntrl_dm_read_enable     <= '0' ;
+        --cntrl_dm_bitlen  <= f3 ;-- 0: signed 1:unsigned ||||00: 8 byte | 01: half word | 10: word |
+        cntrl_brnch_enable <= '1' ;
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '1' ;
         cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
@@ -86,9 +101,11 @@ process ( opcode , f3 , f7 ) begin
     else 
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '0' ;
+        --cntrl_dm_bitlen  <= f3 ;-- 0: signed 1:unsigned ||||00: 8 byte | 01: half word | 10: word |
+        --cntrl_brnch_enable <= '0' ;
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '0' ;
-        cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ
+        cnrtl_alu_data_srce_slkt <= '0' ;--reg çýkýþ 
         cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
     end if ;
 
