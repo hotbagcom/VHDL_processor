@@ -51,6 +51,7 @@ component t02_Word_PC is
 end component ;
 component  t02_Word_ALUbrnch is
     Port(
+        alu_jump_correction : in std_logic;
         cntrl_brnch_enable : in std_logic;
         prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) ; 
         -- next_PC : --jumpun çýkýþýna yaz 
@@ -111,7 +112,7 @@ component t02_Word_ALU is
         f3      : in std_logic_vector(2 downto 0) ;
         alu_data_in0 : in  std_logic_vector(31 downto 0);
         alu_data_in1 : in  std_logic_vector(31 downto 0);
-        alu_flag : out std_logic_vector(2 downto 0) ; -- MSB overflow zero LSB
+        alu_flag : out std_logic_vector(2 downto 0) ; -- MSB overflow | zero LSB  | brnch active 
         
         alu_data_out : out std_logic_vector(31 downto 0)
     );
@@ -187,7 +188,7 @@ signal S_reg_source1_out : std_logic_vector(RV_lvlinbit-1 downto 0) ;
 signal S_reg_write_data : std_logic_vector(RV_lvlinbit-1 downto 0);
 
 signal S_alu_data_in1 :  std_logic_vector(RV_lvlinbit-1 downto 0);
-signal S_alu_flag : std_logic_vector(2 downto 0) ; -- MSB overflow zero LSB
+signal S_alu_flag : std_logic_vector(2 downto 0) ; -- MSB overflow | zero LSB  | brnch active 
 signal S_alu_data_out : std_logic_vector(RV_lvlinbit-1 downto 0);
 
 signal S_dm_adress: std_logic_vector(dm_depth-1 downto 0) ;
@@ -209,6 +210,7 @@ PC : t02_Word_PC
 
 ALU_adress : t02_Word_ALUbrnch 
     port map(
+        alu_jump_correction => S_alu_flag(0) ,-- MSB overflow | zero LSB  | <brnch active> 
         cntrl_brnch_enable => S_cntrl_brnch_enable ,
         prev_PC => S_current_pc ,
         -- next_PC => S_next_PC  : --jumpun çýkýþýna yaz 
@@ -254,7 +256,7 @@ ALU : t02_Word_ALU
         f3      => S_f3 ,
         alu_data_in0 =>  S_reg_source0_out ,
         alu_data_in1 => S_alu_data_in1 ,
-        alu_flag => S_alu_flag , 
+        alu_flag => S_alu_flag , -- MSB overflow | zero LSB  | brnch active 
         alu_data_out => S_alu_data_out
     );
 

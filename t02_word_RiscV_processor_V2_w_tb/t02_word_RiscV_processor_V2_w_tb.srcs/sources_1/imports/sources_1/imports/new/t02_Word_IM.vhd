@@ -156,33 +156,150 @@ signal Instruction_rom: rom := (
 ---------------------------------------
 -- B_type
 
---addi x1, x0, 10    
---add x2, x0, 5    
---blt_equal:   --(imm11)0_(imm10:5)000 000_(r1)0 0000 (r0)0000 0_(f3)010 _(imm4:1)1110 (imm11)0_000 0011
---addi x2, x2, 1    
---addi x3, x0, 3    
---addi x4, x0 , 7 
---blt x1, x2, blt_equal
---addi x1, x1, 1 
+--addi x1, x0, 9    
+--addi x2, x0, 11  
+--addi x5, x0, 0 
+--beq x1, x2, beq_equal
+--addi x5, x5, 1
+--addi x5, x5, -1
+--blt x1, x2 , blt_equal_a
+--bge x1 , x2 , bge_equal_a
+--blt_equal_b:
+--blt_equal_a:
+--addi x1, x1, 4  
+--addi x5, x5, 1
+--bge x1, x2 , bge_equal_b
+--bge_equal_b:
+--bge_equal_a:
+--addi x2, x2, 3  
+--addi x5, x5, 1
+--blt x1, x2 , blt_equal_b
+--beq x1, x2, beq_equal_b
+--addi x5, x5, 2 
+--beq_equal_a:
+--beq_equal_b:
+--beq_equal:
+--addi x5, x5, -1
+--addi x3, x1, 10   
+--addi x4, x2, 10 
 
 
 
-X"00a00093" ,  
-X"00500113" , 
-X"00110113" , 
-X"00300193" ,        
-X"00700213" , 
-X"fe20cfe3" , --(imm12)1_(imm10:5)111 111_(r1)0 0100 (r0)000 1_(f3)100 _(imm4:1)1111 (imm11)1_110 0011        
-X"00108093" , --imm : 1 1 111 111 1111 0
-X"00000000" , 
-X"00000000" ,        
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000"  
+
+
+
+--(imm11)0_(imm10:5)000 000_(r1)0 0000 (r0)0000 0_(f3)010 _(imm4:1)1110 (imm11)0_000 0011
+--addi x1, x0, 8    
+--addi x2, x0, 9 
+--addi x11, x0, 1    
+--addi x12, x0, 2 
+
+--beq x1, x2, beq_equal
+--addi x5, x0, 1 
+--addi x6, x0, 1 
+
+--blt_equal_a:
+--add x1, x1,  x11 
+--addi x5, x5, 1  
+--sub x2, x2,  x12 
+
+--bge_equal_a:
+--add x2, x2,  x12 
+--addi x6, x6, 1 
+ 
+
+
+--blt x1 ,x2, blt_equal_a
+--addi x5, x5, -1 
+
+--beq x1, x2, bge_equal_a
+--addi x6, x6, -1 
+
+--beq_equal:
+--addi x3, x1, 10   
+--addi x4, x2, 10 
+
+--00a00093
+--00900113
+--00300593
+--00400613
+--02208a63
+--00100293
+--00100313
+--00128293
+--00b080b3
+--fe20cce3
+--40b080b3
+--fff28293
+--00130313
+--00c10133
+--fe2082e3
+--40c10133
+--fff30313
+--00a08193
+--00a10213
+ -- dummy (imm12)0_(imm10:5)000 0000_(r1)0 0010 (r0)0000 1_(f3)100 _(imm4:1)1000 (imm11)0_(opcode)110 0011  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+x"0080_0093" ,  
+x"0090_0113" ,  
+x"0010_0593" ,  
+x"0020_0613" ,  
+x"0220_8863" ,  
+x"0010_0293" ,  
+x"0010_0313" ,  
+x"00b0_80b3" ,  
+x"0012_8293" ,  
+x"40c1_0133" ,  
+x"00c1_0133" ,  
+x"0013_0313" ,  
+x"fe20_c6e3" ,  
+x"fff2_8293" ,  
+x"fe20_88e3" ,  
+x"fff3_0313" ,  
+x"00a0_8193" ,  
+x"00a1_0213" ,  
+x"0000_0000" ,  
+x"0000_0000" 
+
+ 
+----
+--addi x1, x0, 9    
+--addi x2, x0, 11 
+--beq_equal:
+--addi x1, x1, 2    
+--addi x2, x2, 1 
+--beq x1, x2, beq_equal
+--addi x3, x1, 10   
+--addi x4, x2, 10 
+--x"00900093" ,  
+--x"00b00113" ,  
+--x"00208093" ,  
+--x"00110113" ,  
+--x"fe209ce3" ,  
+--x"00a08193" ,  
+--x"00a10213" ,  
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" 
+
+
 --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011
 );
 
@@ -191,7 +308,7 @@ signal Instruction_im_in : std_logic_vector( RV_lvlinbit-1 downto 0);
 begin
 Instruction_im_in <= Instruction_rom( to_integer(unsigned(current_pc)) );
 
-S_opcode <= Instruction_im_in( 6 downto 0 );
+--- S_opcode <= Instruction_im_in( 6 downto 0 ); learn why S_opcode wont update in  b type operation
 
 
 
@@ -204,26 +321,27 @@ process (RST , current_pc ,Instruction_im_in) begin
         rs0     <=  (others=>'0') ;
         rs1     <=  (others=>'0') ;
         f7      <=  (others=>'0') ;
-    elsif (S_opcode = R_typeop) then
+    elsif (Instruction_im_in( 6 downto 0 ) = R_typeop) then
         opcode  <= Instruction_im_in( 6 downto 0 )   ;
         rd      <= Instruction_im_in( 11 downto 7 )  ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
         f7      <= Instruction_im_in( 31 downto 25 ) ;
-    elsif( S_opcode = I_typeop_reg  or S_opcode = I_typeop_dm  )then
+    elsif( Instruction_im_in( 6 downto 0 ) = I_typeop_reg  or Instruction_im_in( 6 downto 0 ) = I_typeop_dm  )then
         opcode  <= Instruction_im_in( 6 downto 0 )  ;
         rd      <= Instruction_im_in( 11 downto 7 ) ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
-    elsif(S_opcode = B_typeop)then -- signed  --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011
+    elsif(Instruction_im_in( 6 downto 0 ) = B_typeop)then -- signed  --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011 
+        opcode  <= Instruction_im_in( 6 downto 0 )  ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
         imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
---    elsif(S_opcode = S_typeop)then
+--    elsif(Instruction_im_in( 6 downto 0 ) = S_typeop)then
 --        opcode  <= Instruction_im_in( 6 downto 0 ) ;
 --        f3      <= Instruction_im_in( 14 downto 12 ) ;
 --        rs0     <= Instruction_im_in( 19 downto 15 ) ;
@@ -236,14 +354,14 @@ process (RST , current_pc ,Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
         f7      <= Instruction_im_in( 31 downto 25 ) ;        
-        imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
+        imm     <= X"0ff";--Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
     end if;
         
 end process ;
 
 
 end bhvrl_IM;
-Instruction_im_in = 1 111 1110 0010 0000 1100 1111 1110 0011;
-    imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ; 
+--Instruction_im_in = 1 111 1110 0010 0000 1100 1111 1110 0011;
+  --  imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ; 
 
- 1 1 111 111 1111
+ --1 1 111 111 1111

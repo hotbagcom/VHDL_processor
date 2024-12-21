@@ -104,6 +104,7 @@ end  process ;
 
 --register write process
 --REG_WRITE  
+ToDo  reg write does not work as wished in falling_edge
 process ( CLK ) begin -- , reg_dest , reg_write_data , reg_write_enable
     
     if(falling_edge(CLK) and reg_write_enable = '1' )then

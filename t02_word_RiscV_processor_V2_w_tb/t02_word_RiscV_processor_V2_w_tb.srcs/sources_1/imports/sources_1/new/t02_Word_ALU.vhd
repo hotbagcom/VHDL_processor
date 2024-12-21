@@ -45,7 +45,7 @@ entity t02_Word_ALU is
         alu_data_in0 : in  std_logic_vector(RV_lvlinbit-1 downto 0) ;
         alu_data_in1 : in  std_logic_vector(RV_lvlinbit-1 downto 0) ;
         
-        alu_flag : out std_logic_vector(2 downto 0) := (others=>'0') ; -- MSB overflow zero LSB
+        alu_flag : out std_logic_vector(2 downto 0) := (others=>'0') ; -- MSB overflow | zero LSB  | brnch active 
         
         alu_data_out : out std_logic_vector(RV_lvlinbit-1 downto 0) := (others=>'0') 
     );
@@ -60,6 +60,7 @@ begin
 process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
     
     if (opcode = R_typeop) then
+        alu_flag(0) <= '0';
         case ( f3 ) is
             when "000" => --add sub
                 if (f7(5) = '0') then 
@@ -100,6 +101,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         
         
     elsif (opcode = I_typeop_reg) then --to do regi iile imidiate_reg birleþtirilebilir mi ? 
+        alu_flag(0) <= '0';
         case ( f3 ) is
             when "000" => --addi
                 alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
@@ -143,6 +145,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         
         
     elsif (opcode = I_typeop_dm) then 
+        alu_flag(0) <= '0';
         case ( f3 ) is
             when "000" =>--lb
                 alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) ); -- reg0 + / imm |reg1 /
@@ -157,44 +160,47 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case ;
-    elsif (opcode = B_typeop) then 
+    elsif (opcode = B_typeop) then --alu_flag-- MSB overflow | zero LSB  | <brnch active> 
+        alu_data_out <=  (others => others_case) ;
         case ( f3 ) is
             when "000" =>--beq
                 if ( alu_data_in0 = alu_data_in1 )then
-                alu_data_out <= X"00000001"; 
+                alu_flag(0) <= '1'; 
+                else 
+                alu_flag(0) <= '0'; 
                 end if ;
             when "001" =>--bne
                 if ( alu_data_in0 /= alu_data_in1 )then
-                alu_data_out <= X"00000001" ;
+                alu_flag(0) <= '1'; 
                 else 
-                alu_data_out <= X"00000000" ;
+                alu_flag(0) <= '0'; 
                 end if ; 
             when "100" =>--blt
                 if ( signed( alu_data_in0) < signed( alu_data_in1)  )then
-                alu_data_out <= X"00000001" ;
+                alu_flag(0) <= '1'; 
                 else 
-                alu_data_out <= X"00000000" ;
-                end if ; 
+                alu_flag(0) <= '0'; 
+                end if ;
             when "101" =>--bge
                 if ( signed( alu_data_in0) > signed( alu_data_in1)  )then
-                alu_data_out <= X"00000001" ;
+                alu_flag(0) <= '1'; 
                 else 
-                alu_data_out <= X"00000000" ;
-                end if ; 
+                alu_flag(0) <= '0'; 
+                end if ;
             when "110" =>--bltu
                 if ( unsigned( alu_data_in0) < unsigned( alu_data_in1)  )then
-                alu_data_out <= X"00000001" ;
+                alu_flag(0) <= '1'; 
                 else 
-                alu_data_out <= X"00000000" ;
-                end if ; 
+                alu_flag(0) <= '0'; 
+                end if ;
             when "111" =>--bgeu
                 if ( unsigned( alu_data_in0) > unsigned( alu_data_in1)  )then
-                alu_data_out <= X"00000001" ;
+                alu_flag(0) <= '1'; 
                 else 
-                alu_data_out <= X"00000000" ;
-                end if ; 
+                alu_flag(0) <= '0'; 
+                end if ;
             when others =>
-                alu_data_out <=  (others => others_case) ;
+                alu_flag(0) <= '0'; 
         end case ;
 
 --    else if (opcode = S_typeop) then 
