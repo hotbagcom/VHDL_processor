@@ -93,29 +93,25 @@ X"00000000"
 
 begin
 
+--register write process
+--REG_WRITE  
+--ToDo  reg write does not work as wished in falling_edge
 --register read process
 --REG_READ
-process ( reg_source0_adrs , reg_source1_adrs ) begin 
+
+--sadece rise de çalýþtýrmsyý dene
+
+process ( CLK , reg_source0_adrs , reg_source1_adrs ) begin 
     reg_source0_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source0_adrs )) ) );
     reg_source1_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source1_adrs )) ) );
 end  process ;
 
-
-
---register write process
---REG_WRITE  
-ToDo  reg write does not work as wished in falling_edge
-process ( CLK ) begin -- , reg_dest , reg_write_data , reg_write_enable
-    
-    if(falling_edge(CLK) and reg_write_enable = '1' )then
-        RAM_reg( to_integer(unsigned(reg_dest)) ) <= to_bitvector(reg_write_data);
+process ( CLK  ) begin 
+    if(falling_edge(CLK) )then
+        if ( reg_write_enable = '1' and reg_dest /= X"00000000" )then
+            RAM_reg( to_integer(unsigned(reg_dest)) ) <= to_bitvector(reg_write_data);
+        end if;
     end if;
 end  process ;
-
-
-
-
-
-
 
 end bhvrl_Reg;

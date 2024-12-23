@@ -52,6 +52,8 @@ constant RV_im_rom_width_inbit : integer :=  RV_lvlinbit ;
 constant dm_length : integer :=  RV_lvl ;
 constant dm_depth : integer :=  RV_lvlinbit ;
 
+constant NOP : std_logic_vector( RV_lvlinbit-1 downto 0 ) := X"0000_0000";
+
 end package_top;
 
 --package body  package_top is

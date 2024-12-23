@@ -69,7 +69,7 @@ wait for clk_hlf_periode;
 clk_tb <= not clk_tb;--1
 wait for clk_hlf_periode;
 rst_tb <='0';
-    for i in 0 to 51 loop
+    for i in 0 to 130 loop
         clk_tb <= not clk_tb;
         wait for clk_hlf_periode;
     end loop;

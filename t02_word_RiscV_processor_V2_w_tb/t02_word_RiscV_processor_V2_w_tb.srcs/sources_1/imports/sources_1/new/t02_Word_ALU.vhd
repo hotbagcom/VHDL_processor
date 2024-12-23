@@ -128,16 +128,16 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when "101" =>--srli srai
                 if (f7(5) = '0') then 
                     alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );
-                    --to do fix sra
-                else
-                    if (alu_data_in0(RV_lvlinbit -1 ) = '0') then
-                        alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );
-                    elsif (alu_data_in0(RV_lvlinbit -1 ) = '1') then
+                    to do fix sra
+--                else
+--                    if (alu_data_in0(RV_lvlinbit -1 ) = '0') then
+--                        alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );
+--                    elsif (alu_data_in0(RV_lvlinbit -1 ) = '1') then
                     
-                        new_limit:= std_logic_vector( 31 - unsigned( alu_data_in1 ) );
-                        alu_data_out <=  one( 31 downto to_integer(unsigned(new_limit) ) ) &  alu_data_in0( 30 downto to_integer(unsigned(alu_data_in1)) );
+--                        new_limit:= std_logic_vector( 31 - unsigned( alu_data_in1 ) );
+--                        alu_data_out <=  one( 31 downto to_integer(unsigned(new_limit) ) ) &  alu_data_in0( 30 downto to_integer(unsigned(alu_data_in1)) );
                         
-                    end if ;
+--                    end if ;
                 end if ;
             when others =>
                 alu_data_out <=  (others => others_case) ;
