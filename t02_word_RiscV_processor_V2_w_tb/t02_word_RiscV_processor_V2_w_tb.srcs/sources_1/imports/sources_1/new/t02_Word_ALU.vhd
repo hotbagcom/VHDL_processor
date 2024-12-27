@@ -128,7 +128,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when "101" =>--srli srai
                 if (f7(5) = '0') then 
                     alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );
-                    to do fix sra
+       --             to do fix sra
 --                else
 --                    if (alu_data_in0(RV_lvlinbit -1 ) = '0') then
 --                        alu_data_out <= std_logic_vector( unsigned( alu_data_in0) srl to_integer(unsigned( alu_data_in1 )) );

@@ -78,7 +78,7 @@ X"00000000"
 
 begin
 
-process (dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_data_in) begin 
+process ( RST , dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress , dm_data_in) begin 
 
     if (RST ='1') then 
         dm_data_out <= (others=>'0');

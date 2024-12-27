@@ -40,8 +40,8 @@ entity t02_Word_immGen is
 end t02_Word_immGen;
 
 architecture bhvrl_immGen of t02_Word_immGen is
-signal zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
-signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
+constant zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
+constant one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
 begin
 --signed
 process ( imm , opcode ) begin

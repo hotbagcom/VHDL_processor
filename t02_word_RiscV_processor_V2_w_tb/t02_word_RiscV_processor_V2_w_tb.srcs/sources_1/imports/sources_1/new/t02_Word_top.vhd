@@ -191,8 +191,8 @@ signal S_alu_data_in1 :  std_logic_vector(RV_lvlinbit-1 downto 0);
 signal S_alu_flag : std_logic_vector(2 downto 0) ; -- MSB overflow | zero LSB  | brnch active 
 signal S_alu_data_out : std_logic_vector(RV_lvlinbit-1 downto 0);
 
-signal S_dm_adress: std_logic_vector(dm_depth-1 downto 0) ;
-signal S_dm_data_in: std_logic_vector(dm_depth-1 downto 0) ;
+--signal S_dm_adress: std_logic_vector(dm_depth-1 downto 0) ;
+--signal S_dm_data_in: std_logic_vector(dm_depth-1 downto 0) ;
 signal S_dm_data_out: std_logic_vector(dm_depth-1 downto 0) ;
         
 
