@@ -41,6 +41,7 @@ entity t02_Word_Reg is
         CLK : in std_logic ;
         RST : in std_logic ;  --active high mi active lov mu ? 
         current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
+        add_pc : in std_logic_vector(3 downto 0)  ;
         opcode  : in std_logic_vector(6 downto 0) ;
         reg_write_enable : in std_logic ;
         reg_source0_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
@@ -105,18 +106,22 @@ begin
 
 process ( CLK , reg_source0_adrs , reg_source1_adrs ) begin 
 
-    if (opcode = auipc_typeop) then 
+    if (opcode = auipc_typeop) or ( opcode = J_typeop_l) then 
         reg_source0_out <= current_pc;
-    else
+    else --elsif ( opcode = J_typeop_lr) then
         reg_source0_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source0_adrs )) ) );
     end if;
     reg_source1_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source1_adrs )) ) );
 end  process ;
 
 process ( CLK  ) begin 
-    if(rising_edge(CLK) )then
+    if(rising_edge(CLK) )then 
         if ( reg_write_enable = '1' and reg_dest /= X"00000000" )then
+            if ( opcode = J_typeop_l) or ( opcode = J_typeop_lr) then
+            RAM_reg( to_integer(unsigned(reg_dest)) ) <= to_bitvector(std_logic_vector(unsigned( current_pc) + unsigned( add_pc)) );
+            else
             RAM_reg( to_integer(unsigned(reg_dest)) ) <= to_bitvector(reg_write_data);
+            end if;
         end if;
     end if;
 end  process ;

@@ -51,6 +51,7 @@ component t02_Word_PC is
 end component ;
 component  t02_Word_ALUbrnch is
     Port(
+        add_pc : in std_logic_vector(3 downto 0) ;
         alu_jump_correction : in std_logic;
         cntrl_brnch_enable : in std_logic;
         prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) ; 
@@ -87,6 +88,7 @@ component t02_Word_Reg is
         CLK : in std_logic ; 
         RST : in std_logic ;  --active high mi active lov mu ? 
         current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
+        add_pc :in std_logic_vector(3 downto 0)  ;
         opcode  : in std_logic_vector(6 downto 0) ;
         reg_write_enable : in std_logic ;
         reg_source0_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
@@ -146,10 +148,12 @@ component t02_Word_cntrl is
         cntrl_dm_read_enable : out std_logic := '0';
         cntrl_dm_bitlen :out std_logic_vector(2 downto 0):= "010" ;
         cntrl_brnch_enable  : out std_logic := '0';
+        cntrl_jump_enable  : out std_logic := '0';
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable : out std_logic := '0';
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
-        cnrtl_reg_write_srce_slkt : out std_logic := '0'
+        cnrtl_reg_write_srce_slkt : out std_logic := '0' ;
+        add_pc : out std_logic_vector(3 downto 0) := X"1" 
         );
 end component ;
 component t02_Word_mux2 is
@@ -167,6 +171,7 @@ signal S_RST : std_logic ;
 signal S_CLK : std_logic ; 
 signal S_next_PC : std_logic_vector(RV_lvlinbit-1 downto 0) ; 
 signal S_current_pc : std_logic_vector(RV_lvlinbit-1 downto 0) ;
+signal S_add_pc     : std_logic_vector(3 downto 0); 
 
 signal S_opcode  : std_logic_vector(6 downto 0) ;
 signal S_f7      : std_logic_vector(6 downto 0) ;
@@ -181,6 +186,7 @@ signal S_cntrl_dm_write_enable: std_logic ;
 signal S_cntrl_dm_read_enable : std_logic ;
 signal S_cntrl_dm_bitlen : std_logic_vector(2 downto 0);
 signal S_cntrl_brnch_enable : std_logic ;
+signal S_cntrl_jump_enable : std_logic ;
 --signal S_cntrl_alu_opcode : std_logic ;
 signal S_cnrtl_reg_write_enable : std_logic ;
 signal S_cnrtl_alu_data_srce_slkt : std_logic ;
@@ -216,12 +222,13 @@ PC : t02_Word_PC
 
 ALU_adress : t02_Word_ALUbrnch 
     port map(
+        add_pc => S_add_pc ,
         alu_jump_correction => S_alu_flag(0) ,-- MSB overflow | zero LSB  | <brnch active> 
         cntrl_brnch_enable => S_cntrl_brnch_enable ,
         prev_PC => S_current_pc ,
         -- next_PC => S_next_PC  : --jumpun çýkýþýna yaz 
         brnch_imm => S_imm_32 ,
-        alubrnch_out => S_next_PC -- S_alubrnch_out
+        alubrnch_out =>  S_alubrnch_out
     );
 IM : t02_Word_IM
     port map( 
@@ -242,6 +249,7 @@ Reg : t02_Word_Reg
         CLK => S_CLK ,
         RST => S_RST , --active high mi active lov mu ? 
         current_pc => S_current_pc , 
+        add_pc => S_add_pc ,
         opcode  => S_opcode ,
         reg_write_enable => S_cnrtl_reg_write_enable ,
         reg_source0_adrs => S_rs0 ,
@@ -292,10 +300,12 @@ cntrl : t02_Word_cntrl
         cntrl_dm_read_enable => S_cntrl_dm_read_enable ,
         cntrl_dm_bitlen => S_cntrl_dm_bitlen, ---curently un connected to DM module 
         cntrl_brnch_enable => S_cntrl_brnch_enable ,
+        cntrl_jump_enable => S_cntrl_jump_enable ,
         --cntrl_alu_opcode : out std_logic := '0' ;
         cnrtl_reg_write_enable => S_cnrtl_reg_write_enable ,
         cnrtl_alu_data_srce_slkt => S_cnrtl_alu_data_srce_slkt ,
-        cnrtl_reg_write_srce_slkt => S_cnrtl_reg_write_srce_slkt
+        cnrtl_reg_write_srce_slkt => S_cnrtl_reg_write_srce_slkt ,
+        add_pc => S_add_pc 
         );
 
 mux2_preDM : t02_Word_mux2 
@@ -312,7 +322,13 @@ mux2_afterDM : t02_Word_mux2
         choice_1 => S_alu_data_out ,
         output => S_reg_write_data 
         );
-
+mux2_jump : t02_Word_mux2 
+    port map(
+        sellection => S_cntrl_jump_enable ,
+        choice_0 =>  S_alubrnch_out ,
+        choice_1 => S_alu_data_out ,
+        output => S_next_PC  
+        );
 
 
 

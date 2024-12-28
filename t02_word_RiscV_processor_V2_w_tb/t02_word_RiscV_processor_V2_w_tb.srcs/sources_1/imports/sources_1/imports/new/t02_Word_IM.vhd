@@ -347,17 +347,58 @@ signal Instruction_rom: rom := (
 --lui x11, 0x12345 
 --add x12 , x10 ,x11 
 
-x"0000_0000" ,  
-x"0ff0_0513" ,  
-x"00a0_0593" ,  
-x"0800_0613" ,  
-x"0001_0517" ,  
-x"1234_55b7" ,  
-x"00b5_0633" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0ff0_0513" ,  
+--x"00a0_0593" ,  
+--x"0800_0613" ,  
+--x"0001_0517" ,  
+--x"1234_55b7" ,  
+--x"00b5_0633" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000"  
+----------------------
+--jal x5 , 2
+--addi x10 , x0,   255
+--addi x11 , x0,   5
+--jalr x1  , x11 , 3
+--addi x12 , x0,   128
+--addi x12 , x0,   128
+--addi x12 , x0,   128
+--addi x12 , x0,   128
+--addi x10 , x0,   63
+--addi x10 , x0,   255
+--002002ef
+--0ff00513
+--00500593
+--003580e7
+--08000613
+--08000613
+--08000613
+--08000613
+--03f00513
+--0ff00513 
+x"0000_0000" , 
+x"002002ef" ,  
+x"0ff00513" ,  
+x"00500593" ,  
+x"003580e7" ,  
+x"08000613" ,  
+x"08000613" ,  
+x"08000613" ,  
+x"08000613" , 
+x"03f00513" ,  
+x"0ff00513" ,  
 x"0000_0000" ,  
 x"0000_0000" ,  
 x"0000_0000" ,  
@@ -369,7 +410,10 @@ x"0000_0000" ,
 x"0000_0000"  
 
 
-----------------------
+
+
+
+
 
 
 
@@ -426,9 +470,7 @@ process ( current_pc ,Instruction_im_in) begin
         imm20   <= Instruction_im_in( 31 downto 12 );
     elsif(Instruction_im_in( 6 downto 0 ) = J_typeop_l)then
         opcode  <= Instruction_im_in( 6 downto 0 ) ;
-        f3      <= Instruction_im_in( 14 downto 12 ) ;
-        rs0     <= Instruction_im_in( 19 downto 15 ) ;
-        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        rd      <= Instruction_im_in( 11 downto 7 );
         imm20   <= Instruction_im_in( 31 downto 12 ) ;   -- f7+rs2+rs1+f3   
     elsif(Instruction_im_in( 6 downto 0 ) = J_typeop_lr) then
         opcode  <= Instruction_im_in( 6 downto 0 ) ;

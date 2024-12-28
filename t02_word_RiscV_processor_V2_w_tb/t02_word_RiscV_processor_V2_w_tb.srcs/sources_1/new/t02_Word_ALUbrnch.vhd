@@ -33,6 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity t02_Word_ALUbrnch is
     Port(
+        add_pc :in std_logic_vector(3 downto 0) := X"1" ;
         alu_jump_correction : in std_logic;
         cntrl_brnch_enable : in std_logic;
         prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) ; 
@@ -44,7 +45,6 @@ end t02_Word_ALUbrnch;
 
 architecture bhvrl_ALUbrnch of t02_Word_ALUbrnch is
 
-signal add_pc : std_logic_vector(3 downto 0) := X"1" ;
 -- for word processor : X"1" -- for halfword processor : X"2" -- for bit processor : X"4" -
 --brnch_imm((31 downto 2))   --brnch_imm((31 downto 1))       --brnch_imm((31 downto 0))
 begin
