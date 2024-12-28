@@ -47,7 +47,8 @@ entity t02_Word_IM is
         rs0     : out std_logic_vector(4 downto 0) := "00000";
         rs1     : out std_logic_vector(4 downto 0) := "00000";
         rd      : out std_logic_vector(4 downto 0) := "00000";
-        imm     : out std_logic_vector(11 downto 0) := "000000000000" 
+        imm12     : out std_logic_vector(11 downto 0) := (others=> '0'); 
+        imm20     : out std_logic_vector(19 downto 0) := (others=> '0') 
         
         ); 
 end t02_Word_IM;
@@ -314,28 +315,61 @@ signal Instruction_rom: rom := (
 --sb x2, 6(x0)
 --sb x3, 7(x0)
 --sb x1, 6(x0)
--- dummy (imm11:5)0000 0000_(r1)0 0010 (r0)0000 1_(f3)100 _(imm4:0)1000 0_(opcode)010 0011   
-x"0ff0_0093" ,  
-x"0010_2023" ,  
-x"00a0_0113" ,  
-x"0800_0193" ,  
-x"0030_1123" ,  
-x"0030_1023" ,  
-x"0020_10a3" ,  
-x"0020_0223" ,  
-x"0030_02a3" ,  
-x"0020_0323" ,  
-x"0030_03a3" ,  
-x"0010_0323" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000" ,  
-x"0000_0000"   
+---- dummy (imm11:5)0000 0000_(r1)0 0010 (r0)0000 1_(f3)100 _(imm4:0)1000 0_(opcode)010 0011   
+--x"0ff0_0093" ,  
+--x"0010_2023" ,  
+--x"00a0_0113" ,  
+--x"0800_0193" ,  
+--x"0030_1123" ,  
+--x"0030_1023" ,  
+--x"0020_10a3" ,  
+--x"0020_0223" ,  
+--x"0030_02a3" ,  
+--x"0020_0323" ,  
+--x"0030_03a3" ,  
+--x"0010_0323" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000"   
 
+----------------------
+
+
+--addi x10 , x0,   255
+--addi x11 , x0,   10
+--addi x12 , x0,   128
+--auipc x10, 0x00010
+--lui x11, 0x12345 
+--add x12 , x10 ,x11 
+
+--x"0000_0000" ,  
+--x"0ff0_0513" ,  
+--x"00a0_0593" ,  
+--x"0800_0613" ,  
+--x"0001_0517" ,  
+--x"1234_55b7" ,  
+--x"00b5_0633" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000" ,  
+--x"0000_0000"  
+
+
+----------------------
 
 
 
@@ -372,32 +406,32 @@ process ( current_pc ,Instruction_im_in) begin
         rd      <= Instruction_im_in( 11 downto 7 ) ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
-        imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7+rs2
+        imm12     <= Instruction_im_in( 31 downto 20 ) ; -- f7+rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
     elsif(Instruction_im_in( 6 downto 0 ) = B_typeop)then -- signed  --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011 
         opcode  <= Instruction_im_in( 6 downto 0 )  ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
-        imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
+        imm12     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
     elsif(Instruction_im_in( 6 downto 0 ) = S_typeop)then
         opcode  <= Instruction_im_in( 6 downto 0 ) ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
-        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
-        
-        
+        imm12     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
+    elsif(Instruction_im_in( 6 downto 0 ) = lui_typeop) or (Instruction_im_in( 6 downto 0 ) = auipc_typeop)then -- rd(31:12) <- imm20  --  rd<-pc+imm20
+        opcode  <= Instruction_im_in( 6 downto 0 ) ;
+        rd      <= Instruction_im_in( 11 downto 7 );
+        imm20     <= Instruction_im_in( 31 downto 12 );
 --    elsif(Instruction_im_in( 6 downto 0 ) = J_typeop)then
 --        opcode  <= Instruction_im_in( 6 downto 0 ) ;
 --        f3      <= Instruction_im_in( 14 downto 12 ) ;
 --        rs0     <= Instruction_im_in( 19 downto 15 ) ;
 --        rs1     <= Instruction_im_in( 24 downto 20 ) ;
---        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
---constant J_typeop_l     : std_logic_vector(6 downto 0) := "1101111" ;       -- rd <- pc+1 , pc<-pc+imm
---constant J_typeop_lr    : std_logic_vector(6 downto 0) := "1100111" ;       -- rd <- pc+1 , pc<-r0+imm 
---constant lui_typeop     : std_logic_vector(6 downto 0) := "0110111" ;       -- rd(31:12) <- imm
---constant aupic_typeop   : std_logic_vector(6 downto 0) := "0010111" ;       -- rd<-pc+imm 
+--        imm12     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
+--constant J_typeop_l     : std_logic_vector(6 downto 0) := "1101111" ;       -- rd <- pc+1 , pc<-pc+imm12
+--constant J_typeop_lr    : std_logic_vector(6 downto 0) := "1100111" ;       -- rd <- pc+1 , pc<-r0+imm12 
 
     else
         opcode  <= Instruction_im_in( 6 downto 0 )   ;
@@ -406,7 +440,8 @@ process ( current_pc ,Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
         f7      <= Instruction_im_in( 31 downto 25 ) ;        
-        imm     <= X"0ff";--Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
+        imm12     <= X"0ff";--Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
+        imm20     <= X"00fff";
     end if;
         
 end process ;
@@ -414,6 +449,6 @@ end process ;
 
 end bhvrl_IM;
 --Instruction_im_in = 1 111 1110 0010 0000 1100 1111 1110 0011;
-  --  imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ; 
+  --  imm12     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ; 
 
  --1 1 111 111 1111

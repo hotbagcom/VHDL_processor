@@ -39,6 +39,7 @@ entity t02_Word_ALU is
     );
     Port(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
+        current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
         opcode  : in std_logic_vector(6 downto 0) ;
         f7      : in std_logic_vector(6 downto 0) ;
         f3      : in std_logic_vector(2 downto 0) ;
@@ -53,7 +54,7 @@ end t02_Word_ALU;
 
 architecture bhvrl_ALU of t02_Word_ALU is
 
-signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
+--signal one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
 shared variable new_limit  :std_logic_vector(31 downto 0) ;
 begin
 
@@ -148,7 +149,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         alu_flag(0) <= '0'; -- (activate branch )pasif
         case ( f3 ) is
             when "000" =>--lb
-                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) ); -- reg0 + / imm |reg1 /
+                alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) ); -- reg0 + / imm12 |reg1 /
             when "001" =>--lh
                 alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
             when "010" =>--lw
@@ -206,7 +207,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         alu_flag(0) <= '0';-- (activate branch )pasif
         case ( f3 ) is
             when "000" =>--sb
-                alu_data_out <= std_logic_vector( unsigned( alu_data_in0) + unsigned( alu_data_in1 ) ); -- reg0 + / imm |reg1 /
+                alu_data_out <= std_logic_vector( unsigned( alu_data_in0) + unsigned( alu_data_in1 ) ); -- reg0 + / imm12 |reg1 /
             when "001" =>--sh
                 alu_data_out <= std_logic_vector( unsigned( alu_data_in0) + unsigned( alu_data_in1 ) );
             when "010" =>--sw
@@ -214,7 +215,10 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_data_out <=  (others => others_case) ;
         end case ;
-        
+    elsif (opcode = lui_typeop) then 
+        alu_data_out <= alu_data_in1;
+    elsif (opcode = auipc_typeop) then 
+        alu_data_out <= std_logic_vector( signed( current_pc) + signed( alu_data_in1 ) );
       
 --    else if (opcode = J_typeop) then 
 --        case ( f3 ) is

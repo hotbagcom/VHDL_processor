@@ -34,7 +34,8 @@ use work.package_top.all;
 entity t02_Word_immGen is
     Port (
     opcode  : in std_logic_vector(6 downto 0) ;
-    imm : in std_logic_vector(11 downto 0); 
+    imm12 : in std_logic_vector(11 downto 0); 
+    imm20 : in std_logic_vector(19 downto 0); 
     IMM_out : out std_logic_vector(RV_lvlinbit-1  downto 0) 
     );
 end t02_Word_immGen;
@@ -44,26 +45,30 @@ constant zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
 constant one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
 begin
 --signed
-process ( imm , opcode ) begin
+process ( imm12 , opcode ) begin
     if(opcode = I_typeop_reg or opcode = I_typeop_dm) then
-        if (imm(11)='1') then
-            IMM_out <=  one(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+        if (imm12(11)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 11) & imm12(10 downto 0) ; 
         else
-            IMM_out <=  zero(RV_lvlinbit-1 downto 11) & imm(10 downto 0) ; 
+            IMM_out <=  zero(RV_lvlinbit-1 downto 11) & imm12(10 downto 0) ; 
         end if ;
     elsif (opcode = B_typeop) then 
-        if (imm(11)='1') then
-            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm(10 downto 0) & '0' ; 
+        if (imm12(11)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm12(10 downto 0) & '0' ; 
         else
-            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm(10 downto 0) & '0' ; 
+            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm12(10 downto 0) & '0' ; 
         end if ;
     elsif (opcode = S_typeop) then 
-        if (imm(11)='1') then
-            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm ; 
+        if (imm12(11)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm12 ; 
         else
-            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm ; 
+            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm12 ; 
         end if ;
+    elsif (opcode = lui_typeop) then 
+            IMM_out <=  imm20 & zero(11 downto 0) ; 
     
+    elsif (opcode = auipc_typeop) then 
+            IMM_out <=  imm20 & zero(11 downto 0) ; 
     
     end if ;
     

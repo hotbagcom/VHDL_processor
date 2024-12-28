@@ -74,7 +74,8 @@ component t02_Word_IM is
         rs0     : out std_logic_vector(4 downto 0) := "00000";
         rs1     : out std_logic_vector(4 downto 0) := "00000";
         rd      : out std_logic_vector(4 downto 0) := "00000";
-        imm     : out std_logic_vector(11 downto 0) := "000000000000" 
+        imm12   : out std_logic_vector(11 downto 0) := (others=> '0'); 
+        imm20   : out std_logic_vector(19 downto 0) := (others=> '0') 
     );
 end component ;
 component t02_Word_Reg is
@@ -96,9 +97,10 @@ component t02_Word_Reg is
 end component ;
 component t02_Word_immGen is
     Port (
-    opcode  : in std_logic_vector(6 downto 0) ;
-    imm : in std_logic_vector(11 downto 0); 
-    IMM_out : out std_logic_vector(RV_lvlinbit-1  downto 0) 
+        opcode  : in std_logic_vector(6 downto 0) ;
+        imm12 : in std_logic_vector(11 downto 0); 
+        imm20 : in std_logic_vector(19 downto 0); 
+        IMM_out : out std_logic_vector(RV_lvlinbit-1  downto 0) 
     );
 end component ;
 component t02_Word_ALU is
@@ -107,6 +109,7 @@ component t02_Word_ALU is
     );
     Port(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
+        current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
         opcode  : in std_logic_vector(6 downto 0) ;
         f7      : in std_logic_vector(6 downto 0) ;
         f3      : in std_logic_vector(2 downto 0) ;
@@ -171,6 +174,7 @@ signal S_rs0     : std_logic_vector(4 downto 0) ;
 signal S_rs1     : std_logic_vector(4 downto 0) ;
 signal S_rd      : std_logic_vector(4 downto 0) ;
 signal S_imm_12     : std_logic_vector(11 downto 0); 
+signal S_imm_20     : std_logic_vector(19 downto 0); 
 
 signal S_cntrl_dm_write_enable: std_logic ;
 signal S_cntrl_dm_read_enable : std_logic ;
@@ -228,7 +232,9 @@ IM : t02_Word_IM
         rs0     => S_rs0 ,
         rs1     => S_rs1 ,
         rd      => S_rd ,
-        imm     => S_imm_12
+        imm12   => S_imm_12 ,
+        imm20   => S_imm_20
+         
     );
 Reg : t02_Word_Reg
     port map(
@@ -245,13 +251,15 @@ Reg : t02_Word_Reg
 immGen : t02_Word_immGen
     port map(
         opcode => S_opcode ,
-        imm => S_imm_12 ,
+        imm12 => S_imm_12 , 
+        imm20 => S_imm_20 , 
         IMM_out => S_imm_32 
     );
 
 ALU : t02_Word_ALU
     port map(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
+        current_pc => S_current_pc ,
         opcode  => S_opcode ,
         f7      => S_f7 ,
         f3      => S_f3 ,
