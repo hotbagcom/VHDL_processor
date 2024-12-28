@@ -124,6 +124,7 @@ component t02_Word_DM is
     );
     Port(
         RST : in std_logic := '0' ;  --active high mi active lov mu ? 
+        CLK : in std_logic ;
         dm_write_enable: in std_logic ;
         dm_read_enable : in std_logic ;
         cntrl_dm_bitlen :in std_logic_vector(2 downto 0);
@@ -263,6 +264,7 @@ ALU : t02_Word_ALU
 DM : t02_Word_DM
     port map(
         RST => S_RST , --active high mi active lov mu ? 
+        CLK => S_CLK ,
         dm_write_enable => S_cntrl_dm_write_enable ,
         dm_read_enable => S_cntrl_dm_read_enable ,
         cntrl_dm_bitlen => S_f3 , --S_cntrl_dm_bitlen,  dealy ocured so that f3 directly taken from IM  

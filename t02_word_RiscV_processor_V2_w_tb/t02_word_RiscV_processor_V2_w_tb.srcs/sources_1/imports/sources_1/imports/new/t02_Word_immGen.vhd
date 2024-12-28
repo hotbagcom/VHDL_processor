@@ -57,6 +57,14 @@ process ( imm , opcode ) begin
         else
             IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm(10 downto 0) & '0' ; 
         end if ;
+    elsif (opcode = S_typeop) then 
+        if (imm(11)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm ; 
+        else
+            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm ; 
+        end if ;
+    
+    
     end if ;
     
 end process;

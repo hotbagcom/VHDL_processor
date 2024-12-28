@@ -97,7 +97,17 @@ process ( opcode , f3 , f7 ) begin
         --cntrl_alu_opcode         <= '0' ;
         cnrtl_reg_write_enable   <= '0' ;
         cnrtl_alu_data_srce_slkt <= '0' ;--reg çýkýþ 
-        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr
+        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr 
+    elsif (opcode = S_typeop) then 
+        cntrl_dm_write_enable    <= '1' ;
+        cntrl_dm_read_enable     <= '0' ;
+        cntrl_dm_bitlen  <= f3 ;-- ||||00: 8 byte | 01: half word | 10: word |
+        cntrl_brnch_enable <= '0' ;
+        --cntrl_alu_opcode         <= '0' ;
+        cnrtl_reg_write_enable   <= '0' ;
+        cnrtl_alu_data_srce_slkt <= '1' ;--imm çýkýþ 
+        cnrtl_reg_write_srce_slkt<= '0' ;--dm out yazýlýr 
+        
     else 
         cntrl_dm_write_enable    <= '0' ;
         cntrl_dm_read_enable     <= '0' ;

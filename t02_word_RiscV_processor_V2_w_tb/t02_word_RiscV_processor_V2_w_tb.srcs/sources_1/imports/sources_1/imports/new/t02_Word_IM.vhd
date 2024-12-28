@@ -252,32 +252,29 @@ signal Instruction_rom: rom := (
 --addi x3, x1, 10   
 --addi x4, x2, 10 
 
-x"00800093" ,  
-x"00b00113" ,  
-x"00208093" ,
-x"00110113" ,  
-x"fe209ce3" ,  
-X"00a08193" , 
-x"00a10213" ,  
-NOP ,    
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" , 
-X"00000000" 
+--x"00800093" ,  
+--x"00b00113" ,  
+--x"00208093" ,
+--x"00110113" ,  
+--x"fe209ce3" ,  
+--X"00a08193" , 
+--x"00a10213" ,  
+--NOP ,    
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" , 
+--X"00000000" 
 
 
 --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011
-
-
-
 
 
 -- no update seem on falling edge
@@ -300,7 +297,49 @@ X"00000000"
 --x"00900013" ,  
 --x"00900013" , 
 --x"00900013" , 
---x"00900013"  
+--x"00900013" 
+
+
+
+------------------------------------------------------------------------------------
+--addi x1 , x0,   255
+--sw x1, 0(x0)   /*# Store x1 at the memory address in x2*/
+--addi x2 , x0,   10
+--addi x3 , x0,   128
+--sh x3, 2(x0)
+--sh x3, 0(x0) 
+--sh x2, 1(x0)
+--sb x2, 4(x0)
+--sb x3, 5(x0)
+--sb x2, 6(x0)
+--sb x3, 7(x0)
+--sb x1, 6(x0)
+-- dummy (imm11:5)0000 0000_(r1)0 0010 (r0)0000 1_(f3)100 _(imm4:0)1000 0_(opcode)010 0011   
+x"0ff0_0093" ,  
+x"0010_2023" ,  
+x"00a0_0113" ,  
+x"0800_0193" ,  
+x"0030_1123" ,  
+x"0030_1023" ,  
+x"0020_10a3" ,  
+x"0020_0223" ,  
+x"0030_02a3" ,  
+x"0020_0323" ,  
+x"0030_03a3" ,  
+x"0010_0323" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000"   
+
+
+
+
+
 );
 
 signal Instruction_im_in : std_logic_vector( RV_lvlinbit-1 downto 0);
@@ -313,7 +352,7 @@ Instruction_im_in <= Instruction_rom( to_integer(unsigned(current_pc)) );
 
 
 
-process (RST , current_pc ,Instruction_im_in) begin
+process ( current_pc ,Instruction_im_in) begin
     if (RST = '1' ) then
         opcode  <=  (others=>'0') ;
         rd      <=  (others=>'0') ;
@@ -333,7 +372,7 @@ process (RST , current_pc ,Instruction_im_in) begin
         rd      <= Instruction_im_in( 11 downto 7 ) ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
-        imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7 +rs2
+        imm     <= Instruction_im_in( 31 downto 20 ) ; -- f7+rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
     elsif(Instruction_im_in( 6 downto 0 ) = B_typeop)then -- signed  --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011 
         opcode  <= Instruction_im_in( 6 downto 0 )  ;
@@ -341,12 +380,25 @@ process (RST , current_pc ,Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
         imm     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
---    elsif(Instruction_im_in( 6 downto 0 ) = S_typeop)then
+    elsif(Instruction_im_in( 6 downto 0 ) = S_typeop)then
+        opcode  <= Instruction_im_in( 6 downto 0 ) ;
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
+        
+        
+--    elsif(Instruction_im_in( 6 downto 0 ) = J_typeop)then
 --        opcode  <= Instruction_im_in( 6 downto 0 ) ;
 --        f3      <= Instruction_im_in( 14 downto 12 ) ;
 --        rs0     <= Instruction_im_in( 19 downto 15 ) ;
 --        rs1     <= Instruction_im_in( 24 downto 20 ) ;
---        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 );
+--        imm     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
+--constant J_typeop_l     : std_logic_vector(6 downto 0) := "1101111" ;       -- rd <- pc+1 , pc<-pc+imm
+--constant J_typeop_lr    : std_logic_vector(6 downto 0) := "1100111" ;       -- rd <- pc+1 , pc<-r0+imm 
+--constant lui_typeop     : std_logic_vector(6 downto 0) := "0110111" ;       -- rd(31:12) <- imm
+--constant aupic_typeop   : std_logic_vector(6 downto 0) := "0010111" ;       -- rd<-pc+imm 
+
     else
         opcode  <= Instruction_im_in( 6 downto 0 )   ;
         rd      <= Instruction_im_in( 11 downto 7 )  ;

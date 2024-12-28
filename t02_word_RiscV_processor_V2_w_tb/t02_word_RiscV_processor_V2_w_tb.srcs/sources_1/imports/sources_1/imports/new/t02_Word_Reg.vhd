@@ -107,7 +107,7 @@ process ( CLK , reg_source0_adrs , reg_source1_adrs ) begin
 end  process ;
 
 process ( CLK  ) begin 
-    if(falling_edge(CLK) )then
+    if(rising_edge(CLK) )then
         if ( reg_write_enable = '1' and reg_dest /= X"00000000" )then
             RAM_reg( to_integer(unsigned(reg_dest)) ) <= to_bitvector(reg_write_data);
         end if;

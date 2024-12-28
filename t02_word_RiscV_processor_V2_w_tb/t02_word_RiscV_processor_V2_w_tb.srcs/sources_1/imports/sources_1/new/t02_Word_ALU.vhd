@@ -60,7 +60,7 @@ begin
 process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
     
     if (opcode = R_typeop) then
-        alu_flag(0) <= '0';
+        alu_flag(0) <= '0'; -- (activate branch )pasif
         case ( f3 ) is
             when "000" => --add sub
                 if (f7(5) = '0') then 
@@ -101,7 +101,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         
         
     elsif (opcode = I_typeop_reg) then --to do regi iile imidiate_reg birleþtirilebilir mi ? 
-        alu_flag(0) <= '0';
+        alu_flag(0) <= '0'; -- (activate branch )pasif
         case ( f3 ) is
             when "000" => --addi
                 alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
@@ -145,7 +145,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         
         
     elsif (opcode = I_typeop_dm) then 
-        alu_flag(0) <= '0';
+        alu_flag(0) <= '0'; -- (activate branch )pasif
         case ( f3 ) is
             when "000" =>--lb
                 alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) ); -- reg0 + / imm |reg1 /
@@ -202,18 +202,31 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
             when others =>
                 alu_flag(0) <= '0'; 
         end case ;
-
---    else if (opcode = S_typeop) then 
+    elsif (opcode = S_typeop) then 
+        alu_flag(0) <= '0';-- (activate branch )pasif
+        case ( f3 ) is
+            when "000" =>--sb
+                alu_data_out <= std_logic_vector( unsigned( alu_data_in0) + unsigned( alu_data_in1 ) ); -- reg0 + / imm |reg1 /
+            when "001" =>--sh
+                alu_data_out <= std_logic_vector( unsigned( alu_data_in0) + unsigned( alu_data_in1 ) );
+            when "010" =>--sw
+                alu_data_out <= std_logic_vector( unsigned( alu_data_in0) + unsigned( alu_data_in1 ) );
+            when others =>
+                alu_data_out <=  (others => others_case) ;
+        end case ;
+        
+      
+--    else if (opcode = J_typeop) then 
 --        case ( f3 ) is
---            when "000" =>--lb
+--            when "000" =>--
 --                <statement>;
---            when "001" =>--lh
+--            when "001" =>--
 --                <statement>;
---            when "010" =>--lw
+--            when "010" =>--
 --                <statement>;
---            when "100" =>--lbu
+--            when "100" =>--
 --                <statement>;
---            when "101" =>--lhu
+--            when "101" =>--
 --                <statement>;
 --            when others =>
 --                <statement>;

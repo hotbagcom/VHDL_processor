@@ -34,11 +34,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 package package_top is
 constant X_clk : integer := 100_000_000 ;
 constant X_len : integer := 32; 
+
 constant R_typeop       : std_logic_vector(6 downto 0) := "0110011" ;
-constant S_typeop       : std_logic_vector(6 downto 0) := "0100011" ;
 constant I_typeop_reg   : std_logic_vector(6 downto 0) := "0010011" ;
 constant I_typeop_dm    : std_logic_vector(6 downto 0) := "0000011" ;
 constant B_typeop       : std_logic_vector(6 downto 0) := "1100011" ;
+constant S_typeop       : std_logic_vector(6 downto 0) := "0100011" ;
+constant J_typeop_l     : std_logic_vector(6 downto 0) := "1101111" ;       -- rd <- pc+1 , pc<-pc+imm
+constant J_typeop_lr    : std_logic_vector(6 downto 0) := "1100111" ;       -- rd <- pc+1 , pc<-r0+imm 
+constant lui_typeop     : std_logic_vector(6 downto 0) := "0110111" ;       -- rd(31:12) <- imm
+constant aupic_typeop   : std_logic_vector(6 downto 0) := "0010111" ;       -- rd<-pc+imm 
 
 constant others_case : std_logic := '1' ;
 
