@@ -347,26 +347,26 @@ signal Instruction_rom: rom := (
 --lui x11, 0x12345 
 --add x12 , x10 ,x11 
 
---x"0000_0000" ,  
---x"0ff0_0513" ,  
---x"00a0_0593" ,  
---x"0800_0613" ,  
---x"0001_0517" ,  
---x"1234_55b7" ,  
---x"00b5_0633" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000" ,  
---x"0000_0000"  
+x"0000_0000" ,  
+x"0ff0_0513" ,  
+x"00a0_0593" ,  
+x"0800_0613" ,  
+x"0001_0517" ,  
+x"1234_55b7" ,  
+x"00b5_0633" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000" ,  
+x"0000_0000"  
 
 
 ----------------------
@@ -406,24 +406,36 @@ process ( current_pc ,Instruction_im_in) begin
         rd      <= Instruction_im_in( 11 downto 7 ) ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
-        imm12     <= Instruction_im_in( 31 downto 20 ) ; -- f7+rs2
+        imm12   <= Instruction_im_in( 31 downto 20 ) ; -- f7+rs2
         f7      <= Instruction_im_in( 31 downto 25 ) ;
     elsif(Instruction_im_in( 6 downto 0 ) = B_typeop)then -- signed  --1_111 111_0 0010_ 0000 1_100_ 1111 1_110 0011 
         opcode  <= Instruction_im_in( 6 downto 0 )  ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
-        imm12     <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
+        imm12   <= Instruction_im_in( 31 ) & Instruction_im_in( 7 ) & Instruction_im_in( 30 downto 25 ) & Instruction_im_in( 11 downto 8 )  ;--shift 1 bit left
     elsif(Instruction_im_in( 6 downto 0 ) = S_typeop)then
         opcode  <= Instruction_im_in( 6 downto 0 ) ;
         f3      <= Instruction_im_in( 14 downto 12 ) ;
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
-        imm12     <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
+        imm12   <= Instruction_im_in( 31 downto 25 ) & Instruction_im_in( 11 downto 7 ); -- f7+rd
     elsif(Instruction_im_in( 6 downto 0 ) = lui_typeop) or (Instruction_im_in( 6 downto 0 ) = auipc_typeop)then -- rd(31:12) <- imm20  --  rd<-pc+imm20
         opcode  <= Instruction_im_in( 6 downto 0 ) ;
         rd      <= Instruction_im_in( 11 downto 7 );
-        imm20     <= Instruction_im_in( 31 downto 12 );
+        imm20   <= Instruction_im_in( 31 downto 12 );
+    elsif(Instruction_im_in( 6 downto 0 ) = J_typeop_l)then
+        opcode  <= Instruction_im_in( 6 downto 0 ) ;
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        imm20   <= Instruction_im_in( 31 downto 12 ) ;   -- f7+rs2+rs1+f3   
+    elsif(Instruction_im_in( 6 downto 0 ) = J_typeop_lr) then
+        opcode  <= Instruction_im_in( 6 downto 0 ) ;
+        f3      <= Instruction_im_in( 14 downto 12 ) ;
+        rs0     <= Instruction_im_in( 19 downto 15 ) ;
+        rs1     <= Instruction_im_in( 24 downto 20 ) ;
+        imm12   <= Instruction_im_in( 31 downto 20 ) ; -- f7+r2     
 --    elsif(Instruction_im_in( 6 downto 0 ) = J_typeop)then
 --        opcode  <= Instruction_im_in( 6 downto 0 ) ;
 --        f3      <= Instruction_im_in( 14 downto 12 ) ;

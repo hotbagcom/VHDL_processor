@@ -40,6 +40,8 @@ entity t02_Word_Reg is
     Port(
         CLK : in std_logic ;
         RST : in std_logic ;  --active high mi active lov mu ? 
+        current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
+        opcode  : in std_logic_vector(6 downto 0) ;
         reg_write_enable : in std_logic ;
         reg_source0_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
         reg_source1_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
@@ -102,7 +104,12 @@ begin
 --sadece rise de çalýþtýrmsyý dene
 
 process ( CLK , reg_source0_adrs , reg_source1_adrs ) begin 
-    reg_source0_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source0_adrs )) ) );
+
+    if (opcode = auipc_typeop) then 
+        reg_source0_out <= current_pc;
+    else
+        reg_source0_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source0_adrs )) ) );
+    end if;
     reg_source1_out <= to_stdlogicvector( RAM_reg( to_integer(unsigned( reg_source1_adrs )) ) );
 end  process ;
 

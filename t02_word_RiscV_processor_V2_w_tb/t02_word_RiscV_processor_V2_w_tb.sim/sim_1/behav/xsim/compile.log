@@ -1,0 +1,8 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_ALU'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_IM'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_Reg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_top'

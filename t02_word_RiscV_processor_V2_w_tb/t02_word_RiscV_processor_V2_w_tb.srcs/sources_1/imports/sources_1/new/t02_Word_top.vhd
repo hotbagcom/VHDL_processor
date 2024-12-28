@@ -86,6 +86,8 @@ component t02_Word_Reg is
     Port(
         CLK : in std_logic ; 
         RST : in std_logic ;  --active high mi active lov mu ? 
+        current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
+        opcode  : in std_logic_vector(6 downto 0) ;
         reg_write_enable : in std_logic ;
         reg_source0_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
         reg_source1_adrs : in std_logic_vector(RV_lvlinbitinbit-1 downto 0);
@@ -109,7 +111,6 @@ component t02_Word_ALU is
     );
     Port(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
-        current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
         opcode  : in std_logic_vector(6 downto 0) ;
         f7      : in std_logic_vector(6 downto 0) ;
         f3      : in std_logic_vector(2 downto 0) ;
@@ -225,7 +226,7 @@ ALU_adress : t02_Word_ALUbrnch
 IM : t02_Word_IM
     port map( 
         RST => S_RST , --active high mi active lov mu ? 
-        current_pc => S_current_pc , 
+        current_pc => S_current_pc,
         opcode  => S_opcode ,
         f7      => S_f7 ,
         f3      => S_f3 ,
@@ -240,6 +241,8 @@ Reg : t02_Word_Reg
     port map(
         CLK => S_CLK ,
         RST => S_RST , --active high mi active lov mu ? 
+        current_pc => S_current_pc , 
+        opcode  => S_opcode ,
         reg_write_enable => S_cnrtl_reg_write_enable ,
         reg_source0_adrs => S_rs0 ,
         reg_source1_adrs => S_rs1 ,
@@ -259,7 +262,6 @@ immGen : t02_Word_immGen
 ALU : t02_Word_ALU
     port map(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
-        current_pc => S_current_pc ,
         opcode  => S_opcode ,
         f7      => S_f7 ,
         f3      => S_f3 ,

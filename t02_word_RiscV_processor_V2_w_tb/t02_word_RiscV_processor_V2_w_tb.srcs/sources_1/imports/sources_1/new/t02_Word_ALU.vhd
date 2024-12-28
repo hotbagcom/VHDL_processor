@@ -39,7 +39,6 @@ entity t02_Word_ALU is
     );
     Port(
         --alu_opcode : in std_logic_vector(opcodemax_inbit downto 0);
-        current_pc : in std_logic_vector(RV_lvlinbit-1 downto 0 ) ; 
         opcode  : in std_logic_vector(6 downto 0) ;
         f7      : in std_logic_vector(6 downto 0) ;
         f3      : in std_logic_vector(2 downto 0) ;
@@ -218,7 +217,7 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
     elsif (opcode = lui_typeop) then 
         alu_data_out <= alu_data_in1;
     elsif (opcode = auipc_typeop) then 
-        alu_data_out <= std_logic_vector( signed( current_pc) + signed( alu_data_in1 ) );
+        alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
       
 --    else if (opcode = J_typeop) then 
 --        case ( f3 ) is
