@@ -45,18 +45,18 @@ constant zero : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '0');
 constant one  : std_logic_vector(RV_lvlinbit-1 downto 0) := (others=> '1');
 begin
 --signed
-process ( imm12 , opcode ) begin
-    if(opcode = I_typeop_reg or opcode = I_typeop_dm) then
+process ( imm12 , imm20 , opcode ) begin
+    if(opcode = I_typeop_reg or opcode = I_typeop_dm) or (opcode = J_typeop_lr) then
         if (imm12(11)='1') then
-            IMM_out <=  one(RV_lvlinbit-1 downto 11) & imm12(10 downto 0) ; 
+            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm12 ; 
         else
-            IMM_out <=  zero(RV_lvlinbit-1 downto 11) & imm12(10 downto 0) ; 
+            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm12 ; 
         end if ;
     elsif (opcode = B_typeop) then 
         if (imm12(11)='1') then
-            IMM_out <=  one(RV_lvlinbit-1 downto 12) & imm12(10 downto 0) & '0' ; 
+            IMM_out <=  one(RV_lvlinbit-1 downto 13) & imm12 & '0' ; 
         else
-            IMM_out <=  zero(RV_lvlinbit-1 downto 12) & imm12(10 downto 0) & '0' ; 
+            IMM_out <=  zero(RV_lvlinbit-1 downto 13) & imm12 & '0' ; 
         end if ;
     elsif (opcode = S_typeop) then 
         if (imm12(11)='1') then
@@ -69,7 +69,12 @@ process ( imm12 , opcode ) begin
     
     elsif (opcode = auipc_typeop) then 
             IMM_out <=  imm20 & zero(11 downto 0) ; 
-    
+    elsif (opcode = J_typeop_l) then 
+        if (imm20(19)='1') then
+            IMM_out <=  one(RV_lvlinbit-1 downto 20) & imm20 ; 
+        else
+            IMM_out <=  zero(RV_lvlinbit-1 downto 20) & imm20 ; 
+        end if ;
     end if ;
     
 end process;

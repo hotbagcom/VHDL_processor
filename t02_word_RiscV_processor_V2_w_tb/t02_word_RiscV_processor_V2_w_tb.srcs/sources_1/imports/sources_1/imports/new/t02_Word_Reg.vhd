@@ -105,7 +105,7 @@ begin
 --sadece rise de çalýþtýrmsyý dene
 
 process ( CLK , reg_source0_adrs , reg_source1_adrs ) begin 
-
+-- TODO jal ý ilk clk deðiþiminde dýþarý vermeyen ne 
     if (opcode = auipc_typeop) or ( opcode = J_typeop_l) then 
         reg_source0_out <= current_pc;
     else --elsif ( opcode = J_typeop_lr) then

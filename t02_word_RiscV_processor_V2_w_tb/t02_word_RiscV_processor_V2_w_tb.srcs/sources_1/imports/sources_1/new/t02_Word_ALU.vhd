@@ -216,9 +216,15 @@ process ( alu_data_in0 , alu_data_in1 , opcode , f7 , f3 ) begin
         end case ;
     elsif (opcode = lui_typeop) then 
         alu_data_out <= alu_data_in1;
-    elsif (opcode = auipc_typeop) then 
+    elsif (opcode = auipc_typeop) or (opcode = J_typeop_l) or (opcode = J_typeop_lr) then 
         alu_data_out <= std_logic_vector( signed( alu_data_in0) + signed( alu_data_in1 ) );
-      
+    
+    
+    
+    
+    
+    
+    
 --    else if (opcode = J_typeop) then 
 --        case ( f3 ) is
 --            when "000" =>--

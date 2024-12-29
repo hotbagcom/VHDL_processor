@@ -387,9 +387,9 @@ signal Instruction_rom: rom := (
 --08000613
 --08000613
 --03f00513
---0ff00513 
+--0ff00513  
 x"0000_0000" , 
-x"002002ef" ,  
+x"000022ef" ,  
 x"0ff00513" ,  
 x"00500593" ,  
 x"003580e7" ,  
@@ -400,7 +400,7 @@ x"08000613" ,
 x"03f00513" ,  
 x"0ff00513" ,  
 x"0000_0000" ,  
-x"0000_0000" ,  
+x"0000_0000" , 
 x"0000_0000" ,  
 x"0000_0000" ,  
 x"0000_0000" ,  
@@ -478,7 +478,7 @@ process ( current_pc ,Instruction_im_in) begin
         rs0     <= Instruction_im_in( 19 downto 15 ) ;
         rs1     <= Instruction_im_in( 24 downto 20 ) ;
         imm12   <= Instruction_im_in( 31 downto 20 ) ; -- f7+r2     
---    elsif(Instruction_im_in( 6 downto 0 ) = J_typeop)then
+--    elsif(Instruction_im_in( 6 downto 0 ) = typeop)then
 --        opcode  <= Instruction_im_in( 6 downto 0 ) ;
 --        f3      <= Instruction_im_in( 14 downto 12 ) ;
 --        rs0     <= Instruction_im_in( 19 downto 15 ) ;
