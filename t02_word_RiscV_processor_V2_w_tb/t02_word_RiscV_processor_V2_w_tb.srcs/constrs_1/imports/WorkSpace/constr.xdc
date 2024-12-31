@@ -4,6 +4,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports CLK_top]
 set_property PACKAGE_PIN W5 [get_ports CLK_top]
 
 
+
+    
 #set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[0]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[1]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[2]}]
@@ -11,7 +13,9 @@ set_property PACKAGE_PIN W5 [get_ports CLK_top]
 #set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[4]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[5]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[6]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {mode_sFREQ[7]}]
+set_property IOSTANDARD LVCMOS33 [ get_ports { dumy } ]
+set_property IOSTANDARD LVCMOS33 [ get_ports { dummy[1] } ]
+set_property IOSTANDARD LVCMOS33 [ get_ports { dummy[0] } ]
 
 set_property IOSTANDARD LVCMOS33 [get_ports RST_top]
 
@@ -24,6 +28,10 @@ set_property IOSTANDARD LVCMOS33 [get_ports RST_top]
 #set_property PACKAGE_PIN H17 [get_ports {mode_sFREQ[6]}]
 #set_property PACKAGE_PIN M15 [get_ports {mode_sFREQ[7]}]
 
+set_property PACKAGE_PIN U3 [ get_ports { dumy } ]
+set_property PACKAGE_PIN W3 [ get_ports { dummy[1] } ]
+set_property PACKAGE_PIN V3 [ get_ports { dummy[0] } ]
+#R_type instruction
 set_property PACKAGE_PIN T18 [get_ports RST_top]
 
 #set_property MARK_DEBUG true [get_nets {Cos_val_OBUF[12]}]

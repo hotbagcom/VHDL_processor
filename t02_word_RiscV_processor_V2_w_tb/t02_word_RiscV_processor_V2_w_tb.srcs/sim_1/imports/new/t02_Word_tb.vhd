@@ -41,7 +41,9 @@ architecture bhvrl_tb of t02_Word_tb is
 component t02_Word_top is
     Port(
     CLK_top : in std_logic := '0' ;
-    RST_top : in std_logic := '0'  
+    RST_top : in std_logic := '0'  ;
+    dumy : out std_logic := '0'  ;
+    dummy : out std_logic_vector( 1 downto 0 ) 
     );
 end component ;
 ----- Signal -----

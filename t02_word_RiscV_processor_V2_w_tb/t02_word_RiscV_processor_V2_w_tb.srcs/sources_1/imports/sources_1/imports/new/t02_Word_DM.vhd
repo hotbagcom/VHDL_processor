@@ -142,7 +142,7 @@ process ( CLK , dm_write_enable , dm_read_enable , cntrl_dm_bitlen , dm_adress ,
                 elsif(cntrl_dm_bitlen(2) = '0')then --unsigned
                 
                     if (cntrl_dm_bitlen(1 downto 0) = "01") then --halfword
-                        case (dm_adress(0)) is
+                        case (dm_adress(1)) is
                             when '0' =>
                             dm_data_out <= zero(RV_lvlinbit-1 downto 16 ) & to_stdlogicvector( RAM_dm( to_integer(unsigned( dm_adress(RV_lvlinbit-1 downto 2) )) ) )(15 downto 0);
                             when '1' =>

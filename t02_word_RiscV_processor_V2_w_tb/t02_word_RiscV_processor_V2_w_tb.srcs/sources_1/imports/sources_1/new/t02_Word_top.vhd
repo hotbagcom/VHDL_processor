@@ -34,11 +34,46 @@ use IEEE.NUMERIC_STD.ALL;
 entity t02_Word_top is
     Port(
     CLK_top : in std_logic := '0' ;
-    RST_top : in std_logic := '0'  
+    RST_top : in std_logic := '0'  ;
+    dumy : out std_logic := '0'  ;
+    dummy : out std_logic_vector( 1 downto 0 ) 
     );
 end t02_Word_top;
 
 architecture bhvrl_top of t02_Word_top is
+
+----dummy-------
+component dummy_module is
+    generic(
+        dm_depth : integer :=  RV_lvlinbit 
+    );
+    Port (
+        current_pc : in std_logic_vector( RV_lvlinbit-1 downto 0 ) := (others=>'0');
+        alubrnch_out :  in std_logic_vector(RV_lvlinbit-1 downto 0) ;
+        reg_source0_out : in std_logic_vector(RV_lvlinbit-1 downto 0);
+        reg_source1_out : in std_logic_vector(RV_lvlinbit-1 downto 0);
+        IMM_out : in std_logic_vector(RV_lvlinbit-1  downto 0) ;
+        alu_flag : in std_logic_vector(2 downto 0) := (others=>'0') ; -- MSB overflow | zero LSB  | brnch active 
+        alu_data_out : in std_logic_vector(RV_lvlinbit-1 downto 0) := (others=>'0'); 
+        cntrl_dm_write_enable : in std_logic := '0';
+        cntrl_dm_read_enable : in std_logic := '0';
+        cntrl_brnch_enable  : in std_logic := '0';
+        cntrl_jump_enable  : in std_logic := '0';
+        cnrtl_reg_write_enable : in std_logic := '0';
+        cnrtl_alu_data_srce_slkt : in std_logic := '0' ;
+        cnrtl_reg_write_srce_slkt : in std_logic := '0' ;
+        output_mux_0: in std_logic_vector(RV_lvlinbit-1 downto 0) ;
+        output_mux_1: in std_logic_vector(RV_lvlinbit-1 downto 0) ;
+        output_mux_2: in std_logic_vector(RV_lvlinbit-1 downto 0) ;
+        dm_data_out:in std_logic_vector(dm_depth-1 downto 0) := (others=>'0');
+        
+        dumy : out std_logic      ;
+        dummy : out std_logic_vector( 1 downto 0) 
+    );
+end component;
+
+
+
 ----- COMPONENT -----
 component t02_Word_PC is
     Port(
@@ -206,11 +241,16 @@ signal S_alu_data_out : std_logic_vector(RV_lvlinbit-1 downto 0);
 --signal S_dm_adress: std_logic_vector(dm_depth-1 downto 0) ;
 --signal S_dm_data_in: std_logic_vector(dm_depth-1 downto 0) ;
 signal S_dm_data_out: std_logic_vector(dm_depth-1 downto 0) ;
+signal S_dumy :  std_logic ;
+signal S_dummy :  std_logic_vector( 1 downto 0) ;
         
+         
 
 begin
 S_CLK <= CLK_top ;
 S_RST <= RST_top ;
+dumy <= S_dumy ;
+dummy <= S_dummy ;
 ----- PORT MAP -----
 PC : t02_Word_PC 
     port map(
@@ -332,7 +372,31 @@ mux2_jump : t02_Word_mux2
 
 
 
-
+dummy_ofAll : dummy_module 
+    port map(
+        current_pc  => S_current_pc ,
+        alubrnch_out  => S_alubrnch_out,
+        reg_source0_out  => S_reg_source0_out ,
+        reg_source1_out  => S_reg_source1_out ,
+        IMM_out  => S_imm_32,
+        alu_flag  =>  S_alu_flag,
+        alu_data_out  =>  S_alu_data_out,
+        
+        cntrl_dm_write_enable => S_cntrl_dm_write_enable ,
+        cntrl_dm_read_enable => S_cntrl_dm_read_enable ,
+        cntrl_brnch_enable => S_cntrl_brnch_enable ,
+        cntrl_jump_enable => S_cntrl_jump_enable ,
+        cnrtl_reg_write_enable => S_cnrtl_reg_write_enable ,
+        cnrtl_alu_data_srce_slkt => S_cnrtl_alu_data_srce_slkt ,
+        cnrtl_reg_write_srce_slkt => S_cnrtl_reg_write_srce_slkt ,
+        output_mux_0 => S_alu_data_in1 ,
+        output_mux_1 => S_reg_write_data ,
+        output_mux_2  => S_next_PC ,
+        dm_data_out  =>  S_dm_data_out,
+        
+        dumy  => S_dumy ,
+        dummy  => S_dummy
+    );
 
 
 
