@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="t02_Word_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="package_top" />
+            <top_module name="t02_Word_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1000001fs"></ZoomEndTime>
+      <Cursor1Time time="74707fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="226"></NameColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="21" />
+   <wvobject fp_name="/t02_Word_tb/clk_tb" type="logic">
+      <obj_property name="ElementShortName">clk_tb</obj_property>
+      <obj_property name="ObjectShortName">clk_tb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/rst_tb" type="logic">
+      <obj_property name="ElementShortName">rst_tb</obj_property>
+      <obj_property name="ObjectShortName">rst_tb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/PC/current_pc" type="array">
+      <obj_property name="ElementShortName">current_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">current_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/IM/Instruction_im_in" type="array">
+      <obj_property name="ElementShortName">Instruction_im_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Instruction_im_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/IM/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[6:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/Reg/reg_source0_adrs" type="array">
+      <obj_property name="ElementShortName">reg_source0_adrs[4:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_source0_adrs[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/Reg/reg_source1_adrs" type="array">
+      <obj_property name="ElementShortName">reg_source1_adrs[4:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_source1_adrs[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/Reg/reg_dest" type="array">
+      <obj_property name="ElementShortName">reg_dest[4:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_dest[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/Reg/reg_write_data" type="array">
+      <obj_property name="ElementShortName">reg_write_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_write_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/Reg/reg_source0_out" type="array">
+      <obj_property name="ElementShortName">reg_source0_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_source0_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/Reg/reg_source1_out" type="array">
+      <obj_property name="ElementShortName">reg_source1_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_source1_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/ALU/alu_data_in0" type="array">
+      <obj_property name="ElementShortName">alu_data_in0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_data_in0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/immGen/imm12" type="array">
+      <obj_property name="ElementShortName">imm12[11:0]</obj_property>
+      <obj_property name="ObjectShortName">imm12[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/immGen/imm20" type="array">
+      <obj_property name="ElementShortName">imm20[19:0]</obj_property>
+      <obj_property name="ObjectShortName">imm20[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/immGen/IMM_out" type="array">
+      <obj_property name="ElementShortName">IMM_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IMM_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/ALU/alu_data_in1" type="array">
+      <obj_property name="ElementShortName">alu_data_in1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_data_in1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/ALU/alu_data_out" type="array">
+      <obj_property name="ElementShortName">alu_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/mux2_jump/sellection" type="logic">
+      <obj_property name="ElementShortName">sellection</obj_property>
+      <obj_property name="ObjectShortName">sellection</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/mux2_jump/choice_0" type="array">
+      <obj_property name="ElementShortName">choice_0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">choice_0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/mux2_jump/choice_1" type="array">
+      <obj_property name="ElementShortName">choice_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">choice_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/t02_Word_tb/TB/mux2_jump/output" type="array">
+      <obj_property name="ElementShortName">output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">output[31:0]</obj_property>
+   </wvobject>
+</wave_config>

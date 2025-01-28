@@ -1,0 +1,447 @@
+
+*** Running vivado
+    with args -log t02_Word_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source t02_Word_top.tcl
+
+
+
+****** Vivado v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source t02_Word_top.tcl -notrace
+Command: synth_design -top t02_Word_top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 30416
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:02 . Memory (MB): peak = 1112.668 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 't02_Word_top' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:48]
+INFO: [Synth 8-3491] module 't02_Word_PC' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_PC.vhd:35' bound to instance 'PC' of component 't02_Word_PC' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:359]
+INFO: [Synth 8-638] synthesizing module 't02_Word_PC' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_PC.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_PC' (1#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_PC.vhd:45]
+INFO: [Synth 8-3491] module 't02_Word_ALUbrnch' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd:34' bound to instance 'ALU_adress' of component 't02_Word_ALUbrnch' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:367]
+INFO: [Synth 8-638] synthesizing module 't02_Word_ALUbrnch' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd:46]
+WARNING: [Synth 8-614] signal 'add_pc' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_ALUbrnch' (2#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd:46]
+	Parameter im_rom_depth bound to: 20 - type: integer 
+	Parameter im_rom_width_inbit bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 't02_Word_IM' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:36' bound to instance 'IM' of component 't02_Word_IM' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:377]
+INFO: [Synth 8-638] synthesizing module 't02_Word_IM' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:75]
+	Parameter im_rom_depth bound to: 20 - type: integer 
+	Parameter im_rom_width_inbit bound to: 32 - type: integer 
+WARNING: [Synth 8-614] signal 'RST' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:464]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_IM' (3#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:75]
+	Parameter ram_length bound to: 32 - type: integer 
+	Parameter ram_depth bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 't02_Word_Reg' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd:35' bound to instance 'Reg' of component 't02_Word_Reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:391]
+INFO: [Synth 8-638] synthesizing module 't02_Word_Reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd:56]
+	Parameter ram_length bound to: 32 - type: integer 
+	Parameter ram_depth bound to: 32 - type: integer 
+WARNING: [Synth 8-614] signal 'opcode' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd:107]
+WARNING: [Synth 8-614] signal 'current_pc' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd:107]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_Reg' (4#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd:56]
+INFO: [Synth 8-3491] module 't02_Word_immGen' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd:34' bound to instance 'immGen' of component 't02_Word_immGen' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:406]
+INFO: [Synth 8-638] synthesizing module 't02_Word_immGen' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_immGen' (5#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd:43]
+	Parameter opcodemax_inbit bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 't02_Word_ALU' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:36' bound to instance 'ALU' of component 't02_Word_ALU' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:414]
+INFO: [Synth 8-638] synthesizing module 't02_Word_ALU' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:54]
+	Parameter opcodemax_inbit bound to: 2 - type: integer 
+WARNING: [Synth 8-613] shared variable will be implemented as local to architecture [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:57]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:64]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:105]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_ALU' (6#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:54]
+	Parameter dm_length bound to: 65536 - type: integer 
+	Parameter dm_depth bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 't02_Word_DM' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:34' bound to instance 'DM' of component 't02_Word_DM' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:426]
+INFO: [Synth 8-638] synthesizing module 't02_Word_DM' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:51]
+	Parameter dm_length bound to: 65536 - type: integer 
+	Parameter dm_depth bound to: 32 - type: integer 
+WARNING: [Synth 8-613] shared variable will be implemented as local to architecture [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:53]
+WARNING: [Synth 8-613] shared variable will be implemented as local to architecture [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:54]
+WARNING: [Synth 8-613] shared variable will be implemented as local to architecture [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:59]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:103]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:114]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:145]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:154]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:169]
+INFO: [Synth 8-226] default block is never used [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:183]
+WARNING: [Synth 8-614] signal 'RST' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:86]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_DM' (7#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd:51]
+INFO: [Synth 8-3491] module 't02_Word_cntrl' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd:34' bound to instance 'cntrl' of component 't02_Word_cntrl' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:438]
+INFO: [Synth 8-638] synthesizing module 't02_Word_cntrl' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_cntrl' (8#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd:53]
+INFO: [Synth 8-3491] module 't02_Word_mux2' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd:34' bound to instance 'mux2_preDM' of component 't02_Word_mux2' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:455]
+INFO: [Synth 8-638] synthesizing module 't02_Word_mux2' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_mux2' (9#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd:43]
+INFO: [Synth 8-3491] module 't02_Word_mux2' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd:34' bound to instance 'mux2_afterDM' of component 't02_Word_mux2' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:462]
+INFO: [Synth 8-3491] module 't02_Word_mux2' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd:34' bound to instance 'mux2_jump' of component 't02_Word_mux2' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:469]
+	Parameter dm_depth bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'dummy_module' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:35' bound to instance 'dummy_ofAll' of component 'dummy_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:479]
+INFO: [Synth 8-638] synthesizing module 'dummy_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:110]
+	Parameter dm_depth bound to: 32 - type: integer 
+WARNING: [Synth 8-614] signal 'fourHEX' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'upordown' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'next_PC' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'current_pc' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'add_pc' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'alu_jump_correction' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cntrl_brnch_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'brnch_imm' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'alubrnch_out' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'opcode' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'f7' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'f3' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'rs0' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'rs1' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'rd' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'imm12' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'imm20' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_write_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_source0_adrs' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_source1_adrs' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_dest' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_write_data' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_source0_out' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'reg_source1_out' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'IMM_out' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'alu_data_in0' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'alu_data_in1' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'alu_flag' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'alu_data_out' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'dm_write_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'dm_read_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cntrl_dm_bitlen' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'dm_adress' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'dm_data_in' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'dm_data_out' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cntrl_dm_write_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cntrl_dm_read_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cntrl_jump_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cnrtl_reg_write_enable' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cnrtl_alu_data_srce_slkt' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+WARNING: [Synth 8-614] signal 'cnrtl_reg_write_srce_slkt' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:146]
+INFO: [Synth 8-256] done synthesizing module 'dummy_module' (10#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd:110]
+INFO: [Synth 8-3491] module 'userinterface_module' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd:34' bound to instance 'userinterface_ofAll' of component 'userinterface_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:558]
+INFO: [Synth 8-638] synthesizing module 'userinterface_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd:46]
+WARNING: [Synth 8-614] signal 'S_RST_interf' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd:51]
+WARNING: [Synth 8-614] signal 'S_CLK_interf' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd:51]
+WARNING: [Synth 8-614] signal 'fourHEX' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'userinterface_module' (11#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd:46]
+	Parameter maxsevensinglecounter bound to: 500000 - type: integer 
+INFO: [Synth 8-3491] module 'segment_module' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/segment_module.vhd:34' bound to instance 'segment_ofAll' of component 'segment_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:571]
+INFO: [Synth 8-638] synthesizing module 'segment_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/segment_module.vhd:49]
+	Parameter maxsevensinglecounter bound to: 500000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'segment_module' (12#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/segment_module.vhd:49]
+	Parameter X_clkHz bound to: 100000000 - type: integer 
+	Parameter debounce_max bound to: 1000000 - type: integer 
+INFO: [Synth 8-3491] module 'debounce_module' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:34' bound to instance 'debounce_ofAll' of component 'debounce_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:580]
+INFO: [Synth 8-638] synthesizing module 'debounce_module' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:52]
+	Parameter X_clkHz bound to: 100000000 - type: integer 
+	Parameter debounce_max bound to: 1000000 - type: integer 
+WARNING: [Synth 8-614] signal 'BTN_top_deb' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:61]
+WARNING: [Synth 8-614] signal 'SW_top_deb' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:61]
+WARNING: [Synth 8-614] signal 'input_circle_status' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'debounce_module' (13#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 't02_Word_top' (14#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:48]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1153.734 ; gain = 41.066
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1153.734 ; gain = 41.066
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1153.734 ; gain = 41.066
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1153.734 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/constrs_1/imports/WorkSpace/constr.xdc]
+Finished Parsing XDC File [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/constrs_1/imports/WorkSpace/constr.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/constrs_1/imports/WorkSpace/constr.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/t02_Word_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/t02_Word_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1284.043 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1284.043 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.043 ; gain = 171.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.043 ; gain = 171.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.043 ; gain = 171.375
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'alubrnch_out_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd:54]
+WARNING: [Synth 8-327] inferring latch for variable 'f7_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:471]
+WARNING: [Synth 8-327] inferring latch for variable 'f3_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:468]
+WARNING: [Synth 8-327] inferring latch for variable 'rs0_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:469]
+WARNING: [Synth 8-327] inferring latch for variable 'rs1_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:470]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:467]
+WARNING: [Synth 8-327] inferring latch for variable 'imm12_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:484]
+WARNING: [Synth 8-327] inferring latch for variable 'imm20_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:501]
+WARNING: [Synth 8-327] inferring latch for variable 'IMM_out_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd:51]
+WARNING: [Synth 8-327] inferring latch for variable 'alu_flag_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:63]
+WARNING: [Synth 8-327] inferring latch for variable 'alu_data_out_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:67]
+WARNING: [Synth 8-327] inferring latch for variable 'cntrl_dm_bitlen_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd:90]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1284.043 ; gain = 171.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 4     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input   31 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               21 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
++---RAMs : 
+	              512 Bit	(16 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 21    
+	  21 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 2     
+	   8 Input   32 Bit        Muxes := 2     
+	   6 Input   32 Bit        Muxes := 1     
+	  10 Input   32 Bit        Muxes := 1     
+	   3 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 2     
+	   2 Input   21 Bit        Muxes := 5     
+	   2 Input   20 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 17    
+	   7 Input   16 Bit        Muxes := 2     
+	  10 Input   16 Bit        Muxes := 1     
+	  11 Input   16 Bit        Muxes := 1     
+	  12 Input   16 Bit        Muxes := 1     
+	   3 Input   12 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 3     
+	   2 Input    7 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 6     
+	  11 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   5 Input    2 Bit        Muxes := 2     
+	   6 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 27    
+	   3 Input    1 Bit        Muxes := 6     
+	   7 Input    1 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 3     
+	   8 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 3     
+	   6 Input    1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6851] RAM (RAM_dm_reg) has partial Byte Wide Write Enable pattern, however no output register found in fanout of RAM. Recommended to use supported Byte Wide Write Enable template. 
+INFO: [Synth 8-6851] RAM (RAM_dm_reg) has partial Byte Wide Write Enable pattern, however no output register found in fanout of RAM. Recommended to use supported Byte Wide Write Enable template. 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 1284.043 ; gain = 171.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+-------------+-----------+----------------------+----------------+
+|Module Name | RTL Object  | Inference | Size (Depth x Width) | Primitives     | 
++------------+-------------+-----------+----------------------+----------------+
+|Reg         | RAM_reg_reg | Implied   | 32 x 32              | RAM32M x 12	   | 
+|DM          | RAM_dm_reg  | Implied   | 16 x 32              | RAM16X1S x 32	 | 
++------------+-------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 1284.043 ; gain = 171.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:18 . Memory (MB): peak = 1330.641 ; gain = 217.973
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping	Report
++------------+-------------+-----------+----------------------+----------------+
+|Module Name | RTL Object  | Inference | Size (Depth x Width) | Primitives     | 
++------------+-------------+-----------+----------------------+----------------+
+|Reg         | RAM_reg_reg | Implied   | 32 x 32              | RAM32M x 12	   | 
+|DM          | RAM_dm_reg  | Implied   | 16 x 32              | RAM16X1S x 32	 | 
++------------+-------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:18 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     4|
+|2     |CARRY4   |    57|
+|3     |LUT1     |     8|
+|4     |LUT2     |   121|
+|5     |LUT3     |   212|
+|6     |LUT4     |   176|
+|7     |LUT5     |    83|
+|8     |LUT6     |   482|
+|9     |MUXF7    |    12|
+|10    |MUXF8    |     1|
+|11    |RAM16X1S |    32|
+|12    |RAM32M   |    12|
+|13    |FDCE     |    64|
+|14    |FDRE     |    78|
+|15    |FDSE     |     4|
+|16    |LD       |    14|
+|17    |LDC      |    13|
+|18    |LDP      |    37|
+|19    |IBUF     |    22|
+|20    |OBUF     |    28|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 12 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1330.688 ; gain = 87.711
+Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 1342.559 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 178 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 39 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1342.559 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 108 instances were transformed.
+  LD => LDCE: 14 instances
+  LDC => LDCE: 11 instances
+  LDC => LDCE (inverted pins: G): 2 instances
+  LDP => LDPE: 32 instances
+  LDP => LDPE (inverted pins: G): 5 instances
+  RAM16X1S => RAM32X1S (inverted pins: WCLK) (RAMS32): 32 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 12 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+68 Infos, 68 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:25 . Memory (MB): peak = 1342.559 ; gain = 229.891
+INFO: [Common 17-1381] The checkpoint 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.runs/synth_1/t02_Word_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file t02_Word_top_utilization_synth.rpt -pb t02_Word_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 16 07:26:46 2025...

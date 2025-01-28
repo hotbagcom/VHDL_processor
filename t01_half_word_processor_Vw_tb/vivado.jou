@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Oct 23 22:34:00 2024
+# Process ID: 3452
+# Current directory: C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10932 C:\Users\arify\WorkSpace\VHDL_processor\t01_half_word_processor_Vw_tb\t01_half_word_processor_Vw_tb.xpr
+# Log file: C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb/vivado.log
+# Journal file: C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb/t01_half_word_processor_Vw_tb.xpr
+update_compile_order -fileset sources_1
+close_project
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]

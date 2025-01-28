@@ -1,0 +1,31 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Oct 23 22:34:00 2024
+# Process ID: 3452
+# Current directory: C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10932 C:\Users\arify\WorkSpace\VHDL_processor\t01_half_word_processor_Vw_tb\t01_half_word_processor_Vw_tb.xpr
+# Log file: C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb/vivado.log
+# Journal file: C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/arify/WorkSpace/VHDL_processor/t01_half_word_processor_Vw_tb/t01_half_word_processor_Vw_tb.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Users/arify/Prog_4_user/Xlixv20_1/Vivado/2020.1/data/ip'.
+open_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1083.121 ; gain = 0.000
+update_compile_order -fileset sources_1
+close_project
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+ERROR: [Common 17-1991] Command C:/Users/arify/Prog_4_user/Xlixv20_1/Vivado/2020.1\tps\win64\git-2.16.2/cmd/git.exe fetch failed due to : fatal: unable to access 'https://github.com/Xilinx/XilinxBoardStore.git/': Could not resolve host: github.com
+
+ERROR: [Common 17-1587] Failed to refresh catalog from github.com. Please check internet connection, git proxy settings and github.com site status.
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+xhub::refresh_catalog: Time (s): cpu = 00:00:00 ; elapsed = 00:00:33 . Memory (MB): peak = 1173.297 ; gain = 0.000
+xhub::refresh_catalog [xhub::get_xstores xilinx_board_store]
+xhub::refresh_catalog: Time (s): cpu = 00:00:00 ; elapsed = 00:00:35 . Memory (MB): peak = 1173.297 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 23 23:13:11 2024...

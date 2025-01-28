@@ -102,7 +102,7 @@ entity dummy_module is
         userbutton_msblsb : in std_logic_vector( 1 downto 0 ) ;
         usersw_msb : in std_logic_vector( 7 downto 0 ) ;
         usersw_lsb :in std_logic_vector( 7 downto 0 ) ;
-        fourHEX : out std_logic_vector( 15 downto 0 ) 
+        fourHEX_pure : out std_logic_vector( 15 downto 0 ) 
 
     );
 end dummy_module;
@@ -124,10 +124,11 @@ signal upordown     : std_logic := '0';
 --signal code_jmp     : std_logic_vector(7 downto 0 ) := X"0b"; 
 
 
-
-
+signal fourHEX :  std_logic_vector( 15 downto 0 ) := x"0000" ;
 
 begin
+
+
 process (userbutton_msblsb ) begin 
 
     if ( falling_edge(userbutton_msblsb(0)) ) then
@@ -142,7 +143,9 @@ end process ;
 
 
 
-process (Xclk  ) begin
+process ( Xclk , usersw_msb , usersw_lsb  ) begin
+fourHEX_pure <=  fourHEX;
+
     case (usersw_msb ) is
         when X"01" => -- PC
             case (usersw_lsb) is 

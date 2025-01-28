@@ -47,6 +47,22 @@ end t02_Word_top;
 
 architecture bhvrl_top of t02_Word_top is
 
+component debounce_module is
+  generic(
+        X_clkHz : integer := 100_000_000;
+        debounce_max : integer := 1_000_000 -- 10ms wait 
+        
+    );
+    port ( 
+        Xclk : in std_logic ;
+        
+        BTN_top_deb :  in std_logic_vector(4 downto 0) ;
+        SW_top_deb : in std_logic_vector(15 downto 0) ;
+        BTN_topdeb :  out std_logic_vector(4 downto 0) ;
+        SW_topdeb : out std_logic_vector(15 downto 0) 
+    );
+end component ;
+
 ----dummy-------
 component dummy_module is
     generic(
@@ -117,7 +133,7 @@ component dummy_module is
         userbutton_msblsb : in std_logic_vector( 1 downto 0 ) ;
         usersw_msb : in std_logic_vector( 7 downto 0 ) ;
         usersw_lsb :in std_logic_vector( 7 downto 0 ) ;
-        fourHEX : out std_logic_vector( 15 downto 0 ) 
+        fourHEX_pure : out std_logic_vector( 15 downto 0 ) 
 
     );
 end component;
@@ -137,6 +153,10 @@ component userinterface_module is
     );
 end component;
 component segment_module is
+    Generic(
+        maxsevensinglecounter : integer:= 500_000
+        
+    );
     Port (
         
         Xclk : in std_logic ;
@@ -324,7 +344,8 @@ signal S_fourHEX: std_logic_vector(15 downto 0) ;
 signal S_userbutton_updown : std_logic_vector(1 downto 0) ;  --0 rst  |  1 clk 
 signal S_userled    : std_logic_vector(15 downto 0) ;
 
-
+signal S_BTN_top :  std_logic_vector(4 downto 0) ;
+signal S_SW_top : std_logic_vector(15 downto 0) ;
 
 
 
@@ -527,23 +548,23 @@ dummy_ofAll : dummy_module
         
         
         Xclk => S_Xclk ,
-        userbutton_msblsb => BTN_top(4 downto 3) ,
-        usersw_msb => SW_top(15 downto 8) ,
-        usersw_lsb => SW_top(7 downto 0) ,
-        fourHEX => S_fourHEX
+        userbutton_msblsb => S_BTN_top(4 downto 3) ,
+        usersw_msb => S_SW_top(15 downto 8) ,
+        usersw_lsb => S_SW_top(7 downto 0) ,
+        fourHEX_pure => S_fourHEX
         
         
     );
 userinterface_ofAll : userinterface_module
     port map(
         Xclk => S_Xclk ,
-        userbutton_updown =>  BTN_top(2 downto 1)  ,
+        userbutton_updown =>  S_BTN_top(2 downto 1)  ,
         --usersw_msb :in std_logic_vector( 7 downto 0 ) ; to detect which module 
         --usersw_lsb :in std_logic_vector( 7 downto 0 )  ; to detect which port
         CLK_interf => S_CLK ,
         RST_interf => S_RST ,
-        convert => BTN_top(0) ,
-        fourHEX => S_fourHEX,
+        convert => S_BTN_top(0) ,
+        fourHEX => S_fourHEX ,
         userled => S_userled  
     );
 
@@ -551,12 +572,22 @@ segment_ofAll :segment_module
     port map (
         
         Xclk => S_Xclk ,
-        fourHEX => S_fourHEX,
+        fourHEX =>  S_fourHEX,
         SEGMENT4_top => SEGMENT4_top,
         SEGMENT7_top  => SEGMENT7_top
     );
 
-
+debounce_ofAll : debounce_module 
+    port map (
+    
+        Xclk => S_Xclk ,
+        
+        BTN_top_deb => BTN_top ,
+        SW_top_deb => SW_top ,
+        BTN_topdeb => S_BTN_top ,
+        SW_topdeb => S_SW_top
+        
+     );
 
 
 end bhvrl_top;

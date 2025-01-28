@@ -1,0 +1,563 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xcku040-ffva1156-2-e",
+      "name": "design_02_Word",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.1"
+    },
+    "design_tree": {
+      "clk_wiz": "",
+      "t02_Word_ALU_0": "",
+      "t02_Word_ALUpls_0": "",
+      "t02_Word_IM_0": "",
+      "t02_Word_PC_0": "",
+      "t02_Word_Reg_0": "",
+      "t02_Word_cntrl_0": "",
+      "t02_Word_immGen_0": "",
+      "t02_Word_mux2_0": "",
+      "t02_Word_mux2_1": "",
+      "t02_Word_DM_0": ""
+    },
+    "ports": {
+      "clk_100MHz": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000"
+          }
+        }
+      }
+    },
+    "components": {
+      "clk_wiz": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_02_Word_clk_wiz_0"
+      },
+      "t02_Word_ALU_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_ALU:1.0",
+        "xci_name": "design_02_Word_t02_Word_ALU_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_ALU",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "alu_opcode": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "opcode": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "f7": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "f3": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "alu_data_in0": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "alu_data_in1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "alu_flag": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "alu_data_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_ALUpls_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_ALUpls:1.0",
+        "xci_name": "design_02_Word_t02_Word_ALUpls_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_ALUpls",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "prev_PC": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "next_PC": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_IM_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_IM:1.0",
+        "xci_name": "design_02_Word_t02_Word_IM_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_IM",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RST": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "current_pc": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "opcode": {
+            "direction": "O",
+            "left": "6",
+            "right": "0"
+          },
+          "f7": {
+            "direction": "O",
+            "left": "6",
+            "right": "0"
+          },
+          "f3": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "rs0": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "rs1": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "rd": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "imm": {
+            "direction": "O",
+            "left": "12",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_PC_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_PC:1.0",
+        "xci_name": "design_02_Word_t02_Word_PC_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_PC",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RST": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "CLK": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "next_PC": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "current_pc": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_Reg_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_Reg:1.0",
+        "xci_name": "design_02_Word_t02_Word_Reg_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_Reg",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RST": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "reg_write_enable": {
+            "direction": "I"
+          },
+          "reg_source0_adrs": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_source1_adrs": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_dest": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_write_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "reg_source0_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "reg_source1_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_cntrl_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_cntrl:1.0",
+        "xci_name": "design_02_Word_t02_Word_cntrl_0_0",
+        "reference_info": {
+          "ref_type": "unknown",
+          "ref_name": "t02_Word_cntrl",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "opcode": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "f7": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "f3": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "cntrl_dm_write_enable": {
+            "direction": "O"
+          },
+          "cntrl_dm_read_enable": {
+            "direction": "O"
+          },
+          "cntrl_alu_opcode": {
+            "direction": "O"
+          },
+          "cnrtl_reg_write_enable": {
+            "direction": "O"
+          },
+          "cnrtl_alu_data_srce_slkt": {
+            "direction": "O"
+          },
+          "cnrtl_reg_write_srce_slkt": {
+            "direction": "O"
+          }
+        }
+      },
+      "t02_Word_immGen_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_immGen:1.0",
+        "xci_name": "design_02_Word_t02_Word_immGen_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_immGen",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "imm": {
+            "direction": "I",
+            "left": "12",
+            "right": "0"
+          },
+          "IMM_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_mux2_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_mux2:1.0",
+        "xci_name": "design_02_Word_t02_Word_mux2_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_mux2",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "sellection": {
+            "direction": "I"
+          },
+          "choice_0": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "choice_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "output": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_mux2_1": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_mux2:1.0",
+        "xci_name": "design_02_Word_t02_Word_mux2_0_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_mux2",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "sellection": {
+            "direction": "I"
+          },
+          "choice_0": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "choice_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "output": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "t02_Word_DM_0": {
+        "vlnv": "xilinx.com:module_ref:t02_Word_DM:1.0",
+        "xci_name": "design_02_Word_t02_Word_DM_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "t02_Word_DM",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "RST": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "dm_write_enable": {
+            "direction": "I"
+          },
+          "dm_read_enable": {
+            "direction": "I"
+          },
+          "dm_adress": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "dm_data_in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "dm_data_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "t02_Word_IM_0_f7": {
+        "ports": [
+          "t02_Word_IM_0/f7",
+          "t02_Word_cntrl_0/f7"
+        ]
+      },
+      "t02_Word_IM_0_f3": {
+        "ports": [
+          "t02_Word_IM_0/f3",
+          "t02_Word_cntrl_0/f3"
+        ]
+      },
+      "t02_Word_IM_0_opcode": {
+        "ports": [
+          "t02_Word_IM_0/opcode",
+          "t02_Word_cntrl_0/opcode"
+        ]
+      },
+      "t02_Word_IM_0_rs0": {
+        "ports": [
+          "t02_Word_IM_0/rs0",
+          "t02_Word_Reg_0/reg_source0_adrs"
+        ]
+      },
+      "t02_Word_IM_0_rs1": {
+        "ports": [
+          "t02_Word_IM_0/rs1",
+          "t02_Word_Reg_0/reg_source1_adrs"
+        ]
+      },
+      "t02_Word_IM_0_rd": {
+        "ports": [
+          "t02_Word_IM_0/rd",
+          "t02_Word_Reg_0/reg_dest"
+        ]
+      },
+      "t02_Word_cntrl_0_cnrtl_reg_write_enable": {
+        "ports": [
+          "t02_Word_cntrl_0/cnrtl_reg_write_enable",
+          "t02_Word_Reg_0/reg_write_enable"
+        ]
+      },
+      "t02_Word_Reg_0_reg_source0_out": {
+        "ports": [
+          "t02_Word_Reg_0/reg_source0_out",
+          "t02_Word_ALU_0/alu_data_in0",
+          "t02_Word_DM_0/dm_adress"
+        ]
+      },
+      "t02_Word_cntrl_0_cntrl_alu_opcode": {
+        "ports": [
+          "t02_Word_cntrl_0/cntrl_alu_opcode",
+          "t02_Word_ALU_0/alu_opcode"
+        ]
+      },
+      "t02_Word_ALU_0_alu_data_out": {
+        "ports": [
+          "t02_Word_ALU_0/alu_data_out",
+          "t02_Word_mux2_0/choice_1"
+        ]
+      },
+      "t02_Word_cntrl_0_cntrl_dm_read_enable": {
+        "ports": [
+          "t02_Word_cntrl_0/cntrl_dm_read_enable",
+          "t02_Word_DM_0/dm_read_enable"
+        ]
+      },
+      "t02_Word_cntrl_0_cntrl_dm_write_enable": {
+        "ports": [
+          "t02_Word_cntrl_0/cntrl_dm_write_enable",
+          "t02_Word_DM_0/dm_write_enable"
+        ]
+      },
+      "t02_Word_mux2_0_output": {
+        "ports": [
+          "t02_Word_mux2_0/output",
+          "t02_Word_Reg_0/reg_write_data"
+        ]
+      },
+      "t02_Word_DM_0_dm_data_out": {
+        "ports": [
+          "t02_Word_DM_0/dm_data_out",
+          "t02_Word_mux2_0/choice_0"
+        ]
+      },
+      "t02_Word_cntrl_0_cnrtl_reg_write_srce_slkt": {
+        "ports": [
+          "t02_Word_cntrl_0/cnrtl_reg_write_srce_slkt",
+          "t02_Word_mux2_0/sellection"
+        ]
+      },
+      "t02_Word_IM_0_imm": {
+        "ports": [
+          "t02_Word_IM_0/imm",
+          "t02_Word_immGen_0/imm"
+        ]
+      },
+      "t02_Word_immGen_0_IMM_out": {
+        "ports": [
+          "t02_Word_immGen_0/IMM_out",
+          "t02_Word_mux2_1/choice_1"
+        ]
+      },
+      "t02_Word_Reg_0_reg_source1_out": {
+        "ports": [
+          "t02_Word_Reg_0/reg_source1_out",
+          "t02_Word_mux2_1/choice_0"
+        ]
+      },
+      "t02_Word_mux2_1_output": {
+        "ports": [
+          "t02_Word_mux2_1/output",
+          "t02_Word_ALU_0/alu_data_in1",
+          "t02_Word_DM_0/dm_data_in"
+        ]
+      },
+      "t02_Word_cntrl_0_cnrtl_alu_data_srce_slkt": {
+        "ports": [
+          "t02_Word_cntrl_0/cnrtl_alu_data_srce_slkt",
+          "t02_Word_mux2_1/sellection"
+        ]
+      },
+      "t02_Word_PC_0_current_pc": {
+        "ports": [
+          "t02_Word_PC_0/current_pc",
+          "t02_Word_ALUpls_0/prev_PC",
+          "t02_Word_IM_0/current_pc"
+        ]
+      },
+      "t02_Word_ALUpls_0_next_PC": {
+        "ports": [
+          "t02_Word_ALUpls_0/next_PC",
+          "t02_Word_PC_0/next_PC"
+        ]
+      },
+      "clk_wiz_clk_out1": {
+        "ports": [
+          "clk_wiz/clk_out1",
+          "t02_Word_PC_0/CLK"
+        ]
+      },
+      "clk_100MHz_1": {
+        "ports": [
+          "clk_100MHz",
+          "clk_wiz/clk_in1"
+        ]
+      },
+      "Net": {
+        "ports": [
+          "clk_wiz/reset",
+          "t02_Word_IM_0/RST",
+          "t02_Word_PC_0/RST",
+          "t02_Word_Reg_0/RST",
+          "t02_Word_DM_0/RST"
+        ]
+      }
+    }
+  }
+}

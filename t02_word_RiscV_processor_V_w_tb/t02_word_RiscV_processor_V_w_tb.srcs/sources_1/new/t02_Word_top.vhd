@@ -48,13 +48,13 @@ component t02_Word_PC is
         current_pc : out std_logic_vector( RV_lvlinbit-1 downto 0 )
         
     );
-end component t02_Word_PC;
+end component ;
 component t02_Word_ALUpls is
     Port(
     prev_PC : in  std_logic_vector(RV_lvlinbit-1 downto 0) := (others=>'0'); 
     next_PC : out std_logic_vector(RV_lvlinbit-1 downto 0) 
     );
-end component t02_Word_ALUpls;
+end component ;
 
 component t02_Word_IM is
    generic(
@@ -72,7 +72,7 @@ component t02_Word_IM is
         rd      : out std_logic_vector(4 downto 0) := "00000";
         imm     : out std_logic_vector(11 downto 0) := "000000000000" 
     );
-end component t02_Word_IM;
+end component ;
 component t02_Word_Reg is
     Generic(
         ram_length : integer :=  RV_lvlinbit ;
@@ -88,13 +88,13 @@ component t02_Word_Reg is
         reg_source0_out : out std_logic_vector(RV_lvlinbit-1 downto 0);
         reg_source1_out : out std_logic_vector(RV_lvlinbit-1 downto 0)
     );
-end component t02_Word_Reg;
+end component ;
 component t02_Word_immGen is
     Port (
     imm : in std_logic_vector(11 downto 0); 
     IMM_out : out std_logic_vector(RV_lvlinbit-1  downto 0) 
     );
-end component t02_Word_immGen;
+end component ;
 component t02_Word_ALU is
     Generic(
         opcodemax_inbit : integer :=2--daha sonrasý için control ünit ten sadec ebelirli codlarý alan bir hat çýkarýp öyle kontrol et 
@@ -106,11 +106,11 @@ component t02_Word_ALU is
         f3      : in std_logic_vector(2 downto 0) := "000";
         alu_data_in0 : in  std_logic_vector(31 downto 0);
         alu_data_in1 : in  std_logic_vector(31 downto 0);
-        alu_flag : out std_logic_vector(1 downto 0) ; -- MSB overflow zero LSB
+        alu_flag : out std_logic_vector(2 downto 0) ; -- MSB overflow zero LSB
         
         alu_data_out : out std_logic_vector(31 downto 0)
     );
-end component t02_Word_ALU;
+end component ;
 component t02_Word_DM is 
     Generic(
         dm_length : integer :=  RV_lvl ;
@@ -124,7 +124,7 @@ component t02_Word_DM is
         dm_data_in :in std_logic_vector(dm_depth-1 downto 0) := (others=>'0');
         dm_data_out:out std_logic_vector(dm_depth-1 downto 0) := (others=>'0')
     );
-end component t02_Word_DM;
+end component ;
 component t02_Word_cntrl is
     Port (
         opcode  : in std_logic_vector(6 downto 0) := "0000000" ;
@@ -137,7 +137,7 @@ component t02_Word_cntrl is
         cnrtl_alu_data_srce_slkt : out std_logic := '0' ;
         cnrtl_reg_write_srce_slkt : out std_logic := '0'
         );
-end component t02_Word_cntrl;
+end component ;
 component t02_Word_mux2 is
     Port (
         sellection : in std_logic := '0';
@@ -145,7 +145,7 @@ component t02_Word_mux2 is
         choice_1 : in std_logic_vector(RV_lvlinbit-1 downto 0) ;
         output : out std_logic_vector(RV_lvlinbit-1 downto 0) 
         );
-end component t02_Word_mux2;
+end component ;
 
 
 ----- Signal -----
@@ -176,7 +176,7 @@ signal S_reg_source1_out : std_logic_vector(RV_lvlinbit-1 downto 0) ;
 signal S_reg_write_data : std_logic_vector(RV_lvlinbit-1 downto 0);
 
 signal S_alu_data_in1 :  std_logic_vector(RV_lvlinbit-1 downto 0);
-signal S_alu_flag : std_logic_vector(1 downto 0) ; -- MSB overflow zero LSB
+signal S_alu_flag : std_logic_vector(2 downto 0) ; -- MSB overflow zero LSB
 signal S_alu_data_out : std_logic_vector(RV_lvlinbit-1 downto 0);
 
 signal S_dm_adress: std_logic_vector(dm_depth-1 downto 0) ;
@@ -187,6 +187,7 @@ signal S_dm_data_out: std_logic_vector(dm_depth-1 downto 0) ;
 begin
 S_RST <= CLK_top ;
 S_CLK <= RST_top ;
+
 ----- PORT MAP -----
 PC : t02_Word_PC 
     port map(
@@ -236,7 +237,7 @@ ALU : t02_Word_ALU
         opcode  => S_opcode ,
         f7      => S_f7 ,
         f3      => S_f3 ,
-        alu_data_in0 => S_reg_source0_out ,
+        alu_data_in0 =>  S_reg_source0_out ,
         alu_data_in1 => S_alu_data_in1 ,
         alu_flag => S_alu_flag , 
         alu_data_out => S_alu_data_out
@@ -247,8 +248,8 @@ DM : t02_Word_DM
         RST => S_RST , --active high mi active lov mu ? 
         dm_write_enable => S_cntrl_dm_write_enable ,
         dm_read_enable => S_cntrl_dm_read_enable ,
-        dm_adress => S_dm_adress,
-        dm_data_in => S_dm_data_in ,
+        dm_adress => S_alu_data_out,
+        dm_data_in => S_reg_source1_out ,
         dm_data_out => S_dm_data_out
     );
 
@@ -268,9 +269,9 @@ cntrl : t02_Word_cntrl
 mux2_preDM : t02_Word_mux2 
     port map(
         sellection => S_cnrtl_alu_data_srce_slkt ,
-        choice_0 => S_reg_source1_out ,
+        choice_0 => S_reg_source0_out ,
         choice_1 => S_imm_32 ,
-        output => S_dm_data_in
+        output => S_alu_data_in1
         );
 mux2_afterDM : t02_Word_mux2 
     port map(

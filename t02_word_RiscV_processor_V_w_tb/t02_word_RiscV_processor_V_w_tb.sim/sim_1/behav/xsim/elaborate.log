@@ -1,0 +1,13 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: C:/Users/arify/Prog_4_user/Xlixv20_1/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto 679461d42f2245f4a44df7ebd46d24bb --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot t02_Word_tb_behav xil_defaultlib.t02_Word_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-3006] 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V_w_tb/t02_word_RiscV_processor_V_w_tb.sim/sim_1/behav/xsim/xsim.dir/xil_defaultlib/t02_word_pc.vdb' needs to be re-saved since 'xil_defaultlib.package_top' changed
+ERROR: [VRFC 10-3032] 'xil_defaultlib.t02_word_pc' failed to restore
+ERROR: [VRFC 10-3006] 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V_w_tb/t02_word_RiscV_processor_V_w_tb.sim/sim_1/behav/xsim/xsim.dir/xil_defaultlib/t02_word_pc.vdb' needs to be re-saved since 'xil_defaultlib.package_top' changed
+ERROR: [VRFC 10-3032] 'xil_defaultlib.t02_word_pc' failed to restore
+ERROR: [VRFC 10-3006] 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V_w_tb/t02_word_RiscV_processor_V_w_tb.sim/sim_1/behav/xsim/xsim.dir/xil_defaultlib/t02_word_pc.vdb' needs to be re-saved since 'xil_defaultlib.package_top' changed
+ERROR: [VRFC 10-3032] 'xil_defaultlib.t02_word_pc' failed to restore
+WARNING: [VRFC 10-4940] 't02_word_pc' remains a black box since it has no binding entity [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V_w_tb/t02_word_RiscV_processor_V_w_tb.srcs/sources_1/new/t02_Word_top.vhd:192]
+ERROR: [XSIM 43-3321] Static elaboration of top level VHDL design unit t02_word_tb in library work failed.

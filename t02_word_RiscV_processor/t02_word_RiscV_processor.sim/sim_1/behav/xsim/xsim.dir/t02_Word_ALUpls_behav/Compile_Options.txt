@@ -1,0 +1,1 @@
+-wto "81347277eca742d6b296d413a328270e" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "t02_Word_ALUpls_behav" "xil_defaultlib.t02_Word_ALUpls" -log "elaborate.log" 

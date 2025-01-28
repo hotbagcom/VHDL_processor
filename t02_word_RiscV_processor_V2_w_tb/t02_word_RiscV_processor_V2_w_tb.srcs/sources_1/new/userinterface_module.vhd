@@ -63,11 +63,11 @@ process (Xclk , userbutton_updown , convert ) begin
     
     CLK_interf <= S_CLK_interf ;
     
-    if(convert = '1') then 
-        userled <= fourHEX ;
-    else 
-        userled <= X"0000";
-    end if ;
+--    if(convert = '1') then 
+        userled <= fourHEX;--(15 downto 14) & userbutton_updown &  fourHEX(11 downto 0)  ;
+--    else 
+--        userled <= X"0000";
+--    end if ;
     
     
 end process;
