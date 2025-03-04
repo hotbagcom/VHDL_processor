@@ -59,7 +59,6 @@ type ram_typ is array(0 to ram_length-1) of bit_vector(ram_depth-1 downto 0)  ;
 signal RAM_reg : ram_typ := (
 
 
-
 X"00000000" ,--0000 0110 signed byte
 X"00000000" ,--0000 0110 unsigned byte
 X"00000000" ,--0000 1100 word
@@ -92,6 +91,7 @@ X"00000000" ,
 X"00000000" ,
 X"00000000" ,
 X"00000000"
+
 );
 
 begin

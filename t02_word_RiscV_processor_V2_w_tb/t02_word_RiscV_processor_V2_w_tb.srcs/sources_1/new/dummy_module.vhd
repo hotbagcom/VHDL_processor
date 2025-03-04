@@ -132,10 +132,10 @@ begin
 process (userbutton_msblsb ) begin 
 
     if ( falling_edge(userbutton_msblsb(0)) ) then
-        upordown <= '0'; 
+        upordown <= '0'; --upordown <= not upordown I can not detect is it least or most significant bit 
     end if ;
     if ( falling_edge(userbutton_msblsb(1)) ) then
-        upordown <= '1';
+        upordown <= '1'; --upordown <= not upordown
     end if ;
     
 end process ;
@@ -328,7 +328,7 @@ fourHEX_pure <=  fourHEX;
                     end if;
                 when X"81" => -- reg_source0_out
                     if (upordown = '1' ) then 
-                    fourHEX <= X"0000" ;
+                    fourHEX <= X"0000" ; -----TODO
                     fourHEX <= reg_source0_out(31 downto 16) ;
                     else 
                     fourHEX <= reg_source0_out(15 downto 0);
@@ -362,7 +362,7 @@ fourHEX_pure <=  fourHEX;
                     else 
                     fourHEX <= imm20(15 downto 0);
                     end if;
-                when X"80" => -- IMM_out
+                when X"80" => -- IMM_out     ---TODO when X"81"  correct when available 
                     if (upordown = '1' ) then 
                     fourHEX <= IMM_out(31 downto 16);
                     else 
