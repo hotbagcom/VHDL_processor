@@ -233,7 +233,7 @@ process ( Xclk   ) begin
                     fourHEX <= X"00000" &  imm12;
                 when X"03" => -- imm20
                     fourHEX <= X"000" &  imm20(19 downto 0);
-                when X"80" => -- IMM_out     ---TODO when X"81"  correct when available 
+                when X"81" => -- IMM_out     ---TODO when X"81"  correct when available 
                     fourHEX <= IMM_out(31 downto 0);
                 when others =>  
                     fourHEX <=  X"00000000" ;

@@ -33,14 +33,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity t02_Word_top is
     Port(
-    S_CLK     : in std_logic := '0' ;
-    S_RST     : in std_logic := '0' ;
     CLK_top : in std_logic := '0' ;
     --RST_top : in std_logic := '0'  ; -- ikincil tasarýmda kullanýlmadý 
     BTN_top :  in std_logic_vector(4 downto 0) ;
     SW_top : in std_logic_vector(15 downto 0) ;
-    SEGMENT4_top :  out std_logic_vector(3 downto 0) := X"0" ;
-    SEGMENT7_top  : out std_logic_vector(7 downto 0) := X"00" ;
+--    SEGMENT4_top :  out std_logic_vector(3 downto 0) := X"0" ;
+--    SEGMENT7_top  : out std_logic_vector(7 downto 0) := X"00" ;
     LED_top : out std_logic_vector(15 downto 0) := X"0000" ;
         
         i2c_scl     : inout std_logic;
@@ -356,7 +354,7 @@ signal S_SW_top : std_logic_vector(15 downto 0) ;
 
 begin
 
---S_Xclk <= CLK_top ;
+S_Xclk <= CLK_top ;
 LED_top <= S_userled(15 downto 0) ;
 
 ----- PORT MAP -----
@@ -560,17 +558,17 @@ dummy_ofAll : dummy_module
         
         
     );
---userinterface_ofAll : userinterface_module
---    port map(
---        Xclk => S_Xclk ,
---        userbutton_updown =>  S_BTN_top(2 downto 1)  ,
---        --usersw_msb :in std_logic_vector( 7 downto 0 ) ; to detect which module 
---        --usersw_lsb :in std_logic_vector( 7 downto 0 )  ; to detect which port
---        CLK_interf => S_CLK ,
---        RST_interf => S_RST ,
---        fourHEX => S_fourHEX ,
---        userled => S_userled  
---    );
+userinterface_ofAll : userinterface_module
+    port map(
+        Xclk => S_Xclk ,
+        userbutton_updown =>  S_BTN_top(2 downto 1)  ,
+        --usersw_msb :in std_logic_vector( 7 downto 0 ) ; to detect which module 
+        --usersw_lsb :in std_logic_vector( 7 downto 0 )  ; to detect which port
+        CLK_interf => S_CLK ,
+        RST_interf => S_RST ,
+        fourHEX => S_fourHEX ,
+        userled => S_userled  
+    );
 
 --segment_ofAll :segment_module
 --    port map (

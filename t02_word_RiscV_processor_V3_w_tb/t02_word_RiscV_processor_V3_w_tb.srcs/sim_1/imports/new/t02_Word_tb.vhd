@@ -40,15 +40,19 @@ architecture bhvrl_tb of t02_Word_tb is
 ----- Component -----
 component t02_Word_top is
     Port(
+    
+    S_CLK     : in std_logic := '0' ;
+    S_RST     : in std_logic := '0' ;
     CLK_top : in std_logic := '0' ;
     --RST_top : in std_logic := '0'  ; -- ikincil tasarýmda kullanýlmadý 
-    BTN_top :  in std_logic_vector(4 downto 0) := "11111";
-    SW_top : in std_logic_vector(15 downto 0) := X"0000";
+    BTN_top :  in std_logic_vector(4 downto 0)  := "00000" ;
+    SW_top : in std_logic_vector(15 downto 0) :=  X"0000";
     SEGMENT4_top :  out std_logic_vector(3 downto 0) := X"0" ;
     SEGMENT7_top  : out std_logic_vector(7 downto 0) := X"00" ;
-    LED_top : out std_logic_vector(15 downto 0) := X"0000" 
-    
-    
+    LED_top : out std_logic_vector(15 downto 0) := X"0000" ;
+        
+        i2c_scl     : inout std_logic;
+        i2c_sda     : inout std_logic
     );
 end component ;
 ----- Signal -----
@@ -65,8 +69,8 @@ begin
 
 TB : t02_Word_top 
     port map ( 
-    CLK_top => clk_tb ,
-    BTN_top  => clk_sw
+    S_CLK => clk_tb ,
+    S_RST  => clk_sw(1)
     );
 
 
@@ -82,7 +86,7 @@ clk_tb <= not clk_tb;--0
 wait for clk_hlf_periode;
 clk_tb <= not clk_tb;--1
 wait for clk_hlf_periode;
-clk_sw(1)  <= not  clk_sw(1);     +++
+clk_sw(1)  <= not  clk_sw(1);    
     for J in 0 to 100 loop
         for i in 0 to 1100 loop
         clk_tb <= not clk_tb;
