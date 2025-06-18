@@ -151,6 +151,8 @@ component userinterface_module is
         RST_interf : out std_logic ;
         
         fourHEX : in std_logic_vector( 31 downto 0 ) ;
+        
+        i2c_trig : out std_logic := '0';
         userled : out  std_logic_vector( 31 downto 0 )  
     );
 end component;
@@ -349,13 +351,13 @@ signal S_userled    : std_logic_vector(31 downto 0) ;
 signal S_BTN_top :  std_logic_vector(4 downto 0) ;
 signal S_SW_top : std_logic_vector(15 downto 0) ;
 
-
+signal Si_i2c_trig : std_logic ;    
 
 
 begin
 
 S_Xclk <= CLK_top ;
-LED_top <= S_userled(15 downto 0) ;
+LED_top <=  SW_top ; --  S_userled(15 downto 0) ;  --
 
 ----- PORT MAP -----
 PC : t02_Word_PC 
@@ -567,6 +569,8 @@ userinterface_ofAll : userinterface_module
         CLK_interf => S_CLK ,
         RST_interf => S_RST ,
         fourHEX => S_fourHEX ,
+        
+        i2c_trig => Si_i2c_trig ,
         userled => S_userled  
     );
 
@@ -596,9 +600,9 @@ debounce_ofAll : debounce_module
 oled_controller_top_mdl : entity work.oled_controller_top 
     port Map(
         clk        => CLK_top ,
-        reset_n    => S_BTN_top(0) ,
+        reset_n    => Si_i2c_trig  , -- S_BTN_top(0) ,
         
-        Si_sw       => S_userled ,
+        Si_sw       => S_userled   ,
         
         -- I2C physical pins
         i2c_scl      => i2c_scl,

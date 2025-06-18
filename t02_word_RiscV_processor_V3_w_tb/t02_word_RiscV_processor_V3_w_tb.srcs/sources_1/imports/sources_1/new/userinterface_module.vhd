@@ -38,6 +38,7 @@ Port (
         CLK_interf : out std_logic  := '0' ;
         RST_interf : out std_logic ;
         fourHEX : in std_logic_vector( 31 downto 0 ) ;
+        i2c_trig : out std_logic := '0';
         userled : out  std_logic_vector( 31 downto 0 )  := X"00000000" 
     );
 end userinterface_module;
@@ -45,30 +46,50 @@ end userinterface_module;
 architecture Behavioral of userinterface_module is
 signal S_CLK_interf : std_logic  := '0' ;
 signal S_RST_interf : std_logic  := '0' ;
+signal Si_i2c_trig  : std_logic ;
+signal Si_i2c_trig_d  : std_logic ;
+signal Si_pre_fourHEX :std_logic_vector( 31 downto 0 ) ;
 begin
 
-process (Xclk , userbutton_updown  ) begin 
+
+    userled <= fourHEX;--(15 downto 14) & userbutton_updown &  fourHEX(11 downto 0)  ;
+    RST_interf <= S_RST_interf ;
+    CLK_interf <= S_CLK_interf ;
+    
+
+process (userbutton_updown  , fourHEX ) begin 
 
     if ( falling_edge( userbutton_updown(0) ) ) then
         S_RST_interf <= not S_RST_interf ;
     end if ;
     
-    RST_interf <= S_RST_interf ;
     
+    Si_i2c_trig <= S_RST_interf xor ( S_CLK_interf )  ;
+   
     
     if ( falling_edge( userbutton_updown(1) ) ) then
         S_CLK_interf <= not S_CLK_interf ;
     end if ;
+
+end process;   
+
+i2c_trig <= Si_i2c_trig_d ;
     
-    CLK_interf <= S_CLK_interf ;
-    
---    if(convert = '1') then 
-        userled <= fourHEX;--(15 downto 14) & userbutton_updown &  fourHEX(11 downto 0)  ;
---    else 
---        userled <= X"0000";
---    end if ;
-    
-    
+process (Xclk   ) begin 
+    if rising_edge(Xclk) then 
+        if (Si_pre_fourHEX = fourHEX) then
+            Si_i2c_trig_d <=  Si_i2c_trig; 
+        else
+            Si_pre_fourHEX <= fourHEX;
+            Si_i2c_trig_d <= not Si_i2c_trig ;
+        end if ;
+    end if ;
 end process;
+
+
+
+    
+
+
 
 end Behavioral;
