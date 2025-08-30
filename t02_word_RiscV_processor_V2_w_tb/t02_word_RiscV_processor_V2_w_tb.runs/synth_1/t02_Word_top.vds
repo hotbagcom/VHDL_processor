@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Thu Jan 16 07:26:18 2025
-# Process ID: 10152
+# Start of session at: Sun Mar  9 16:20:44 2025
+# Process ID: 17368
 # Current directory: C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.runs/synth_1
 # Command line: vivado.exe -log t02_Word_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source t02_Word_top.tcl
 # Log file: C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.runs/synth_1/t02_Word_top.vds
@@ -17,9 +17,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 30416
+INFO: [Synth 8-7075] Helper process launched with PID 22208
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:02 . Memory (MB): peak = 1112.668 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1097.082 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 't02_Word_top' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:48]
 INFO: [Synth 8-3491] module 't02_Word_PC' declared at 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_PC.vhd:35' bound to instance 'PC' of component 't02_Word_PC' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:359]
@@ -35,7 +35,7 @@ INFO: [Synth 8-3491] module 't02_Word_IM' declared at 'C:/Users/arify/WorkSpace/
 INFO: [Synth 8-638] synthesizing module 't02_Word_IM' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:75]
 	Parameter im_rom_depth bound to: 20 - type: integer 
 	Parameter im_rom_width_inbit bound to: 32 - type: integer 
-WARNING: [Synth 8-614] signal 'RST' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:464]
+WARNING: [Synth 8-614] signal 'RST' is read in the process but is not in the sensitivity list [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:862]
 INFO: [Synth 8-256] done synthesizing module 't02_Word_IM' (3#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:75]
 	Parameter ram_length bound to: 32 - type: integer 
 	Parameter ram_depth bound to: 32 - type: integer 
@@ -151,18 +151,18 @@ WARNING: [Synth 8-614] signal 'input_circle_status' is read in the process but i
 INFO: [Synth 8-256] done synthesizing module 'debounce_module' (13#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd:52]
 INFO: [Synth 8-256] done synthesizing module 't02_Word_top' (14#1) [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd:48]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1153.734 ; gain = 41.066
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1153.023 ; gain = 55.941
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1153.734 ; gain = 41.066
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1153.023 ; gain = 55.941
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1153.734 ; gain = 41.066
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1153.023 ; gain = 55.941
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1153.734 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1153.023 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -173,41 +173,41 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/t02_Word_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1284.043 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1280.473 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1284.043 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1280.473 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.043 ; gain = 171.375
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1280.473 ; gain = 183.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.043 ; gain = 171.375
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1280.473 ; gain = 183.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.043 ; gain = 171.375
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1280.473 ; gain = 183.391
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-327] inferring latch for variable 'alubrnch_out_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd:54]
-WARNING: [Synth 8-327] inferring latch for variable 'f7_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:471]
-WARNING: [Synth 8-327] inferring latch for variable 'f3_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:468]
-WARNING: [Synth 8-327] inferring latch for variable 'rs0_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:469]
-WARNING: [Synth 8-327] inferring latch for variable 'rs1_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:470]
-WARNING: [Synth 8-327] inferring latch for variable 'rd_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:467]
-WARNING: [Synth 8-327] inferring latch for variable 'imm12_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:484]
-WARNING: [Synth 8-327] inferring latch for variable 'imm20_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:501]
+WARNING: [Synth 8-327] inferring latch for variable 'f7_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:869]
+WARNING: [Synth 8-327] inferring latch for variable 'f3_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:866]
+WARNING: [Synth 8-327] inferring latch for variable 'rs0_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:867]
+WARNING: [Synth 8-327] inferring latch for variable 'rs1_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:868]
+WARNING: [Synth 8-327] inferring latch for variable 'rd_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:865]
+WARNING: [Synth 8-327] inferring latch for variable 'imm12_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:882]
+WARNING: [Synth 8-327] inferring latch for variable 'imm20_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd:899]
 WARNING: [Synth 8-327] inferring latch for variable 'IMM_out_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd:51]
 WARNING: [Synth 8-327] inferring latch for variable 'alu_flag_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:63]
 WARNING: [Synth 8-327] inferring latch for variable 'alu_data_out_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd:67]
 WARNING: [Synth 8-327] inferring latch for variable 'cntrl_dm_bitlen_reg' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd:90]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1284.043 ; gain = 171.375
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1280.473 ; gain = 183.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -281,7 +281,7 @@ Start Cross Boundary and Area Optimization
 INFO: [Synth 8-6851] RAM (RAM_dm_reg) has partial Byte Wide Write Enable pattern, however no output register found in fanout of RAM. Recommended to use supported Byte Wide Write Enable template. 
 INFO: [Synth 8-6851] RAM (RAM_dm_reg) has partial Byte Wide Write Enable pattern, however no output register found in fanout of RAM. Recommended to use supported Byte Wide Write Enable template. 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 1284.043 ; gain = 171.375
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1280.473 ; gain = 183.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -303,13 +303,13 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 1284.043 ; gain = 171.375
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1280.473 ; gain = 183.391
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:18 . Memory (MB): peak = 1330.641 ; gain = 217.973
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1337.340 ; gain = 240.258
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -330,7 +330,7 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:18 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1337.355 ; gain = 240.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -348,37 +348,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -391,57 +391,55 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+---------+------+
-|      |Cell     |Count |
-+------+---------+------+
-|1     |BUFG     |     4|
-|2     |CARRY4   |    57|
-|3     |LUT1     |     8|
-|4     |LUT2     |   121|
-|5     |LUT3     |   212|
-|6     |LUT4     |   176|
-|7     |LUT5     |    83|
-|8     |LUT6     |   482|
-|9     |MUXF7    |    12|
-|10    |MUXF8    |     1|
-|11    |RAM16X1S |    32|
-|12    |RAM32M   |    12|
-|13    |FDCE     |    64|
-|14    |FDRE     |    78|
-|15    |FDSE     |     4|
-|16    |LD       |    14|
-|17    |LDC      |    13|
-|18    |LDP      |    37|
-|19    |IBUF     |    22|
-|20    |OBUF     |    28|
-+------+---------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     5|
+|2     |CARRY4 |    40|
+|3     |LUT1   |    11|
+|4     |LUT2   |   119|
+|5     |LUT3   |   173|
+|6     |LUT4   |   141|
+|7     |LUT5   |   144|
+|8     |LUT6   |   484|
+|9     |MUXF7  |    19|
+|10    |MUXF8  |     8|
+|11    |RAM32M |    12|
+|12    |FDCE   |    32|
+|13    |FDRE   |    78|
+|14    |FDSE   |     4|
+|15    |LD     |    14|
+|16    |LDC    |    17|
+|17    |LDP    |    38|
+|18    |IBUF   |    22|
+|19    |OBUF   |    28|
++------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 12 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1330.688 ; gain = 87.711
-Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1330.688 ; gain = 218.020
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 1339.121 ; gain = 114.590
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1339.121 ; gain = 242.039
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 1342.559 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 178 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1351.199 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 148 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 2 inverter(s) to 39 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1342.559 ; gain = 0.000
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 8 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1351.199 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 108 instances were transformed.
+  A total of 81 instances were transformed.
   LD => LDCE: 14 instances
-  LDC => LDCE: 11 instances
+  LDC => LDCE: 15 instances
   LDC => LDCE (inverted pins: G): 2 instances
   LDP => LDPE: 32 instances
-  LDP => LDPE (inverted pins: G): 5 instances
-  RAM16X1S => RAM32X1S (inverted pins: WCLK) (RAMS32): 32 instances
+  LDP => LDPE (inverted pins: G): 6 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 12 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
 68 Infos, 68 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:25 . Memory (MB): peak = 1342.559 ; gain = 229.891
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:35 . Memory (MB): peak = 1351.199 ; gain = 254.117
 INFO: [Common 17-1381] The checkpoint 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.runs/synth_1/t02_Word_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file t02_Word_top_utilization_synth.rpt -pb t02_Word_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jan 16 07:26:46 2025...
+INFO: [Common 17-206] Exiting Vivado at Sun Mar  9 16:21:28 2025...

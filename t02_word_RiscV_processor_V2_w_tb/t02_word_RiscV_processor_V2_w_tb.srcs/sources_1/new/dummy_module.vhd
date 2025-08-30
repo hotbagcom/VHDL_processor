@@ -132,10 +132,17 @@ begin
 process (userbutton_msblsb ) begin 
 
     if ( falling_edge(userbutton_msblsb(0)) ) then
+<<<<<<< Updated upstream
         upordown <= '0'; 
     end if ;
     if ( falling_edge(userbutton_msblsb(1)) ) then
         upordown <= '1';
+=======
+        upordown <= not upordown ;  --upordown <= '0'; --upordown <= not upordown I can not detect is it least or most significant bit 
+    end if ;
+    if ( falling_edge(userbutton_msblsb(1)) ) then
+        upordown <= not upordown ; --upordown <= '1'; --upordown <= not upordown
+>>>>>>> Stashed changes
     end if ;
     
 end process ;

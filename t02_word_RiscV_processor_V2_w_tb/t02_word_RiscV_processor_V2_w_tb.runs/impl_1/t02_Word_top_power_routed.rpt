@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Thu Jan 16 07:27:28 2025
+| Date             : Sun Mar  9 16:22:07 2025
 | Host             : Arif running 64-bit major release  (build 9200)
 | Command          : report_power -file t02_Word_top_power_routed.rpt -pb t02_Word_top_power_summary_routed.pb -rpx t02_Word_top_power_routed.rpx
 | Design           : t02_Word_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.078        |
+| Total On-Chip Power (W)  | 0.081        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.007        |
+| Dynamic (W)              | 0.009        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.001 |        3 |       --- |             --- |
-| Slice Logic              |     0.002 |     1511 |       --- |             --- |
-|   LUT as Logic           |     0.001 |      898 |     20800 |            4.32 |
-|   CARRY4                 |    <0.001 |       57 |      8150 |            0.70 |
-|   LUT as Distributed RAM |    <0.001 |       80 |      9600 |            0.83 |
-|   Register               |    <0.001 |      210 |     41600 |            0.50 |
-|   BUFG                   |    <0.001 |        3 |        32 |            9.38 |
-|   F7/F8 Muxes            |    <0.001 |       13 |     32600 |            0.04 |
-|   Others                 |     0.000 |       19 |       --- |             --- |
-| Signals                  |     0.002 |     1289 |       --- |             --- |
+| Slice Logic              |     0.003 |     1439 |       --- |             --- |
+|   LUT as Logic           |     0.003 |      889 |     20800 |            4.27 |
+|   CARRY4                 |    <0.001 |       40 |      8150 |            0.49 |
+|   Register               |    <0.001 |      183 |     41600 |            0.44 |
+|   BUFG                   |    <0.001 |        4 |        32 |           12.50 |
+|   F7/F8 Muxes            |    <0.001 |       27 |     32600 |            0.08 |
+|   Others                 |     0.000 |       18 |       --- |             --- |
+|   LUT as Distributed RAM |     0.000 |       48 |      9600 |            0.50 |
+| Signals                  |     0.003 |     1216 |       --- |             --- |
 | I/O                      |     0.002 |       50 |       106 |           47.17 |
 | Static Power             |     0.072 |          |           |                 |
-| Total                    |     0.078 |          |           |                 |
+| Total                    |     0.081 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +74,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.015 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.017 |       0.007 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -143,8 +143,9 @@ Table of Contents
 +------------------+-----------+
 | Name             | Power (W) |
 +------------------+-----------+
-| t02_Word_top     |     0.007 |
-|   debounce_ofAll |     0.002 |
+| t02_Word_top     |     0.009 |
+|   debounce_ofAll |     0.003 |
+|   dummy_ofAll    |     0.001 |
 +------------------+-----------+
 
 

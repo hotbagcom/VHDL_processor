@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/package_top.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/new/t02_Word_ALU.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/new/t02_Word_ALUadress.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_PC.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sources_1/imports/sources_1/imports/sources_1/new/t02_Word_top.vhd" \
+"../../../../t03_word_RiscV_processor_pipline.srcs/sim_1/imports/new/t02_Word_tb.vhd" \
+
+# Do not sort compile order
+nosort

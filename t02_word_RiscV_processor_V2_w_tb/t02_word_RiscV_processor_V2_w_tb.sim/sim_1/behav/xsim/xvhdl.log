@@ -1,26 +1,35 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/package_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_ALU'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_DM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_DM'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_IM.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 't02_Word_IM'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_PC.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_PC'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_Reg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_Reg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_cntrl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_cntrl'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_immGen.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_immGen'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/imports/new/t02_Word_mux2.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_mux2'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/imports/sources_1/new/t02_Word_top.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 't02_Word_top'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/t02_Word_ALUbrnch.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_ALUbrnch'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/dummy_module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dummy_module'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/userinterface_module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'userinterface_module'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/segment_module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'segment_module'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sources_1/new/debounce_module.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'debounce_module'
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 't02_Word_tb'
-ERROR: [VRFC 10-4982] syntax error near ')' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:45]
-ERROR: [VRFC 10-4982] syntax error near 'shared' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:51]
-ERROR: [VRFC 10-4982] syntax error near 'begin' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:55]
-ERROR: [VRFC 10-2969] 't02_word_top' is not a type [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:57]
-ERROR: [VRFC 10-2989] 'rst_tb' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:66]
-ERROR: [VRFC 10-2989] 'clk_tb' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:67]
-ERROR: [VRFC 10-4982] syntax error near 'wait' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:68]
-ERROR: [VRFC 10-2989] 'clk_hlf_periode' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:68]
-ERROR: [VRFC 10-2989] 'clk_tb' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:69]
-ERROR: [VRFC 10-4982] syntax error near 'wait' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:70]
-ERROR: [VRFC 10-2989] 'clk_hlf_periode' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:70]
-ERROR: [VRFC 10-2989] 'rst_tb' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:71]
-ERROR: [VRFC 10-4982] syntax error near 'for' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:72]
-ERROR: [VRFC 10-2989] 'clk_tb' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:73]
-ERROR: [VRFC 10-4982] syntax error near 'wait' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:74]
-ERROR: [VRFC 10-2989] 'clk_hlf_periode' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:74]
-ERROR: [VRFC 10-4982] syntax error near 'loop' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:75]
-ERROR: [VRFC 10-2989] 'clk_tb' is not declared [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:76]
-ERROR: [VRFC 10-4982] syntax error near 'wait' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:77]
-INFO: [#UNDEF] Sorry, too many errors..
+ERROR: [VRFC 10-3353] formal port 'btn_top' has no actual or default value [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:65]
+ERROR: [VRFC 10-4982] syntax error near '2' [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:84]
+ERROR: [VRFC 10-3782] unit 'bhvrl_tb' ignored due to previous errors [C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd:38]
+INFO: [VRFC 10-3070] VHDL file 'C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V2_w_tb/t02_word_RiscV_processor_V2_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd' ignored due to errors

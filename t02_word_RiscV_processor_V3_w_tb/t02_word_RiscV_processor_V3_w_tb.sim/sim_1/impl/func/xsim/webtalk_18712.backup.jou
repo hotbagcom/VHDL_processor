@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Mon Mar 17 22:20:03 2025
+# Process ID: 18712
+# Current directory: C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V3_w_tb/t02_word_RiscV_processor_V3_w_tb.sim/sim_1/impl/func/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V3_w_tb/t02_word_RiscV_processor_V3_w_tb.sim/sim_1/impl/func/xsim/xsim.dir/t02_Word_tb_func_impl/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V3_w_tb/t02_word_RiscV_processor_V3_w_tb.sim/sim_1/impl/func/xsim/webtalk.log
+# Journal file: C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V3_w_tb/t02_word_RiscV_processor_V3_w_tb.sim/sim_1/impl/func/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V3_w_tb/t02_word_RiscV_processor_V3_w_tb.sim/sim_1/impl/func/xsim/xsim.dir/t02_Word_tb_func_impl/webtalk/xsim_webtalk.tcl -notrace

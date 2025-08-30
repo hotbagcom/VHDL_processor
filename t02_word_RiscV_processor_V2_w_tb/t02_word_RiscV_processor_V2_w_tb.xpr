@@ -41,7 +41,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="vcu128"/>
-    <Option Name="WTXSimLaunchSim" Val="497"/>
+    <Option Name="WTXSimLaunchSim" Val="514"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -205,7 +205,6 @@
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sim_1/imports/new/t02_Word_tb.vhd">
         <FileInfo>
-          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../t02_word_RiscV_processor_V_w_tb/t02_word_RiscV_processor_V_w_tb.srcs/sim_1/new/t02_Word_tb.vhd"/>
           <Attr Name="ImportTime" Val="1734186383"/>
           <Attr Name="UsedIn" Val="synthesis"/>

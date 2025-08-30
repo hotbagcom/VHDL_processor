@@ -1,0 +1,13 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/arify/WorkSpace/VHDL_processor/t02_word_RiscV_processor_V3_w_tb/t02_word_RiscV_processor_V3_w_tb.sim/sim_1/impl/func/xsim/t02_Word_tb_func_impl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'debounce_module'
+INFO: [VRFC 10-3107] analyzing entity 'dummy_module'
+INFO: [VRFC 10-3107] analyzing entity 'segment_module'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_ALU'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_IM'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_PC'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_Reg'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_immGen'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_mux2'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_mux2_0'
+INFO: [VRFC 10-3107] analyzing entity 'userinterface_module'
+INFO: [VRFC 10-3107] analyzing entity 't02_Word_top'

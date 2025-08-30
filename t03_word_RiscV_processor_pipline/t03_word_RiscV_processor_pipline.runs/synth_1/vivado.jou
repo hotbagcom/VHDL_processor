@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Jan 29 18:31:17 2025
+# Process ID: 4548
+# Current directory: C:/Users/arify/WorkSpace/VHDL_processor/t03_word_RiscV_processor_pipline/t03_word_RiscV_processor_pipline.runs/synth_1
+# Command line: vivado.exe -log t02_Word_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source t02_Word_top.tcl
+# Log file: C:/Users/arify/WorkSpace/VHDL_processor/t03_word_RiscV_processor_pipline/t03_word_RiscV_processor_pipline.runs/synth_1/t02_Word_top.vds
+# Journal file: C:/Users/arify/WorkSpace/VHDL_processor/t03_word_RiscV_processor_pipline/t03_word_RiscV_processor_pipline.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source t02_Word_top.tcl -notrace

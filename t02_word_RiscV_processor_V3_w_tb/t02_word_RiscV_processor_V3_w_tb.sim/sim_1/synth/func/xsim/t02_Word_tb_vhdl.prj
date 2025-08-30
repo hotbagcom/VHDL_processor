@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"t02_Word_tb_func_synth.vhd" \
+"../../../../../t02_word_RiscV_processor_V3_w_tb.srcs/sim_1/imports/new/t02_Word_tb.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Thu Jan 16 07:27:27 2025
+| Date         : Sun Mar  9 16:22:07 2025
 | Host         : Arif running 64-bit major release  (build 9200)
 | Command      : report_drc -file t02_Word_top_drc_routed.rpt -pb t02_Word_top_drc_routed.pb -rpx t02_Word_top_drc_routed.rpx
 | Design       : t02_Word_top
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 6
+             Violations found: 5
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153 | Warning  | Gated clock check                                   | 5          |
+| PDRC-153 | Warning  | Gated clock check                                   | 4          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -49,27 +49,22 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net PC/AS[0] is a gated clock net sourced by a combinational pin PC/imm12_reg[11]_i_2/O, cell PC/imm12_reg[11]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net PC/E[0] is a gated clock net sourced by a combinational pin PC/IMM_out_reg[31]_i_2/O, cell PC/IMM_out_reg[31]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net PC/E[0] is a gated clock net sourced by a combinational pin PC/rd_reg[2]_i_1/O, cell PC/rd_reg[2]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net PC/current_pc_reg[1]_2[0] is a gated clock net sourced by a combinational pin PC/rd_reg[3]_i_2/O, cell PC/rd_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#3 Warning
 Gated clock check  
-Net PC/current_pc_reg[3]_0[0] is a gated clock net sourced by a combinational pin PC/rs1_reg[2]_i_2/O, cell PC/rs1_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net PC/current_pc_reg[3]_6[0] is a gated clock net sourced by a combinational pin PC/rs1_reg[3]_i_2/O, cell PC/rs1_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#4 Warning
 Gated clock check  
-Net PC/current_pc_reg[3]_1[0] is a gated clock net sourced by a combinational pin PC/IMM_out_reg[31]_i_2/O, cell PC/IMM_out_reg[31]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#5 Warning
-Gated clock check  
-Net PC/current_pc_reg[3]_3 is a gated clock net sourced by a combinational pin PC/alu_flag_reg[0]_i_2/O, cell PC/alu_flag_reg[0]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net PC/current_pc_reg[3]_8[0] is a gated clock net sourced by a combinational pin PC/imm12_reg[11]_i_2/O, cell PC/imm12_reg[11]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 
